@@ -368,14 +368,11 @@ body {
                      <i class="fal fa-chevron-circle-down"></i>
                      </button>
                      <div class="dropdown-menu menu-dd">
-                            <!--  <a href="/blog" class="dropdown-item">
-                        <i class="fal fa-blog mr-2"></i>{% if user['lang'] == "ar" %}المدونة{% else %}Blog{% endif %} </a>        
-                             <a href="/terms" class="dropdown-item">   -->
-                        <i class="fal fa-file-alt mr-2"></i>{% if user['lang'] == "ar" %}شروط الاستخدام{% else %}Terms{% endif %} </a>
+                          
                              <a href="/account" class="dropdown-item">
-                        <i class="fal fa-user mr-2"></i>{% if user['lang'] == "ar" %}حساب{% else %}Account{% endif %} </a>
+                        <i class="fal fa-user mr-2"></i>{% if user['lang'] == "ar" %}حساب{% else %}{{ lang["account.title"] }}{% endif %} </a>
                              <a href="/logout" class="dropdown-item">
-                        <i class="fal fa-power-off mr-2"></i>{% if user['lang'] == "ar" %}تسجيل خروج{% else %}Logout{% endif %} </a>
+                        <i class="fal fa-power-off mr-2"></i>{% if user['lang'] == "ar" %}تسجيل خروج{% else %}{{ lang["logout.title"] }}{% endif %} </a>
                      </div>
                   </div>
                </div>
