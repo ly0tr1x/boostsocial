@@ -13,7 +13,7 @@
                             {{ lang['refill_history'] }}
                         </div>
                         <div class="dch-text">
-                          You can see all your refill on our site here.
+                            {{ lang['refill_desc'] }}
                         </div>
                     </div>                        
                 </div>
@@ -38,7 +38,8 @@
                                 <a {% if 'Completed' == status %}  class=" active" {% endif %} class="nav-link" href="refill/Completed">{{ lang['orders.status.completed'] }}</a>
                               </li>
                               <li class="mr-2">
-							<a {% if 'Rejected' == status %}  class=" active" {% endif %} class="nav-link" href="refill/Rejected">Rejected</a></li>
+							<a {% if 'Rejected' == status %}  class=" active" {% endif %} class="nav-link" href="refill/Rejected">                            {{ lang['rejected'] }}
+</a></li>
                               <li class="mr-2">
                                  <a {% if 'Error' == status %}  class=" active" {% endif %} class="nav-link" href="refill/Error">Error</a>
                               </li>
@@ -66,8 +67,9 @@
 <th>Date </th>
 <th>Order ID</th>
               <th>Link</th>
-<th>Service</th> 
-              <th>Status</th>
+<th>{{ lang['subscriptions.service'] }}</th> 
+              <th>                            {{ lang['orders.status'] }}
+</th>
                                         </tr> 
                                     </thead>
                                     <tbody>
