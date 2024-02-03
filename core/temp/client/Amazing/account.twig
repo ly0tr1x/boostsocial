@@ -1,0 +1,161 @@
+{% include 'header.twig' %}
+        <div class="app-content">
+			<div class="container-fluid">
+
+				<section class="km-account">
+				
+							<div class="col-lg-12">
+      {% if error %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% endif %}
+      {% if success %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+							</div>
+							
+						<div class="row">
+
+							<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card">
+									<div class="d-card-body">
+										<div class="row">
+										<div class="col-lg-6">
+										<div class="form-group mb-4">
+                                          <label>
+                                          {{ lang['account.username'] }}
+                                          </label>
+                                          <div class="input-group">
+                                             <input class="form-control" type="text"  value="{{ user['username'] }}" readonly>
+                                          </div>
+                                        </div></div>
+										<div class="col-lg-6">
+										<div class="form-group mb-4">
+                                          <label>
+                                          {{ lang['account.spent'] }}
+                                          </label>
+                                          <div class="input-group">
+                                             <input class="form-control" type="text" value="{{ user['spent'] }}{{ site['currency'] }}" readonly>
+                                          </div>
+                                        </div>
+                                        </div>
+										</div>
+									
+										
+									</div>
+								</div>
+								<div class="d-card mt-3">
+									<div class="d-card-body">
+
+								<form method="post" action="account/newapikey">
+								  <div class="form-group">
+									<label for="charge" class="control-label">API Link</label>
+									<input type="text" class="form-control" value="{{ site['url'] }}/api/v2" readonly>
+								  </div>
+
+								  <div class="form-group">
+									<label for="charge" class="control-label">API Key</label>
+									<input type="text" class="form-control" value="{{ user['apikey'] }}" readonly>
+								  </div>
+								  <button type="submit" class="btn btn-primary">{{ lang['account.generate.key'] }}</button>
+								</form>
+									
+									</div>
+								</div>
+							</div>								
+
+							<div class="col-lg-6 col-12 mb-lg-0">
+								<div class="d-card h-100">
+									<div class="d-card-body">
+										<form method="post" action="account">
+											<div class="form-group mb-4">
+											  <label>
+											 {{ lang['account.password.current'] }}
+											  </label>
+											  <div class="input-group">
+												 <input type="password" class="form-control" name="current_password">
+											  </div>
+											</div>
+											<div class="form-group mb-4">
+											  <label>
+											  {{ lang['account.password.new'] }}
+											  </label>
+											  <div class="input-group">
+												 <input type="password" class="form-control" name="password">
+											  </div>
+											</div>
+											<div class="form-group mb-4">
+											  <label>
+											  {{ lang['account.password.confirm'] }}
+											  </label>
+											  <div class="input-group">
+												 <input type="password" class="form-control" name="confirm_password">
+											  </div>
+											</div>	
+											<button type="submit" class="btn btn-primary btn-block mt-4">{{ lang['account.password.button'] }}</button>		
+										</form>
+									</div>
+								</div>
+							</div>	
+
+						</div>
+							
+						<div class="row">
+							 {% if site['languages']|length > 1 %}
+							<div class="col-lg-6 col-12 mt-3 mb-lg-0">
+								<div class="d-card">
+									<div class="d-card-body">
+										  <form method="post" action="account/change_lang">
+
+											<div class="form-group">
+											  <label for="charge" class="control-label">{{ lang['account.changelang.title'] }}</label>
+											  <select class="form-control" name="lang">
+												  {% for language in site['languages'] %}
+												  <option {% if language["code"] == user["lang"] %} selected {% endif %} value="{{ language["code"] }}">{{ language["name"] }}</option>
+												  {% endfor %}
+											  </select>
+											</div>
+
+											<button type="submit" class="btn btn-primary">{{ lang['account.changelang.button'] }}</button>
+										  </form>
+									</div>
+								</div>
+							</div>	
+							  {% endif %}
+							<div class="col-lg-6 col-12 mt-3 mb-lg-0">
+								<div class="d-card">
+									<div class="d-card-body">
+
+									 <form method="post" action="account/timezone">
+
+									   <div class="form-group">
+										 <label for="charge" class="control-label">{{ lang['account.timezone.title'] }}</label>
+										 <select class="form-control" name="timezone">
+											 {% for timezone in timezones %}
+											 <option {% if timezone["timezone"] == user['timezone'] %} selected {% endif %} value="{{ timezone["timezone"] }}">{{ timezone["label"] }}</option>
+											 {% endfor %}
+										 </select>
+									   </div>
+
+									   <button type="submit" class="btn btn-primary">{{ lang['account.timezone.button'] }}</button>
+									 </form>
+									
+									</div>
+								</div>
+
+
+							</div>							
+
+						</div>	
+				</section>
+
+			</div>
+		</div>
+    </div>
+ 
+{% include 'footer.twig' %}

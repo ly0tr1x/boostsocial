@@ -1,0 +1,220 @@
+{% include 'header.twig' %}
+   <div class="home-head">
+      <div class="home-head-bg"></div>
+      <div class="home-head-content">
+         <div class="container" style="position: relative;">
+            <div class="row align-items-center">
+               <div class="col-lg-6 col-12">
+                  <div class="hh-title">
+                     The largest <span class="main-color">SMM Panel</span><br/> Services Provider
+                  </div>
+                  <div class="hh-text">
+                    Welcome to {{ site["site_name"] }}, Get your high quality and cheapest followers and engagements directly to your social media profile.
+                  </div>
+                  <div class="hh-buttons">
+                             <a href="/services" class="btn d-block d-md-inline-block btn-secondary">
+                     All Services
+                     </a>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="login-box">
+                     <div class="login-form">
+                        <form method="post" action="">
+      {% if errorText %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% endif %}
+      {% if successText %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+                           <div class="form-group">
+                              <div class="fga mb-3">
+                                 <label class="fla">{{lang["signup.username"]}}</label>
+                                 <div class="fg">
+                                    <div class="fg-icon">
+                                       <i class="fal fa-user"></i>
+                                    </div>
+                                    <input type="text" class="fg-control" name="username" value="{{ data['username'] }}" required="">
+                                 </div>
+                              </div>
+                           </div>
+						   
+						    {% if settings['name_secret'] == 2 %}
+						   <div class="row">
+								<div class="col-lg-6">
+								   <div class="form-group">
+									  <div class="fga mb-3">
+										 <label class="fla">{{lang["signup.first_name"]}}</label>
+										 <div class="fg">
+											<div class="fg-icon">
+											   <i class="fal fa-user"></i>
+											</div>
+											<input type="text" class="fg-control" name="first_name" value="{{ data['first_name'] }}" required>
+										 </div>
+									  </div>
+								   </div>
+							   </div>
+							   <div class="col-lg-6">
+								   <div class="form-group">
+									  <div class="fga mb-3">
+										 <label class="fla">{{lang["signup.last_name"]}}</label>
+										 <div class="fg">
+											<div class="fg-icon">
+											   <i class="fal fa-user"></i>
+											</div>
+											<input type="text" class="fg-control" name="last_name" value="{{ data['last_name'] }}"  required>
+										 </div>
+									  </div>
+								   </div>
+							   </div>
+						   </div>
+						   {% endif %}
+						   
+                           <div class="form-group">
+                              <div class="fga mb-3">
+                                 <label class="fla">{{lang["signup.email"]}}</label>
+                                 <div class="fg">
+                                    <div class="fg-icon">
+                                       <i class="fal fa-envelope"></i>
+                                    </div>
+                                    <input type="email" class="fg-control" name="email" value="{{ data['email'] }}" required>
+                                 </div>
+                              </div>
+                           </div>
+						   
+						   {% if settings['skype_area'] == 2 %}
+                           <div class="form-group">
+                              <div class="fga mb-3">
+                                 <label class="fla">{{lang["signup.telephone"]}}</label>
+                                 <div class="fg">
+                                    <div class="fg-icon">
+                                       <i class="fal fa-mobile-alt"></i>
+                                    </div>
+                                    <input type="text" class="fg-control" name="telephone" value="{{ data['telephone'] }}" required>
+                                 </div>
+                              </div>
+                           </div>	
+							{% endif %}			
+
+						   <div class="row">
+								<div class="col-lg-6">
+								   <div class="form-group">
+									  <div class="fga mb-3">
+										 <label class="fla">{{lang["signup.password"]}}</label>
+										 <div class="fg">
+											<div class="fg-icon">
+											   <i class="fal fa-lock-alt"></i>
+											</div>
+											<input type="password" class="fg-control" name="password" required>
+										 </div>
+									  </div>
+								   </div>
+							   </div>
+							   <div class="col-lg-6">
+								   <div class="form-group">
+									  <div class="fga mb-3">
+										 <label class="fla">{{lang["signup.confirm"]}}</label>
+										 <div class="fg">
+											<div class="fg-icon">
+											   <i class="fal fa-lock-alt"></i>
+											</div>
+											<input type="password" class="fg-control" name="password_again" required>
+										 </div>
+									  </div>
+								   </div>
+							   </div>
+						   </div>
+						   {% if captcha %}
+							<div class="mt-4">
+								<div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+							</div>{% endif %}
+						  
+						{% if settings['terms_checkbox'] == 2 %}
+						<div class="mt-4 custom-control custom-checkbox text-left checkbox">
+							<input type="checkbox" name="terms" value="1">{{ lang['signup.accept_terms_text'] }}
+						</div>
+						{% endif %}					   
+
+                           <button type="submit" class="btn btn-primary btn-xl btn-block mt-4">{{lang["signup.button"]}}</button>
+                        </form>
+                        
+                        
+                        {% if google == 2 %}
+                                                    <a href="/google"  class="btn btn-primary btn-xl btn-block mt-4">Sign in With Google</a>
+
+                            {% endif %}
+                        
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   
+   <section class="home-section">
+		<div class="container">
+			<div class="socials">
+				 <div class="home-title text-center mb-5">
+					<h2>{% if site['rtl'] %}منصاتنا{% else %}Our platforms{% endif %}</h2>
+					<div class="divider d-flex justify-content-center"></div>
+				 </div>
+				<div class="row text-center">
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-instagram"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-youtube"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-twitter"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-facebook-f"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-tiktok"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-telegram"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-twitch"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-spotify"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-linkedin"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-reddit"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-steam"></i>
+					</div>	
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-pinterest-p"></i>
+					</div>						
+				</div>
+			</div>
+		</div>
+   </section>
+
+
+
+{% for lang in site['languages'] %}
+  {% if lang['active'] %}
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ lang['code'] }}"></script>
+  {% endif %}
+{% endfor %}
+
+{% include 'footer.twig' %}

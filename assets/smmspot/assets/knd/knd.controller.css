@@ -1,0 +1,309 @@
+@charset "UTF-8";
+.smmspot-sb-container {
+  position: relative;
+  width: 100%;
+  font-size: 16px;
+}
+
+.smmspot-sb-container .test {
+  position: absolute;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.smmspot-sb-container.active .smmspot-sb-dropdown {
+  display: block;
+}
+
+.smmspot-sb-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.smmspot-sb-btn::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  height: 100%;
+  width: 40px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #aaa;
+}
+
+.smmspot-sb-btn span {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.smmspot-sb-dropdown {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+  background-color: #fff;
+  position: absolute;
+  top: 54px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 100;
+  display: none;
+}
+
+.smmspot-sb-dd-body {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+  max-height: 500px;
+}
+
+.smmspot-sb-dd-search-c {
+  padding: 14px;
+}
+
+.smmspot-sb-dd-search {
+  border-radius: 4px;
+  background-color: #eeeeee;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 32px;
+  padding: 0 10px;
+}
+
+.smmspot-sb-dd-search input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+}
+
+.smmspot-sb-dd-search .smmspot-sb-dd-search-clear {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 32px;
+  height: 32px;
+  border: none;
+}
+
+.smmspot-sb-dd-content {
+  -webkit-box-flex: 100%;
+      -ms-flex: 100%;
+          flex: 100%;
+  overflow-y: auto;
+  padding-bottom: 8px;
+}
+
+.smmspot-sb-dd-item {
+  padding: 12px 16px;
+  -webkit-transition: .14s ease;
+  transition: .14s ease;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  border: none;
+  background: transparent;
+  color: #fff;
+}
+
+.smmspot-sb-dd-item.disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+.smmspot-sb-dd-item.selected {
+  background: #0077ff;
+  color: #fff;
+}
+
+.smmspot-sb-dd-item.selected:hover {
+  background: #0b79f7;
+}
+
+.smmspot-sb-dd-item:hover {
+  background-color: #eee;
+}
+
+.smmspot-sb-dd-item + .smmspot-sb-dd-item {
+  border-top: 1px solid #eee;
+}
+
+.smmspot-sb-mobilebg {
+  position: fixed;
+  display: fixed;
+  z-index: 1030;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  -webkit-transition: .14s ease;
+  transition: .14s ease;
+}
+
+.smmspot-sb-mobiledrag {
+  padding: 16px 10px 20px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+}
+
+.smmspot-sb-mobiledrag.active::before {
+  background: #666;
+}
+
+.smmspot-sb-mobiledrag::before {
+  content: '';
+  position: relative;
+  width: 80px;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+}
+
+@media (max-width: 767.99px) {
+  body.sspSbOpen {
+    overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
+  }
+  .smmspot-sb-container.active .smmspot-sb-dropdown {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  .smmspot-sb-container.active .smmspot-sb-mobilebg {
+    display: block;
+  }
+  .smmspot-sb-container .smmspot-sb-mobiledrag {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .smmspot-sb-container .smmspot-sb-dropdown {
+    display: block;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    position: fixed;
+    z-index: 1032;
+    bottom: 0px;
+    left: 0px;
+    top: inherit !important;
+    max-height: strech;
+    min-height: 200px;
+    height: inherit;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .smmspot-sb-container .smmspot-sb-dropdown .smmspot-sb-dd-body {
+    max-height: inherit;
+  }
+  .smmspot-sb-container .smmspot-sb-dropdown .smmspot-sb-dd-search-c {
+    padding-top: 0px !important;
+  }
+}
+
+.smmspot-sb-container .fg-control {
+  padding-left: 66px;
+}
+
+.smmspot-sb-container .smmspot-sb-dropdown {
+  top: 70px;
+  background: #22252e;
+  border-color: #292d36;
+  -webkit-box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.smmspot-sb-container .smmspot-sb-dd-item {
+  color: #9fa6bc;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-item.selected {
+  background-color: #c31231;
+  color: #fff;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-item.selected:hover {
+  background-color: #c31231;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-item:hover, .smmspot-sb-container .smmspot-sb-dd-item:focus {
+  background: #292d36;
+  outline: none;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-item + .smmspot-sb-dd-item {
+  border-top-color: #292d36;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-search {
+  background: #2b2f39;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-search input {
+  color: #fff;
+}
+
+.smmspot-sb-container .smmspot-sb-dd-search input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.smmspot-sb-container .smmspot-sb-dd-search input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.smmspot-sb-container .smmspot-sb-dd-search input::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.smmspot-sb-container .smmspot-sb-dd-search input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+/*# sourceMappingURL=knd.controller.css.map */

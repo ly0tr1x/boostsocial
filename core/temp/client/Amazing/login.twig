@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+{% for lang in site['languages'] %}
+{% if lang['active'] %}
+<html lang="{{ lang['code'] }}">
+{% endif %}
+{% endfor %}
+<head>
+  <base href="{{ site['url'] }}/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="keywords" content="{{ keywords }}">
+  <meta name="description" content="{{ description }}">
+  {% if site['favicon'] %}
+    <link rel="shortcut icon" type="image/ico" href="{{ site['favicon'] }}" />
+  {% endif %}
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  
+    {{ headerCode }}
+
+{% if user['lang'] == "ar" %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-v4-rtl/4.6.0-1/css/bootstrap-rtl.min.css" integrity="sha512-+1C9xBCl0azgGjU6bIsATfB4XOQ0MSFduPs388NiyzwYt4nfelS72KSPSFZT338FjP7F3mMme2re8+gUJe2HZQ==" crossorigin="anonymous" />
+{% endif %}
+  
+    {% for style in styleList %}
+      <link rel="stylesheet" type="text/css" href="{{ style }}">
+    {% endfor %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.2/umd/popper.min.js"></script>
+<style>
+body {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+    .dash-card:after {
+    background-color: #7156ae;
+  
+}
+.app-container .app-sidebar .sidebar-content .sidebar-menu>li a:hover {
+    color: #7156ae;
+}
+.nwo-cat-btn.active {
+    background: #7156ae;
+    border: 1px solid white;
+}
+.fixed-footer{
+                position: fixed;
+                background: #fff;
+                border:1px solid #000;
+                width:100%;
+                bottom:0;
+                z-index:99999;
+                padding:10px;
+            }
+            
+      
+</style>
+  </head>
+
+ 	{%  if settings['demo_mode'] == 1 %}
+    
+        
+    <div class="fixed-footer">
+            <h4 style="color:#000">Choose Theme: 
+                
+                   {% for thm in site['themes'] %}
+<a href="/select-theme/{{thm['dirname']}}" style="color:blue;margin:0 10px;font-size:16px">[ {{thm['name']}} ]</a>
+{% endfor %}
+
+            </h4>
+    </div>
+  
+{% endif %}
+
+
+{% if user['auth'] %}
+<body class="dashboard-body {% if user['lang'] == 'ar' %} rtl-enable rtl{% endif %}">
+      <script>
+         var app = document.getElementsByTagName("BODY")[0];
+         if (localStorage.lightMode == "dark") {
+           app.setAttribute("class", "dark");
+         }
+      </script>
+      <div class="app-container">
+         <div class="app-sidebar" style="background: url(sidebar2.png) no-repeat bottom left #161b22;" >
+            <div class="close-sidebar-btn" onclick="dashMenuToggle()">
+               <i class="fal fa-times"></i>
+            </div>
+            <div class="sidebar-header">
+               <div class="app-sb-content">
+                  <a href="/">
+ 				  {% if site["logo"] %}
+					<img src="{{ site['logo'] }}" style="height:110px"  class="logo-lg" alt="{{ site["site_name"] }}" title="{{ site["site_name"] }}">
+				  {% else %}
+					{{ site["site_name"] }}
+				  {% endif %}
+                 </a>
+               </div>
+            </div>
+            <div class="sidebar-user pt-4">
+                  <a href="/addfunds" class="btn btn-block btn-secondary btn-border sidebar-balance mb-3">
+                  <div class="sb-content">
+                     <div class="sb-icon" style="background:#7156ae;color:white;" >
+                        <i class="fal fa-user"></i>
+                     </div>
+                     <div class="sb-right">
+                        <h3>{{user['username']}}</h3>
+                        <h4>{{ currency["symbol"]  }}  {{ (user["balance"]* currency["value"]) |round(2, 'floor') }}</h4>
+                     </div>
+                  </div>
+               </a>
+            </div>
+            <!-- sidebar-user -->
+            <div class="sidebar-content">
+               <ul class="sidebar-menu">
+
+					
+					<ul class="nav navbar-nav navbar-left-block langs showOnMob menu-link mb-3" style="width: 100%; border-radius: 0px!important; padding: 10px 19px!important;">
+                      
+                      <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="menu-link dropdown-toggle"><i class="fa fa-fw fas fa-dollar-sign" style="color: #28cb69!important;"></i> {% if user['lang'] == "ar" %}عملة{% else %}Currency{% endif %} <i class="fas fa-chevron-down" style="color: #fff!important; margin-left: 5px;"></i> </a>
+							<ul style="width: 200% !important; will-change: transform;" class="dropdown-menu dropdown-max-height beforeauthdrop" id="currencies-list">
+                              {% for curr in site['currencies'] %}
+                                <li>
+									<a href="/cur?cur={{curr['id']}}" >{{curr['name']}} </a>
+								</li>
+                              {% endfor %}
+							</ul>
+                      </li>
+                      
+                    </ul>
+				
+					
+						{% if ( settings['sms_verify'] == 2 and user['sms_verify'] == 1 ) or (settings['mail_verify'] == 2 and user['mail_verify'] == 1 ) %}
+							<li{% if active_menu == "verify" %} class="menu-link active" {% else %} class="menu-link" {% endif %}>
+								<a href="/" {% if active_menu == "verify" %} class="menu-link active" {% else %} class="menu-link" {% endif %}>
+								  <span class="menu-text">{{ lang['verify.title'] }}</span>
+								</a>
+							</li>
+						{% else %}
+						<li {% if active_menu == "neworder" %} class="active" {% endif %}>
+							<a href="/" class="menu-link">                        
+								<i class="m-icon ri-add-box-line" style="color:white;"></i>
+								<span class="menu-text">{{ lang['neworder.title'] }}</span>
+							</a>
+						</li>
+						
+						
+							<li {% if active_menu == "massorder" %} class="active" {% endif %}>
+							<a href="/massorder" class="menu-link">                        
+								<i class="m-icon ri-add-box-line" style="color:white;"></i>
+								<span class="menu-text">Mass Order</span>
+							</a>
+						</li>
+						
+				<li {% if active_menu == "services" %} class="active" {% endif %}>
+					<a href="/services" class="menu-link">                        
+						<i class="m-icon ri-dashboard-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['services.title'] }}</span>
+					</a>
+				</li>
+				<li {% if active_menu == "orders" %} class="active" {% endif %}>
+					<a href="/orders" class="menu-link">                        
+						<i class="m-icon ri-shopping-bag-3-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['orders.title'] }}</span>
+					</a>
+				</li>
+				
+					<li {% if active_menu == "refill" %} class="active" {% endif %}>
+					<a href="/refill" class="menu-link">                        
+						<i class="m-icon ri-recycle-line" style="color:white;"></i>
+						<span class="menu-text">Refill</span>
+					</a>
+				</li>
+				
+				{% if site["dripfeedcount"] %}
+				<li {% if active_menu == "dripfeeds" %} class="active" {% endif %}>
+					<a href="/dripfeeds" class="menu-link">                        
+						<i class="m-icon ri-calendar-check-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['dripfeed.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}
+				{% if site["subscriptionscount"] %}
+				<li {% if active_menu == "subscriptions" %} class="active" {% endif %}>
+					<a href="/subscriptions" class="menu-link">                        
+						<i class="m-icon ri-dvd-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['subscriptions.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}
+				<li {% if active_menu == "addfunds" %} class="active" {% endif %}>
+					<a href="/addfunds" class="menu-link">                        
+						<i class="m-icon ri-wallet-3-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['addfunds.title'] }}</span>
+					</a>
+				</li>	
+				<li>
+					<a href="/kupon" class="menu-link">                        
+						<i class="m-icon ri-wallet-3-line" style="color:white;"></i>
+						<span class="menu-text">{% if user['lang'] == "ar" %}قسيمة{% else %}Coupon{% endif %} 
+					</a>
+				</li>	
+				{%  if settings['enable_transfer_funds'] == 1 %}
+					<li {% if active_menu == "transferfunds" %} class="active" {% endif %}>
+					<a href="/transferfunds" class="menu-link">                        
+						<i class="m-icon ri-file-transfer-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['transferfunds.title'] }}</span>
+					</a>
+				</li>	
+				{% endif %}
+				{% if affiliates %}
+				<li {% if active_menu == "affiliates" %} class="active" {% endif %}>
+					<a href="/affiliates" class="menu-link">                        
+						<i class="m-icon ri-mail-star-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['affiliates.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}
+				{% if panelSelling %}
+				<li {% if active_menu == "child-panels" %} class="active" {% endif %}>
+					<a href="/child-panels" class="menu-link">                        
+						<i class="m-icon ri-store-2-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['childpanels.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}				
+				{% if apiPage %}
+				<li {% if active_menu == "api" %} class="active" {% endif %}>
+					<a href="/api" class="menu-link">                        
+						<i class="m-icon ri-terminal-window-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['api.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}					
+				{% if ticketPage %}
+				<li {% if active_menu == "tickets" %} class="active" {% endif %}>
+					<a href="/tickets" class="menu-link">                        
+						<i class="m-icon ri-customer-service-2-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['tickets.title'] }} {% if ticketCount %} <span class="badge">{{ ticketCount }}</span> {% endif %}</span>
+					</a>
+				</li>					
+				{% endif %}					
+				{% if blogPage %}  
+				<li {% if active_menu == "blog" %} class="active" {% endif %}>
+					<a href="/blog" class="menu-link">                        
+						<i class="m-icon ri-file-text-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['blog.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}	
+				{% if faqPage %}  
+				<li {% if active_menu == "faq" %} class="active" {% endif %}>
+					<a href="/faq" class="menu-link">                        
+						<i class="m-icon ri-questionnaire-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['faq.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}					
+				{% if termsPage %} 
+				<li {% if active_menu == "terms" %} class="active" {% endif %}>
+					<a href="/terms" class="menu-link">                        
+                        <i class="m-icon ri-newspaper-line" style="color:white;"></i>
+						<span class="menu-text">{{ lang['terms.title'] }}</span>
+					</a>
+				</li>					
+				{% endif %}			
+				
+			{% endif %}	
+						
+               </ul>
+               <!-- sidebar-menu -->
+            </div>
+            <!-- sidebar-content -->
+         </div>
+         <!-- sidebar -->
+         <div class="app-header">
+            <div class="container-fluid">
+               <div class="row row-80">
+                  <div class="col-auto align-self-center">
+                     <div class="dash-menu-btn" onclick="dashMenuToggle()" style="background:#7156ae;color:white;" >
+                        <i class="fal fa-bars"></i>
+                     </div>
+                  </div>
+                  <div class="col d-inline-block d-md-none align-self-center text-center">
+                     <div class="app-logo">
+                       <a href="/">
+						  {% if site["logo"] %}
+							<img src="{{ site['logo'] }}" class="logo-lg" alt="{{ site["site_name"] }}" title="{{ site["site_name"] }}">
+						  {% else %}
+							{{ site["site_name"] }}
+						  {% endif %}
+                       </a>
+                     </div>
+                  </div>
+                  <div class="col col-1 d-none d-md-inline-block align-self-center">
+                    <ul class="nav navbar-nav navbar-left-block langs">
+                      <li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-globe" style="color: #7156ae;font-weight: 600;"></i>
+                         </a>
+          
+                        <ul class="dropdown-menu dropdown-max-height beforeauthdrop">
+                          {% for lang in site['languages'] %}
+                          <li><a href="#" onclick="changeLang('{{lang['code']}}')" >{{lang['name']}} </a></li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                
+				<div class="col col-100 d-none d-md-inline-block align-self-center">
+                    <ul class="nav navbar-nav navbar-left-block langs">
+                      <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-dollar-sign" style="color: #7156ae;font-weight: 600;"></i> {% if user['lang'] == "ar" %}عملة{% else %} Monedas{% endif %}<i class="fas fa-chevron-down" style="color: #fff!important; margin-left: 5px;"></i> </a>
+                     
+                  
+							<ul class="dropdown-menu dropdown-max-height beforeauthdrop currency-btn">
+							{% for curr in site['currencies'] %}
+								<li>
+									<a href="/cur?cur={{curr['id']}}" >{{curr['name']}} </a>
+								</li>
+							{% endfor %}	
+							</ul>
+                      </li>
+                    </ul>
+                  </div>
+				
+                    				  
+                  <div class="col-auto align-self-center">
+                    
+                    
+                   <button class="darkmode" onclick="change_mode()">
+                     <div class="d-flex align-items-center dark-s"><i class="fal fa-sun"></i>  <span>{% if user['lang'] == "ar" %}الوضع النهاري{% else %}Light{% endif %}</span></div>
+                     <div class="d-flex align-items-center light-s"><i class="fal fa-moon"></i> <span>{% if user['lang'] == "ar" %}الوضع الليالي{% else %}Dark{% endif %}</span></div>
+                     </button>
+                     <button type="button" class="dropdown-toggle dd-top dd-orange" data-toggle="dropdown">
+                     <i class="fal fa-chevron-circle-down"></i>
+                     </button>
+                     <div class="dropdown-menu menu-dd">
+                              <a href="/blog" class="dropdown-item">
+                        <i class="fal fa-blog mr-2"></i>{% if user['lang'] == "ar" %}المدونة{% else %}Blog{% endif %} </a>        
+                             <a href="/terms" class="dropdown-item">   
+                        <i class="fal fa-file-alt mr-2"></i>{% if user['lang'] == "ar" %}شروط الاستخدام{% else %}Terms{% endif %} </a>
+                             <a href="/account" class="dropdown-item">
+                        <i class="fal fa-user mr-2"></i>{% if user['lang'] == "ar" %}حساب{% else %}Account{% endif %} </a>
+                             <a href="/logout" class="dropdown-item">
+                        <i class="fal fa-power-off mr-2"></i>{% if user['lang'] == "ar" %}تسجيل خروج{% else %}Logout{% endif %} </a>
+                     </div>
+                  </div>
+               </div>
+               <!-- row -->
+            </div>
+         </div>
+         <!-- header -->
+{% else %}
+<body class="{% if user['lang'] == 'ar' %} rtl-enable rtl{% endif %}">  
+   <div class="header">
+      <div class="container">
+         <div class="row" style="height: 99px;">
+            <div class="col-auto align-self-center">
+               <div class="row">
+                  <div class="col align-self-center">
+                     <div class="site-name">
+						<a href="/">
+							{% if site["logo"] %}
+							  <img src="{{ site['logo'] }}" height="110" class="py-3" alt="{{ site["site_name"] }}" title="{{ site["site_name"] }}">
+							{% else %}
+							  {{ site["site_name"] }}
+							{% endif %}
+						</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col">
+               <div class="head-menu">
+                  <div class="row">
+                     <div class="col text-lg-right mmff">
+                        <div class="header-menu">
+                          <ul>
+                               
+                      <li class="dropdown">
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-globe" style="color: #7156ae;font-weight: 600;"></i>
+                         </a>
+          
+                        <ul class="dropdown-menu dropdown-max-height beforeauthdrop">
+                          {% for lang in site['languages'] %}
+                          <li><a href="#" onclick="changeLang('{{lang['code']}}')" >{{lang['name']}} </a></li>
+                          {% endfor %}
+                        </ul>
+                      </li>
+	
+									{% if servicesPage %}
+									<li {% if active_menu == "services" %} class="active" {% else %} {% endif %}>
+										<a class="nav-link p-0 mt-3 mt-lg-0 mr-4" href="/services">{{ lang['services.title'] }}</a>
+									</li>
+									{% endif %}
+									{% if blogPage %}
+									<li {% if active_menu == "blog" %} class="active" {% else %} {% endif %}>
+										<a class="nav-link p-0 mt-3 mt-lg-0 mr-4" href="/blog">{{ lang['blog.title'] }}</a>
+									</li>
+									{% endif %}
+									{% if termsPage %}
+									<li {% if active_menu == "terms" %} class="active" {% else %} {% endif %}>
+										<a class="nav-link p-0 mt-3 mt-lg-0 mr-4" href="/terms">{{ lang['terms.title'] }}</a>
+									</li>
+									{% endif %}
+									{% if apiPage %}
+									<li {% if active_menu == "api" %} class="active" {% else %}{% endif %}>
+										<a class="nav-link p-0 mt-3 mt-lg-0 mr-4" href="/api">{{ lang['api.title'] }}</a>
+									</li>
+									{% endif %}
+                         
+
+                          </ul>
+                        </div>
+                     </div>
+                     
+                     <div class="col-auto align-self-center mmff">
+                       <a href="/signup" class="btn btn-primary">
+							{% if user['lang'] == 'ar' %}تسجيل{% else %}Sign Up{% endif %}
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-auto for-mobile align-self-center">
+               <div class="home-menu-btn px-3 py-4" onclick="homeMenuToggle()" style="color: #fff;">
+                  <i class="fal fa-bars"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+{% endif %}
+
+
+ 
+  
+
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+<script>
+
+
+ $('.langs-btn').hover(function(){
+    $('.langs-btn-content').toggle();
+  });
+  
+    $('.currency-btn').hover(function(){
+    $('.currency-btn-content').toggle();
+  });
+  
+  
+ function changeLang(newLang){
+        $.ajax
+        ({ 
+            url: '/account/change_lang/',
+            data: {lang: newLang},
+            type: 'post',
+            success: function(result)
+            {
+                
+               location.href  = "";
+            }
+        });
+    }
+    
+    var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple',
+    mediaControls:true
+});
+wavesurfer.load('{{settings['music_url']}}');
+
+wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
+
+
+</script>
+
+   <div class="home-head">
+      <div class="home-head-bg"></div>
+      <div class="home-head-content">
+         <div class="container" style="position: relative;">
+            <div class="row align-items-center">
+               <div class="col-lg-6 col-12">
+                  <div class="hh-title"><h1>
+                   {{ lang['title_login'] }}
+                  </div>
+                  <div class="hh-text">
+                   <span style="color:var(--color-3)">  Social Boost</span>  es la mejor plataforma en línea donde puedes aumentar tus likes, seguidores en Instagram, TikTok, Facebook y mas redes...
+                   <br> Es super sencillo usar nuestra plataforma, ¿ que estas esperando ?
+                  </div>
+                  <div class="hh-buttons">
+                      <a href="/services" class="btn d-block d-md-inline-block btn-secondary">
+                     {{ lang['all_services'] }}
+                     </a>
+                  </div>
+               </div>
+               <div class="col-lg-5 offset-lg-1">
+                  <div class="login-box">
+                     <div class="login-form">
+                        <form  method="post" action="">
+						{% if errorText %}
+							<div class="alert alert-dismissible alert-danger">
+							  <button type="button" class="close" data-dismiss="alert">×</button>
+							  {{ errorText }}
+							</div>
+						  {% endif %}
+						  {% if successText %}
+							<div class="alert alert-dismissible alert-success">
+							  <button type="button" class="close" data-dismiss="alert">×</button>
+							  {{ successText }}
+							</div>
+						  {% endif %}
+                           <div class="form-group">
+                              <div class="fga mb-3">
+                                 <label class="fla">{{lang['signup.username']}}</label>
+                                 <div class="fg">
+                                    <div class="fg-icon">
+                                       <i class="fal fa-user"></i>
+                                    </div>
+                                    <input type="text" class="form-control input-style" name="username" required >
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="fga mb-3">
+                                 <label class="fla">{{lang['signup.password']}}</label>
+                                 <div class="fg">
+                                    <div class="fg-icon">
+                                       <i class="fal fa-unlock-alt"></i>
+                                    </div>
+                                    <input type="password" class="form-control input-style" name="password" required >
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-6 py-1">
+                                 <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="remember" id="remember">
+                                    <label class="form-check-label" for="remember">{{ lang['signin.remember'] }}</label>                     
+                                    <span class="checkpoint"></span>
+                                 </div>
+                              </div>
+                              <div class="col-6 py-1 text-right">
+                                 <a href="/resetpassword" class="frgpass">{{ lang['signin.password.lost'] }}</a>
+                              </div>
+                           </div>
+						   
+						  {% if captcha %}
+							<div class="form-group">
+							  <div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+							</div>
+						  {% endif %}
+		  
+                           <button type="submit" class="btn btn-primary btn-xl btn-block mt-4">{{ lang['signin.button'] }}</button>
+                        
+                        
+						</form>
+						
+					 {% if google == 2 %}
+                                                    <a href="/google"  class="btn btn-primary btn-xl btn-block mt-4">Sign in With Google</a>
+
+                    						  {% endif %}
+                    						  
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+        
+    <section class="home-section">
+        <div class="container">
+                <div class="hfs-content">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 align-self-center">
+                            <div class="hfs-item">
+                                <div class="hfs-count">
+									{{ordersCount}}+
+                                </div>
+                                <div class="hfs-title">
+                                    {{ lang['smmspot.neworder.total.order.title'] }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 align-self-center">
+                            <div class="hfs-item">
+                                <div class="hfs-count">
+									$0.01/1K
+                                </div>
+                                <div class="hfs-title">
+                                    {{ lang['prices_start'] }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 align-self-center">
+                            <div class="hfs-item">
+                                <div class="hfs-count">
+									350+
+                                </div>
+                                <div class="hfs-title">
+                                     {{ lang['fast_services'] }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 align-self-center">
+                            <a href="/signup" class="btn btn-lg btn-outline btn-block">
+                                {{ lang['signup.title'] }}!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+   <section class="home-section">
+      <div class="container">
+         <div class="home-title text-center">
+            <h2>                                      {{ lang['how_works'] }}
+ </h2>
+            <div class="divider d-flex justify-content-center"></div>
+         </div>
+         <div class="stepbox mt-4">
+            <div class="row">
+               <div class="col-lg-3 col-md-6 col-12">
+                  <div class="sboxes">
+                     <div class="barea">
+                        <div class="sbbody">
+							<div class="row align-items-center mb-3">
+							   <div class="col-2 sbicon">
+								  <i class="fal fa-user-plus"></i>
+							   </div>
+							   <div class="col-10 sbtitle">
+								  {{ lang['Create_a_Free_Account'] }}
+							   </div>
+						    </div>	
+                           <div class="sbtext">
+                              {% if site['language'] == 'ar' %}انضم إلى نظامنا مجانًا من خلال النقر على زر التسجيل.{% else %}Join our system for free by clicking on the register button.{% endif %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 col-12">
+                  <div class="sboxes">
+                     <div class="barea">
+                        <div class="sbbody">
+							<div class="row align-items-center mb-3">
+							   <div class="col-2 sbicon">
+								  <i class="fal fa-wallet"></i>
+							   </div>
+							   <div class="col-10 sbtitle">
+								  {% if site['language'] == 'ar' %}اشحن حسابك{% else %}Top Up Your Account{% endif %}
+							   </div>
+						    </div>	
+                           <div class="sbtext">
+                              {% if site['language'] == 'ar' %}قم بالدفع بخيار الدفع الذي يناسبك.{% else %}Make your payment with the payment option that suits you.{% endif %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 col-12">
+                  <div class="sboxes">
+                     <div class="barea">
+                        <div class="sbbody">
+							<div class="row align-items-center mb-3">
+							   <div class="col-2 sbicon">
+								  <i class="fal fa-shopping-bag"></i>
+							   </div>
+							   <div class="col-10 sbtitle">
+								  {% if site['language'] == 'ar' %}اطلب الخدمة التي تختارها{% else %}Order the Service {% endif %}
+							   </div>
+						    </div>						   
+                           <div class="sbtext">
+                              {% if site['language'] == 'ar' %}حدد الخدمة التي تهتم بها وقم بتقديم طلبك بسهولة.{% else %}You are interested in and place your order easily.{% endif %}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-6 col-12">
+                  <div class="sboxes">
+                     <div class="barea">
+                        <div class="sbbody">
+							<div class="row align-items-center mb-3">
+							   <div class="col-2 sbicon">
+								  <i class="fal fa-badge-check"></i>
+							   </div>
+							   <div class="col-10 sbtitle">
+								  {% if site['language'] == 'ar' %}استمتع بالصعود{% else %}Enjoy the Ascension{% endif %}
+							   </div>
+						    </div>
+                            <div class="sbtext">
+								{% if site['language'] == 'ar' %}استمتع بترويجك على وسائل التواصل الاجتماعي معنا!{% else %}Enjoy your social media promotion with us!{% endif %}
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <section class="home-section">
+		<div class="container">
+			<div class="socials">
+				 <div class="home-title text-center mb-5">
+					<h2>{% if site['language'] == 'ar' %}منصاتنا{% else %}Our platforms{% endif %}</h2>
+					<div class="divider d-flex justify-content-center"></div>
+				 </div>
+				<div class="row text-center">
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-instagram"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-youtube"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-twitter"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-facebook-f"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-tiktok"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-telegram"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-twitch"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-spotify"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-linkedin"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-reddit"></i>
+					</div>
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-steam"></i>
+					</div>	
+					<div class="col-lg-1 col-2 pb-3">
+						<i class="fab fa-pinterest-p"></i>
+					</div>						
+				</div>
+			</div>
+		</div>
+   </section>
+
+   <section class="home-section">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="ds-title">
+						<h2>{% if site['language'] == 'ar' %}لوحة سهلة الاستخدام وسريعة وديناميكية{% else %}User Friendly, Fast and Dynamic Panel{% endif %}</h2>
+						<p>{% if site['language'] == 'ar' %}سيرفر بيع وزيادة المتابعين نحن وبكل فخر ارخص سيرفر زيادة متابعين لجميع منصات التواصل التواصل الاجتماعي مثل انستقرام وتويتر ويوتيوب وتيك توك وفيس بوك وغيرها الكثير
+{% else %}SMM Panel meaning is Cheapest SMM and SEO Services Reseller Panel Script or website, where People Buy-Sell Social Media Marketing Service Such as Facebook Fans, Twitter devotees, Instagram Followers, YouTube watch time Views, Website Traffic, tiktok likes, and more significant associations.{% endif %}</p>
+                             <a href="/signup" class="btn d-block d-md-inline-block btn-secondary mt-3">
+							{% if site['language'] == 'ar' %}سجل الان{% else %}Register Now{% endif %}
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<img src="https://cdn.mypanel.link/307z8m/t6z4ziulznbqbj5s.png" class="img-fluid">
+				</div>	
+			</div>
+		</div>
+   </section>
+     
+<section class="home-section">
+   <div class="container">
+      <div class="home-title text-center">
+         <h2>{% if site['language'] == 'ar' %}خدمات Marketnets SMM Panel{% else %}Markenets SMM Panel Services{% endif %}</h2>
+         <div class="divider d-flex justify-content-center"></div>
+      </div>
+      <div class="stepbox mt-4">
+         <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-facebook-f"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              	{% if site['language'] == 'ar' %}سيرفر متابعين فيسبوك{% else %}Facebook SMM Panel services{% endif %}						   
+                           </h2>
+                           <p class="sbtext p-3">
+                                   {% if site['language'] == 'ar' %}شراء معجبين لصفحة الفيسبوك، شراء معجبين لمنشور الفيسبوك، شراء مشاهدات لفيديو الفيسبوك، شراء تعليقات للبوست على فيسبوك، شراء متابعين فيسبوك للحساب الشخصي والكثير من الخدمات الحصرية!{% else %}Buy Facebook Fans, Buy Facebook Post Fans, Buy Facebook Video Views, Buy Facebook Post Comments, Buy Facebook Personal Account Followers and many more exclusive services<a href="http://smmpanels.store/" style="text-decoration:none;">.</a>{% endif %}                      
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-youtube"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              	{% if site['language'] == 'ar' %}سيرفر مشتركين يوتيوب{% else %}YouTube SMM Panel Services{% endif %}						   
+                           </h2>
+                           <p class="sbtext p-3">
+                                  {% if site['language'] == 'ar' %}شراء مشاهدات يوتيوب، شراء لايكات لفيديو اليوتيوب شراء مشتركين يوتيوب، شراء تعليقات يوتيوب، شراء ساعات مشاهدة لليوتيوب، والعديد من الخدمات بضمان!{% else %}Buy YouTube views, buy YouTube video likes, buy YouTube subscribers, buy YouTube comments, buy YouTube watch hours, and many more services with a guarantee!{% endif %}                       
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-instagram"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              		{% if site['language'] == 'ar' %}سيرفر متابعين انستقرام{% else %}Instagram SMM Panel services{% endif %}					   
+                           </h2>
+                           <p class="sbtext p-3">
+                                {% if site['language'] == 'ar' %}شراء متابعين انستقرام، شراء لايكات انستقرام، شراء مشاهدات فيديو انستيجرام، شراء انستقرام دايركت مسج، شراء مشاهدات IGTV ، شراء منشن انستقرام، شراء تعليقات انستيجرام، شراء مشاهدات ريلز للانستيجرام، والمزيد أيضاً!{% else %}Buy Instagram Followers, Buy Instagram Likes, Buy Instagram Video Views, Buy Instagram Direct Messages, Buy IGTV Views, Buy Instagram Mention, Buy Instagram Comments, Buy Instagram Reels Views, and much more!{% endif %}                         
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-twitter"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              		{% if site['language'] == 'ar' %}سيرفر متابعين تويتر{% else %}Twitter SMM Panel services{% endif %}					   
+                           </h2>
+                           <p class="sbtext p-3">
+                                 {% if site['language'] == 'ar' %}شراء متابعين تويتر، شراء متابعين تويتر خليجيين، شراء ريتويت تويتر، شراء لايكات تويتر عرب، شراء تصويت تويتر، شراء متابعين تويتر عرب، شراء اشتراكات رتويت، وغيرها المزيد من الخدمات الرائعة!{% else %}Buy Twitter followers, buy Gulf Twitter followers, buy Twitter retweets, buy Arab Twitter likes, buy Twitter votes, buy Arab Twitter followers, buy retweet subscriptions, and many more great services!<a href="http://smmpanel-script.com/" style="text-decoration:none;">.</a>{% endif %}                        
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-tiktok"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              		{% if site['language'] == 'ar' %}سيرفر متابعين تيك توك{% else %}Tiktok SMM Panel services{% endif %}					   
+                           </h2>
+                           <p class="sbtext p-3">
+                                  {% if site['language'] == 'ar' %}شراء متابعين تيك توك، شراء لايكات تيك توك، شراء مشاهدات تيك توك، شراء تعليقات تيك توك، والكثير من الخدمات المميزة!{% else %}Buy Tik Tok Followers, Buy Tik Tok Likes, Buy Tik Tok Views, Buy Tik Tok Comments, and many more special services!{% endif %}                       
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea">
+                     <div class="sbbody" style="
+                        height: 300px;
+                        ">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-telegram"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              	{% if site['language'] == 'ar' %}سيرفر مشتركين تيليجرام{% else %}Telegram SMM Panel services{% endif %}						   
+                           </h2>
+                           <p class="sbtext p-3">
+                                {% if site['language'] == 'ar' %}شراء مشتركين لقناة التليجرام، شراء مشتركين لمجموعات التيليجرام، شراء مشاهدات لمنشور التيليجرام، شراء تصويت للتيليجرام، والعديد من الخدمات التنافسية!{% else %}Buy Telegram Subscribers, Buy Telegram Group Subscribers, Buy Telegram Post Views, Buy Telegram Votes, and many more competitive services!{% endif %}                         
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-snapchat-ghost"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              {% if site['language'] == 'ar' %}سيرفر متابعين سناب شات{% else %}Snapchat SMM Panel Services{% endif %}							   
+                           </h2>
+                           <p class="sbtext p-3">
+                              {% if site['language'] == 'ar' %}شراء متابعين سناب شات، شراء لايكات سناب شات، شراء مشاهدات سناب شات، شراء تعليقات سناب شات، والكثير من الخدمات الاخري!{% else %}Buy snapchat followers, buy snapchat likes, buy snapchat views, buy snapchat comments, and a lot more!{% endif %}                           
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+               <div class="sboxes">
+                  <div class="barea" style="
+                     height: 300px;
+                     ">
+                     <div class="sbbody">
+                        <div class="row align-items-center mb-3">
+                           <div class="col-2 sbicon">
+                              <i class="fab fa-spotify"></i>
+                           </div>
+                           <h2 class="col-10 sbtitle">
+                              {% if site['language'] == 'ar' %}سيرفر متابعين سبوتيفاي{% else %}Spotify SMM Panel Services{% endif %}
+                           </h2>
+                           <p class="sbtext p-3">
+                              {% if site['language'] == 'ar' %}شراء متابعين سبوتيفاي، شراء استماعات سبوتيفاي، شراء لايكات سبوتيفاي، شراء تحميلات سبوتيفاي، وغيرها العديد من الخدمات المتنوعة!{% else %}Buy Spotify Followers, Buy Spotify Plays, Buy Spotify Likes, Buy Spotify Downloads, and many other different services!{% endif %}                        
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+{% for lang in site['languages'] %}
+  {% if lang['active'] %}
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ lang['code'] }}"></script>
+  {% endif %}
+{% endfor %}
+
+{% include 'footer.twig' %}

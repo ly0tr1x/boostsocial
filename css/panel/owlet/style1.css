@@ -1,0 +1,416 @@
+
+
+
+
+
+
+
+:root {
+
+	--color-0: #161b22;
+
+	--color-1: #0d1117;
+
+	--color-2: rgba(1, 4, 9, 1);
+
+	--color-3: #28cb69;
+
+	--border-1: #30363d
+
+}
+
+
+
+
+::-webkit-scrollbar {
+
+	width: 5px;
+
+	height: 7px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+	background: #263a63;
+
+	border-radius: 5px;
+
+}
+
+
+
+
+
+
+
+
+@media (max-width: 767.98px){
+.old-payments .op-title {
+    font-size: 15px;
+}}
+
+.old-payments .op-title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #ffffff;
+}
+ .old-payments .op-date {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 23px;
+    color: #ffffff;
+    margin-top: 10px;
+}   
+@media (max-width: 767.98px){
+.old-payments .op-status {
+    text-align: center;
+    margin-top: 10px;
+}}
+.old-payments .op-status {
+    border-color: #28cb69;
+    background: #28cb69;
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 7.54902px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 10px 25px;
+}
+.old-payments .op-id {
+    border-color: #28cb69;
+    background: #28cb69;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 15px;
+    min-width: 75px;
+    text-align: center;
+}
+
+body.dark .form-group .form-control, body.dark .panel-body {
+    background: #13151e;
+    color: #FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 767.98px) {
+.form-group .form-control, #serviceItem, #categoryItem {
+    font-size: 12px;
+}
+}
+#categoryTitle, #serviceTitle {
+    width: 90%;
+    overflow: hidden;
+    position: static;
+    height: 20px;
+}
+
+
+
+  .dropdown-menu {
+    width: 100%;
+    padding: 0;
+    max-height: 44.7vh;
+    overflow-y: scroll;
+    border: none!important;
+    margin-top: 15px;
+}  
+
+
+body.dark #serviceItem, body.dark #categoryItem {
+    background: #13151e;
+    color: #FFFFFF;
+    border-color: #232842;
+}
+body.dark #serviceItem, body.dark #categoryItem {
+    background: #13151e;
+    color: #FFFFFF;
+    border-color: #232842;
+}
+
+
+.dropdown-menu {
+    transform: translate3d(5px, 40px, 0px)!important;
+} 
+
+
+
+
+
+
+
+
+
+
+.dropdown .fab.fa-instagram {
+	background: #f09433;
+	background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+	background-clip: text;
+	font-size: 14px;
+	padding: 2.4px;
+	border-radius: 5px;
+	color: #FFF;
+	font-weight: lighter;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-facebook-square {
+	background: #207eff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 18px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-youtube {
+	background: #ff0042;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-twitter {
+	background: #1da1f2;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-telegram-plane {
+	background: #2b9fd2;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-soundcloud {
+	background: #ff5836;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-spotify {
+	background: #62ffa2;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-twitch {
+	background: #e600ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-pinterest-p {
+	background: #ff5858;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fa.fa-music {
+	background: #f8004d;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-tiktok {
+	background: #f8004d;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fas.fa-globe {
+	background: #1a1a1a;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fas.fa-stream {
+	background: #ccc;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-hotjar {
+	background: #ff0000;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+
+
+
+
+
+
+.form-group .form-control {
+	outline: none;
+	background-color: ;
+	border: 1px solid var(--form-border-color);
+	color: #fff;
+	font-size: 15px;
+	font-weight: 500;
+	min-height: 52px;
+	overflow: hidden;
+	padding: 10px 18px;
+	border-radius: 15px
+}
+
+
+.panel-body {
+	background: ;
+	border: 1px solid var(--form-border-color);
+	border-radius: 15px;
+	padding: 10px;
+	color: #fff;
+	font-size: 13px
+}
+
+#serviceItem:hover,
+#categoryItem:hover {
+	background: #13132b;
+}
+
+
+#serviceItem, #categoryItem {
+    white-space: inherit;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    background: #151b3d;
+    border-bottom: 1px solid #4d618d;
+    color: white;
+    text-align: left;
+    width: 100%;
+}
+.card-order .co-right > * {
+    padding: 0 5px;
+}
+.card-order .co-right .btn {
+    padding: 20px 25px;
+}
+.btn.btn-dark {
+    background: #23252e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 110px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 13px;
+    text-align: left;
+    list-style: none;
+    color: #fff;
+    background-color: #252426!important;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+    box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+

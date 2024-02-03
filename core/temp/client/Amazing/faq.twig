@@ -1,0 +1,55 @@
+{% include 'header.twig' %}
+{% if contentText %}
+{% if user['auth'] %}
+
+{% else %}
+	<style>
+		@media (max-width: 991.98px) {
+			.main-top {padding: 70px 0 40px 0!important}
+		}
+        .lgn-btn {display: none!important}
+      
+      	@media (min-width: 1199.98px) {
+      		.main-top { padding: 400px 0 40px 0}
+      		.app-content { margin-top: -300px }
+      	}
+	</style>
+	
+    <div class="main-top">
+        <div class="main-top-bg"></div>
+	</div>
+{% endif %}
+
+
+	<div class="app-content">
+      {% if user['auth'] %}
+          <div class="container-fluid">
+      {% else %}
+          <div class="container">
+      {% endif %}
+               <section class="app-childs">
+                  <div class="row">
+                     <div class="col-lg-12 col-12 mb-lg-0">
+								 <div class="d-card h-100">
+                  <div class="d-card-head">
+                     <div class="dch-icon">
+                        <i class="fal fa-question"></i>
+                     </div>
+                     FAQ
+                  </div>
+								<div class="d-card-body">	
+
+								 {{ contentText }}
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+               </section>
+            </div>
+         </div>
+      </div>
+  
+{% endif %}
+{% include 'footer.twig' %}

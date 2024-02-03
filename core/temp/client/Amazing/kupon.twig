@@ -1,0 +1,72 @@
+{% include 'header.twig' %}
+
+{% if user['auth'] %}
+
+{% else %}
+	<style>
+		@media (max-width: 991.98px) {
+			.main-top {padding: 70px 0 40px 0!important}
+		}
+        .lgn-btn {display: none!important}
+      
+      	@media (min-width: 1199.98px) {
+      		.main-top { padding: 400px 0 40px 0}
+      		.app-content { margin-top: -300px }
+      	}
+	</style>
+	
+    <div class="main-top">
+        <div class="main-top-bg"></div>
+	</div>
+{% endif %}
+
+
+	<div class="app-content">
+      {% if user['auth'] %}
+          <div class="container-fluid">
+      {% else %}
+          <div class="container">
+      {% endif %}
+               <section class="app-childs">
+                  <div class="row">
+                     <div class="col-lg-12 col-12 mb-lg-0">
+								 <div class="d-card h-100">
+								<div class="d-card-head">
+									 <div class="dch-icon">
+										<i class="fal fa-credit-card"></i>
+									 </div>
+									 {% if user['lang'] == "ar" %}استرداد رمز القسيمة{% else %}Redeem Coupon Code{% endif %}
+								  </div>
+									<div class="d-card-body">	
+									{% if error %}
+									<div class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+									  <button type="button" class="close" data-dismiss="alert">×</button>
+									  {{ errorText }}
+									</div>
+								  {% elseif success %}
+									<div class="alert alert-dismissible alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+									  <button type="button" class="close" data-dismiss="alert">×</button>
+									  {{ successText }}
+									</div>
+								  {% endif %}	
+								 <form method="post" action="kupon">
+										<div class="form-group">
+										  <label style="padding: 10px;
+								font-size: 25px;
+								font-weight: 700;" for="subject" class="control-label">{% if user['lang'] == "ar" %}رمز الكوبون{% else %}Coupon Code{% endif %}</label>
+										  <input type="text" class="form-control" id="kuponadi" name="kuponadi">
+										</div>
+										<button style="background-color: color;
+								color: ;" type="submit" class="btn btn-primary btn-block">{% if user['lang'] == "ar" %}يسترد{% else %}Redeem{% endif %}</button>
+									  </form>
+									</div>
+							</div>
+						</div>
+					</div>
+               </section>
+            </div>
+         </div>
+      </div>
+  
+
+{% include 'footer.twig' %}

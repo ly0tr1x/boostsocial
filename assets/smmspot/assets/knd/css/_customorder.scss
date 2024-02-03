@@ -1,0 +1,178 @@
+body.sspModalOpen {
+    overflow: hidden;
+    touch-action: none;
+    -ms-touch-action: none;
+}
+
+.ssp-services-container {
+    display: flex;
+    margin: -10px;
+    flex-wrap: wrap;
+    .ssp-si-cont {
+        margin: 10px;
+        flex-grow: 1;
+        max-width: calc(100% - 20px);
+        input {
+            display: none;
+        }
+
+        input:checked ~ label {
+            border-color: #0b79f7;
+        }
+
+        label {
+            border-radius: 3px;
+            border: 1px solid #eee;
+            flex: 1;
+            display: block;
+            padding: 16px;
+            cursor: pointer;
+
+            .ssp-lab-body {
+                position: relative;
+            }
+
+            h3 {
+                display: block;
+                margin: 0px;
+            }
+
+            .spp-lab-bot {
+                display: flex;
+                margin: 0 -3px;
+                .ssp-lb-item {
+                    padding: 0 3px;
+                }
+                .for-sl-btn {
+                    flex: 1;
+                }
+            }
+
+            .ssp-select-btn {
+                display: block;
+                width: 100%;
+                background: #eee;
+                border: none;
+                height: 30px;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: .14s ease;
+
+                &:hover {
+                    background: #ddd;
+                }
+
+                &.fav-btn {
+                    width: 30px;
+                }
+            }
+
+            .ssp-lab-feat {
+                display: flex;
+                margin: 0 -10px;
+
+                .ssp-lf-item {
+                    flex: 0 0 1;
+                    padding: 10px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    .ssp-lf-title {
+                        color: #aaa;
+                    }
+                    .ssp-lf-number {
+                        color: #555;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.spp-order-modal-bg {
+    background: rgba($color: #000000, $alpha: .40);
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    display: none;
+    transition: .14s ease;
+    z-index: 1200;
+}
+
+.ssp-order-modal {
+    z-index: 1201;
+
+    &.pre-active {
+        .ssp-om-box {
+            transform: translateX(-50%) translateY(calc(100% - 65px));
+            .ssp-om-toggle {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &.active {
+        .ssp-om-box, .ssp-om-box:hover {
+            transform: translateX(-50%) translateY(0);
+            .ssp-om-toggle {
+                transform: rotate(0);
+            }
+        }
+    }
+
+    .ssp-om-box {
+        bottom: 0px;
+        z-index: 1201;
+        left: 50%;
+        position: fixed;
+        transform: translateX(-50%) translateY(101%);
+        width: 100%;
+        max-width: 700px;
+        border: 1px solid #eee;
+        border-radius: 15px 15px 0 0 ;
+        background: #fff;
+        max-height: calc(100% - 30px);
+        display: flex;
+        flex-direction: column;
+        transition: .2s ease;
+        box-shadow: 0 -4px 10px rgba($color: #000000, $alpha: .20);
+
+        .ssp-om-header {
+            padding: 20px 30px 18px 30px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .ssp-om-title {
+            font-size: 18px;
+            margin: 0px;
+        }
+
+        .ssp-om-body {
+            padding: 24px 30px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .ssp-om-desc {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+
+        .ssp-modal-desc-text {
+            font-size: 14px;
+            color: #777;
+            line-height: 130%;
+        }
+    }
+
+    .ssp-om-toggle {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: .2s ease;
+        color: #555;
+    }
+}

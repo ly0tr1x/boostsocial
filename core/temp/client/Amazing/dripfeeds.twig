@@ -1,0 +1,205 @@
+{% include 'header.twig' %}
+	<div class="app-content">
+			<div class="container-fluid">
+
+				<section class="app-orders">
+                        <div class="row">
+                           <div class="col-lg-12 col-12 mb-5 mb-lg-0">
+						   
+								<div class="orders-btn py-3">
+								   <ul class="nav nav-pills app-ord-nav">
+									  <li class="mr-2">
+										<a {% if 'all' == status %}class="active"{% endif %} href="dripfeeds"><i class="fas fa-filter mr-1"></i>{{ lang['dripfeed.status.all'] }}</a>
+									  </li>
+									  <li class="mr-2">
+										<a {% if 'active' == status %}class="active"{% endif %} href="dripfeeds/active"><i class="fas fa-spinner mr-1"></i>{{ lang['dripfeed.status.active'] }}</a>
+									  </li>
+									  <li class="mr-2">
+										 <a {% if 'completed' == status %}class="active"{% endif %} href="dripfeeds/completed"><i class="far fa-check-circle mr-1"></i>{{ lang['dripfeed.status.completed'] }}</a>
+									  </li>
+									  <li class="mr-2">
+										 <a {% if 'canceled' == status %}class="active"{% endif %} href="dripfeeds/canceled"><i class="fas fa-ban mr-1"></i>{{ lang['dripfeed.status.canceled'] }}</a>
+									  </li>
+									  <li class="pull-right search mr-2">
+										<form action="" method="get">
+											<div class="app-ord-search">
+											   <input type="text" name="search" value="{{ search }}" placeholder="{{lang["smmspot.orders.search.text"]}}" class="app-ord-input">
+											   <button type="submit" class="app-ord-submit">
+											   <i class="fas fa-search"></i>
+											   </button>
+											</div>
+										 </form>
+									  </li>
+								   </ul>
+								</div>
+
+								
+  <section class="op-orders-wrapper">
+	{% for dripFeed in orders %}
+      <div class="d-card d-card-border op-card">
+        <div class="d-card-body">
+          <div class="op-card--top">
+            <div class="row align-items-center">
+              <div class="col-lg-auto col-md-auto mb-3 mb-lg-0">
+{% if order['status'] == lang['dripfeed.status.completed'] %}
+                <div class="op-stats op-stats-sm primary">
+                  ID {{ dripFeed['id'] }}
+                </div>
+{% endif %}
+{% if order['status'] == lang['dripfeed.status.active'] %}
+                <div class="op-stats op-stats-sm secondary">
+                  ID {{ dripFeed['id'] }}
+                </div>>
+{% endif %}
+{% if order['status'] == lang['dripfeed.status.canceled'] %}
+                <div class="op-stats op-stats-sm danger">
+                  ID {{ dripFeed['id'] }}
+                </div>
+{% endif %}  
+              </div><!-- ./col (ID)  -->
+              <div class="col-lg-3 col-md mb-3 mb-lg-0">
+                <h3 class="op-service-title">
+                  {{ dripFeed['service'] }}
+                </h3>
+              </div><!-- ./col (service title) -->
+              <div class="col-12 d-none d-md-block d-lg-none"></div>
+              <div class="col-lg-3 col-md-6  mb-3 mb-lg-0">
+                <a href="{{ order['link'] }}" target="_blank" class="orders-nav-link op-search-box op-order-link mb-0">
+                  <div class="icon">
+                    <i class="ri-share-box-fill"></i>
+                  </div>
+                  <div class="link">{{ dripFeed['link'] }}</div>
+                </a>
+              </div><!-- ./col (service title) -->
+              <div class="col-lg col-md-6 mb-3 mb-lg-0">
+                <div class="op-date">{{ dripFeed['date'] }}</div>
+              </div>
+              <div class="col-lg-auto">
+                      {% if order['status'] == lang['dripfeed.status.active'] %}
+                          <div class="op-stats primary">{{ dripFeed['status'] }}</div>
+                      {% endif %}
+                      {% if order['status'] == lang['dripfeed.status.completed'] %}
+                          <div class="op-stats secondary">{{ dripFeed['status'] }}</div>
+                      {% endif %}
+                      {% if order['status'] == lang['dripfeed.status.canceled'] %}
+                          <div class="op-stats danger">{{ dripFeed['status'] }}</div>
+                      {% endif %}  
+              </div>
+            </div>
+          </div><!-- ./op-card--top -->
+          <div class="op-card--bottom">
+            <div class="row align-items-center row-cols-md-4 row-cols-2">
+              <div class="col-lg-auto mt-3 mt-md-0">
+                <div class="op-item">
+                  <div class="title">{{ lang['dripfeed.total_charges'] }}</div>
+                  <div class="icon">
+                    <i class="ri-sort-asc"></i>
+                  </div>
+                  <div class="text">{{ dripFeed['total_charges'] }}</div>
+                </div>
+              </div><!-- ./col -->
+              <div class="col-lg-auto mt-3 mt-md-0">
+                <div class="op-item">
+                  <div class="title">{{ lang['dripfeed.quantity'] }}</div>
+                  <div class="icon">
+                    <i class="ri-money-dollar-circle-line"></i>
+                  </div>
+                  <div class="text">{{ dripFeed['quantity'] }}</div>
+                </div>
+              </div><!-- ./col -->
+              <div class="col-lg-auto mt-3 mt-md-0">
+                <div class="op-item">
+                  <div class="title">{{ lang['dripfeed.runs'] }}</div>
+                  <div class="icon">
+                    <i class="ri-sort-asc"></i>
+                  </div>
+                  <div class="text">                  
+					  {% if dripFeed['delivery'] %}
+						<a href="orders?dripfeed={{ dripFeed['id'] }}"> {{ dripFeed['delivery'] }} </a> / {{ dripFeed['runs'] }}
+					  {% else %}
+						{{ dripFeed['delivery'] }} / {{ dripFeed['runs'] }}
+					  {% endif %}
+				  </div>
+                </div>
+              </div><!-- ./col -->
+              <div class="col-lg-auto mt-3 mt-md-0">
+                <div class="op-item">
+                  <div class="title">{{ lang['dripfeed.interval'] }}</div>
+                  <div class="icon">
+                    <i class="ri-sort-asc"></i>
+                  </div>
+                  <div class="text">{{ dripFeed['interval'] }}</div>
+                </div>
+              </div><!-- ./col -->
+              <div class="col-lg-auto mt-3 mt-md-0">
+                <div class="op-item">
+                  <div class="title">{{ lang['dripfeed.total_quantity'] }}</div>
+                  <div class="icon">
+                    <i class="ri-sort-asc"></i>
+                  </div>
+                  <div class="text">{{ dripFeed['total_quantity'] }}</div>
+                </div>
+              </div><!-- ./col -->			  
+              <div class="col-lg-auto col-12 col-md-12 ms-lg-auto d-flex align-items-center justify-content-center mt-3 mt-lg-0">
+            
+
+              </div>
+            </div><!-- ./row -->
+          </div><!-- ./op-card--bottom -->
+        </div>
+      </div><!-- ./card -->
+                               
+       
+	{% endfor %}
+  </section>
+									
+     {% if pagination["count"] > 1 %}
+        <ul class="pagination">
+
+          {% if pagination["current"] != 1 %}
+            <li>
+              <a href="dripfeeds/{{ status }}/{{ pagination["previous"] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+          {% endif %}
+
+          {% set r, l = 3, 3 %}
+
+          {% if pagination['current'] == 1 %}
+            {% set r = 7 %}
+          {% endif %}
+
+          {% if pagination['current'] == 2 %}
+            {% set r = 5 %}
+          {% endif %}
+
+          {% if pagination['current'] >= pagination['count'] %}
+            {% set l = 5 %}
+          {% endif %}
+
+          {% for page in 1..pagination["count"] %}
+            {% if page >= (pagination['current']-l) and page <= (pagination['current']+r) %}
+              <li{% if page == pagination['current'] %} class="active" {%endif%}><a href="dripfeeds/{{ status }}/{{ page }}{% if search %}?search={{ search }}{% endif %}">{{ page }}</a></li>
+            {%endif%}
+          {% endfor %}
+
+          {% if pagination['current'] < pagination['count'] %}
+            <li>
+              <a href="dripfeeds/{{ status }}/{{ pagination['next'] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Next">
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
+          {% endif %}
+
+        </ul>
+      {% endif %}
+									
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+    </div>
+ {% include 'footer.twig' %}

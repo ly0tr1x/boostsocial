@@ -1,0 +1,263 @@
+
+
+
+
+
+::-webkit-scrollbar {
+
+	width: 5px;
+
+	height: 7px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+	background: #fe5a02;
+
+	border-radius: 5px;
+
+}
+
+
+
+
+
+
+.dropdown .fab.fa-instagram {
+	background: #f09433;
+	background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+	background-clip: text;
+	font-size: 14px;
+	padding: 2.4px;
+	border-radius: 5px;
+	color: #FFF;
+	font-weight: lighter;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-facebook-square {
+	background: #207eff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 18px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-youtube {
+	background: #ff0042;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-twitter {
+	background: #1da1f2;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-telegram-plane {
+	background: #2b9fd2;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-soundcloud {
+	background: #ff5836;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-spotify {
+	background: #62ffa2;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-twitch {
+	background: #e600ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-pinterest-p {
+	background: #ff5858;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fa.fa-music {
+	background: #f8004d;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-tiktok {
+	background: #f8004d;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fas.fa-globe {
+	background: #1a1a1a;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fas.fa-stream {
+	background: #ccc;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.dropdown .fab.fa-hotjar {
+	background: #ff0000;
+	background-clip: text;
+	-webkit-background-clip: text;
+	font-size: 17px;
+	-webkit-text-fill-color: transparent;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+.form-group .form-control {
+
+	background-color: #e9ecef;
+
+}
+
+
+
+
+@media screen and (max-width: 767.98px) {
+.form-group .form-control, #serviceItem, #categoryItem {
+    font-size: 12px;
+}
+}
+#categoryTitle, #serviceTitle {
+    width: 90%;
+    overflow: hidden;
+    position: absolute;
+    height: 20px;
+}
+.dropdown-menu {
+    transform: translate3d(5px, 35px, 0px)!important;
+}
+
+.dropdown-menu {
+	width: 100%;
+	padding: 0;
+	max-height: 43.6vh;
+	overflow-y: scroll;
+	border: none!important;
+	margin-top: 15px
+}
+
+#serviceItem,
+#categoryItem {
+	white-space: inherit;
+	padding: 12px;
+	font-weight: 500;
+	font-size: 14px;
+	background: white;
+	border-bottom: 1px solid #f58245;
+	color: black;
+	text-align: left;
+	width: 100%
+}
+
+#serviceItem:hover,
+#categoryItem:hover {
+	background: #fe5a02;
+}
+
+#order-category,
+#order-services {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#order-category,
+#order-services {
+	width: 85%;
+	overflow-x: hidden;
+	position: absolute;
+	line-height: 15px;
+	height: 24px;
+	font-size: 14px;
+}
+
+.dropdown button {
+	background: #fff;
+	border: 2px solid white;
+	border-top: none!important;
+	color: #081521
+}
+
+.dropdown button:hover,
+.dropdown button:focus {
+	outline: none;
+	box-shadow: none;
+}
+

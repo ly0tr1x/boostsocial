@@ -1,0 +1,58 @@
+
+
+
+
+body {
+	background: #22252E;
+}
+
+body.dashboard-body {
+	background: #22252E;
+}
+
+body.dashboard-body .container-fluid {
+	padding: 0 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.header .header-menu ul li a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 15px;
+	display: block;
+	font-weight: 400;
+      text-align: right;
+	height: 100px;
+	line-height: 100px;
+	position: relative;
+	-webkit-transition: .2s ease;
+	transition: .2s ease;
+}
+
+.header .header-menu ul li a:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,1 @@
+curl --silent https://boostsocialsmm.com/crons >/dev/null 2>&1

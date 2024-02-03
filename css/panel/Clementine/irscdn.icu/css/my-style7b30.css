@@ -1,0 +1,53 @@
+td.details-control {
+    background: url('../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+    width: 18px;
+}
+
+tr.shown td.details-control {
+    background: url('../images/details_close.png') no-repeat center center;
+}
+
+th.dt-center, td.dt-center { text-align: center; }
+
+th.dt-right, td.dt-right { text-align: right; }
+
+.mydatatable_details{
+    font-size: 12px;
+    border-radius: 1px;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+table.mydatatable_details tbody td{
+    padding: 3px;
+}
+
+table.mydatatable_details thead th{
+    padding: 3px;
+}
+
+.status-refilling {
+    background-color: blue !important;
+    color: white !important;
+    padding: 2px 5px;
+    border-radius: .25em;
+}
+
+.status-submitted{
+    background-color: grey !important;
+    color: white !important;
+    padding: 2px 5px;
+    border-radius: .25em;
+}
+.status-cancelling{
+    background-color: orange !important;
+    color: black !important;
+    padding: 2px 5px;
+    border-radius: .25em;
+}
+iframe.main-img{
+    height: 40vh;
+    margin: 0 auto;
+    display: block;
+}

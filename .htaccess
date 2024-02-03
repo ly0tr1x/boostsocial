@@ -1,0 +1,77 @@
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (\|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} base64_encode.*\(.*\) [OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (\<|%3C).*iframe.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [NC,OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|cast|set|declare|drop|update|md5|benchmark).* [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^s]*s)+cript.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} (<|%3C)([^i]*i)+frame.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} \.\./\.\. [OR]
+RewriteCond %{QUERY_STRING} (sp_executesql) [NC,OR]
+RewriteCond %{QUERY_STRING} ^.*(<|>|'|%0A|%0D|%27|%3C|%3E|%00).* [NC,OR]
+RewriteCond %{REQUEST_URI} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{REQUEST_URI} onmouseover [NC]
+RewriteCond %{REQUEST_URI} style [NC]
+RewriteRule ^ - [F]
+
+RewriteEngine On
+RewriteCond %{QUERY_STRING} base64_encode.*\\(.*\\) [OR]
+RewriteCond %{QUERY_STRING} (\\<|<).*script.*(\\>|>) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\\[|\\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\\[|\\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(-|\.|') [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(.*)(<|>|%3C|%3E)(.*) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget)(.*) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^(.*)(libwww-perl|libwwwperl|snoopy|curl|wget|winhttp|python|nikto|scan|clshttp|archiver|loader|email|harvest|fetch|extract|grab|miner|suck|reaper|leach)(.*) [NC,OR]
+RewriteCond %{REQUEST_URI} ^(/,|/;|/<|/>|/'|/`|/%2C|/%3C|/%3E|/%27|/////) [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)(%00|%08|%09|%0A|%0B|%0C|%0D|%0E|%0F|%2C|%3C|%3E|%27|%26%23|%60)(.*) [NC,OR]
+RewriteCond %{HTTP_REFERER} ^(.*)(%00|%08|%09|%0A|%0B|%0C|%0D|%0E|%0F|%2C|<|>|'|%3C|%3E|%26%23|%27|%60)(.*) [NC,OR]
+RewriteCond %{QUERY_STRING} ^(.*)('|-|<|>|,|/|\\|\.a|\.c|\.t|\.d|\.p|\.i|\.e|\.j)(.*) [NC,OR]
+RewriteCond %{HTTP_COOKIE} ^(.*)(<|>|'|%3C|%3E|%27)(.*) [NC]
+#RewriteRule ^(.*)$ index.php [NC]
+
+RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+RewriteRule .* - [F]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [QSA]
+
+ErrorDocument 404 /themes/404.php
+
+#Gzip
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+#End Gzip
+
+<IfModule mod_expires.c>
+#ExpiresActive On
+#ExpiresByType image/gif "access plus 1 weeks"
+#ExpiresByType image/svg "access plus 1 weeks"
+#ExpiresByType image/jpg "access plus 1 weeks"
+#ExpiresByType image/jpeg "access plus 1 weeks"
+#ExpiresByType image/png "access plus 1 weeks"
+#ExpiresByType text/css "access plus 1 weeks"
+#ExpiresByType application/javascript "access plus 1 weeks"
+#ExpiresByType application/x-javascript "access plus 1 weeks"
+#ExpiresByType text/javascript "access plus 1 weeks"
+</IfModule>
+
+<IfModule mod_headers.c>
+Header set Connection keep-alive
+</IfModule>
+
+deny from 206.81.18.165
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 138.201.139.18
+deny from 94.130.89.159

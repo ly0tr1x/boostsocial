@@ -1,0 +1,282 @@
+{% include 'header.twig' %}
+
+{% if user['auth'] %}
+
+{% else %}
+	<style>
+		@media (max-width: 991.98px) {
+			.main-top {padding: 70px 0 40px 0!important}
+		}
+        .lgn-btn {display: none!important}
+      
+      	@media (min-width: 1199.98px) {
+      		.main-top { padding: 400px 0 40px 0}
+      		.app-content { margin-top: -300px }
+      	}
+	</style>
+	
+    <div class="main-top">
+        <div class="main-top-bg"></div>
+	</div>
+{% endif %}
+
+
+<div class="app-content">
+          <div class="container-fluid">
+
+				<section class="services">
+                        <div class="row">
+                           <div class="col-lg-12 col-12 mb-5 mb-lg-0">
+							 <div class="d-card mb-3">
+								<div class="d-card-body">
+										<div class="services-list">
+										   <ul>
+											  <li class="services-list-filter instagram" data-services-filter="instagram">
+												  <i class="fab fa-instagram"></i>
+											  </li>
+											  <li class="services-list-filter facebook" data-services-filter="facebook">
+												  <i class="fab fa-facebook-square"></i>
+											  </li>
+											  <li class="services-list-filter twitter" data-services-filter="twitter">
+												  <i class="fab fa-twitter"></i>
+											  </li>
+											  <li class="services-list-filter youtube" data-services-filter="youtube">
+												  <i class="fab fa-youtube"></i>
+											  </li>
+											  <li class="services-list-filter tiktok" data-services-filter="tiktok">
+												  <i class="fab fa-tiktok"></i>
+											  </li>
+
+											  <li class="services-list-filter spotify" data-services-filter="spotify">
+												  <i class="fab fa-spotify"></i>
+											  </li>
+
+											  <li class="services-list-filter twitch" data-services-filter="twitch">
+												  <i class="fab fa-twitch"></i>
+											  </li>
+											  <li class="services-list-filter snapchat" data-services-filter="snapchat">
+												  <i class="fab fa-snapchat-ghost"></i>
+											  </li>
+
+											  <li class="services-list-filter soundcloud" data-services-filter="soundcloud">
+												  <i class="fab fa-soundcloud"></i>
+											  </li>
+										  </ul>
+										</div> 
+										
+										
+										
+									
+										
+                               
+    <div class="row">
+   <div class="col-12" style="margin-top: 15px;">
+      <div class="app-search">
+         <input type="text" id="serv-inp" class="app-input" placeholder="{{lang["smmspot.services.search"]}}">
+         <button type="submit" class="app-ord-submit">
+         <i class="fas fa-search"></i>
+         </button>
+      </div>
+   </div>
+</div>			
+
+
+	<div class="col-2" style="margin-top: 15px;">			
+                    <div class="dropdown">
+                          <button class="btn btn-white dropdown-toggle shadow-0" type="button" id="filterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Change Currency
+                        <i class="fas fa-sort-down"></i>
+                        </button>
+                      
+							<div class="dropdown-menu all_btn_cat_wrap show_catgory" id="currencies-list">
+                              {% for curr in site['currencies'] %}
+                                <li>
+									<a href="/cur?cur={{curr['id']}}" ><center>{{curr['name']}} </center></a>
+								</li>
+                              {% endfor %}
+							</div>
+                    </div> </div>
+                    
+                    <!-- currency -->
+
+								</div>
+							 </div>
+                
+                              <div class="d-card mb-3">
+                                 <div class="d-card-body"> 
+                                  
+									<table class="table app-mtable">								
+									{% for category in serviceCategory %}
+										<thead class="table_head fliter">
+										
+											<tr class="catetitle" data-category="{{ category["category_name"]|replace({' ':'-'}) }}">
+												<td colspan="8"><strong class="mk-icons">{{ category["category_name"] }}</strong></td>
+											</tr>
+										
+											<tr class="thead-tr" data-category="{{ category["category_name"]|replace({' ':'-'}) }}">
+											  <th>{{ lang['services.id'] }}</th>
+											  <th class="width-service-name">{{ lang['services.name'] }}</th>
+											  <th class="nowrap">{{ lang['services.price'] }}</th>
+											  <th class="nowrap">{{lang['min']}}/{{lang['max']}}</th>
+											   {% if avarageTime %}
+											  <th class="nowrap">{{ lang['services.avarage'] }}</th>
+											  {% endif %}
+											  <th class="service-description__th">{{ lang['neworder.description'] }}</th>
+											</tr>
+										</thead> 
+									  
+										<tbody class="table_body fliter" data-category="{{ category["category_name"]|replace({' ':'-'}) }}">
+
+											{% for service in category['services'] %}
+											<tr class="app-block">
+											  <td class="app-col" data-title="{{ lang['services.id'] }}">{{ service["service_id"] }}</td>
+											  <td class="app-col mk-icons" data-title="{{ lang['services.name'] }}">{{ service["service_name"] }}</td>
+											  <td class="app-col" data-title="{{ lang['services.price'] }}">{{ currency["symbol"]  }}  {{ service['service_price'] *currency["value"]   }}</td>
+											  <td class="app-col" data-title="{{lang['min']}}/{{lang['max']}}">{{ service["service_min"] }} - {{ service["service_max"] }}</td>
+											  {% if avarageTime %}
+											  <td class="app-col" data-title="{{ lang['services.avarage'] }}">{{ service["service_speed"] }}</td>
+											  {% endif %}
+											  <td class="app-col">
+												<a type="button" class="desc-btn" data-toggle="modal" data-target="#serModal{{ service['service_id'] }}"><i class="fal fa-bars"></i></a>
+												<!-- Modal -->
+												<div class="modal fade" id="serModal{{ service['service_id'] }}">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h4 class="modal-title">{{ service['service_id'] }} - {{ service["service_name"] }}</h4>
+															</div>
+															<div class="modal-body">
+																{{ service["service_description"] }}		  
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-danger" data-dismiss="modal">{% if user['lang'] == "ar" %}قريب{% else %}Close{% endif %}</button>
+															</div>
+														</div>
+													</div>
+												</div> 
+											  </td>
+											</tr>
+											{% endfor %}					
+										</tbody>
+										
+									{% endfor%}	
+										
+									</table>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+    </div>
+
+<script>
+function ikon(opt) {
+    var ikon = "";
+    if (opt.indexOf("Instagram") >= 0) {
+        ikon = "<span class=\"fs-ig\"><i class=\"fab fa-instagram\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("YouTube") >= 0) {
+        ikon = "<span class=\"fs-yt\"><i class=\"fab fa-youtube\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Facebook") >= 0) {
+        ikon = "<span class=\"fs-fb\"><i class=\"fab fa-facebook-square\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Youtube") >= 0) {
+        ikon = "<span class=\"fs-yt\"><i class=\"fab fa-youtube\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Twitter") >= 0) {
+        ikon = "<span class=\"fs-tw\"><i class=\"fab fa-twitter\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Google") >= 0) {
+        ikon = "<span class=\"fs-gp\"><i class=\"fab fa-google-plus\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Swarm") >= 0) {
+        ikon = "<span class=\"fs-fsq\"><i class=\"fab fa-forumbee\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Dailymotion") >= 0) {
+        ikon = "<span class=\"fs-dm\"><i class=\"fab fa-hospital-o\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Soundcloud") >= 0) {
+        ikon = "<span class=\"fs-sc\"><i class=\"fab fa-soundcloud\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Vine") >= 0) {
+        ikon = "<span class=\"fs-vn\"><i class=\"fab fa-vine\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Spotify") >= 0) {
+        ikon = "<span class=\"fs-sp\"><i class=\"fab fa-spotify\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Snapchat") >= 0) {
+        ikon = "<span class=\"fs-snap\"><i class=\"fab fa-snapchat-ghost\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Pinterest") >= 0) {
+        ikon = "<span class=\"fs-pt\"><i class=\"fab fa-pinterest-p\" aria-hidden=\"true\"></i> </span>";
+
+    } else if (opt.indexOf("Apple") >= 0) {
+        ikon = "<span class=\"fs-apple\"><i class=\"fab fa-apple\" aria-hidden=\"true\"></i> </span>";
+
+    } else if (opt.indexOf("Müzik") >= 0) {
+        ikon = "<span class=\"fs-music\"><i class=\"fab fa-music\" aria-hidden=\"true\"></i> </span>";
+
+    } else if (opt.indexOf("Vimeo") >= 0) {
+        ikon = "<span class=\"fs-videmo\"><i class=\"fab fa-vimeo\" aria-hidden=\"true\"></i> </span>";
+
+    } else if (opt.indexOf("Periscope") >= 0) {
+        ikon = "<span class=\"fs-peri\"><i class=\"fab fa-periscope\" aria-hidden=\"true\"></i> </span>";
+
+    } else if (opt.indexOf("Telegram") >= 0) {
+        ikon = "<span class=\"fs-telegram\"><i class=\"fab fa-telegram-plane\" aria-hidden=\"true\"></i> </span>";
+
+    }else if (opt.indexOf("Mix Servisler") >= 0) {
+        ikon = "<span class=\"fs-mag\"><i class=\"fas fa-magic\" aria-hidden=\"true\"></i> </span>";
+
+    }else if (opt.indexOf("Twitch") >= 0) {
+        ikon = "<span class=\"fs-twc\"><i class=\"fab fa-twitch\" aria-hidden=\"true\"></i> </span>";
+
+    } else if (opt.indexOf("Zomato") >= 0) {
+        ikon = "<span class=\"fs-zom\"><i class=\"fab fa-cutlery\" aria-hidden=\"true\"></i> </span>";
+ } else if (opt.indexOf("Amazon") >= 0) {
+        ikon = "<span class=\"fs-amaz\"><i class=\"fab fa-amazon\" aria-hidden=\"true\"></i> </span>";
+   } else if (opt.indexOf("Tumblr") >= 0) {
+        ikon = "<span class=\"fs-tumb\"><i class=\"fab fa-tumblr\" aria-hidden=\"true\"></i> </span>";
+  
+   } else if (opt.indexOf("Yandex") >= 0) {
+        ikon = "<span class=\"fs-yndx\"><i class=\"fab fa-yoast\" aria-hidden=\"true\"></i> </span>";
+  
+  } else if (opt.indexOf("LinkedIn") >= 0) {
+        ikon = "<span class=\"fs-lnk\"><i class=\"fab fa-linkedin-in\" aria-hidden=\"true\"></i> </span>";
+  
+  } else if (opt.indexOf("Trendyol") >= 0) {
+        ikon = "<span class=\"fs-trnd\"><i class=\"fas fa-tag\" aria-hidden=\"true\"></i> </span>";
+  
+  } else if (opt.indexOf("Clubhouse") >= 0) {
+        ikon = "<span class=\"fs-club\"><i class=\"fas fa-camera-home\" aria-hidden=\"true\"></i> </span>";
+  
+  } else if (opt.indexOf("Discord") >= 0) {
+        ikon = "<span class=\"fs-discord\"><i class=\"fab fa-discord\" aria-hidden=\"true\"></i> </span>";
+  
+    } else if (opt.indexOf("Onlyfans") >= 0) {
+        ikon = "<span class=\"fs-ofans\"><i class=\"far fa-lock-alt\" aria-hidden=\"true\"></i> </span>";
+    } else if (opt.indexOf("Tik Tok") >= 0) {
+        ikon = "<span class=\"fs-tiktok\"><i class=\"fab fa-tiktok\" aria-hidden=\"true\"></i> </span>";
+    } else {
+        ikon = "<span class=\"\"><i class=\"far fa-star\" aria-hidden=\"true\"></i> </span>  ";
+    }
+    return ikon;
+}
+  
+
+$(document).ready(function() {
+
+    
+    $(".mk-icons").each(function() {
+                var ico = ikon($(this).text());
+                $(this).html(ico + $(this).text() );
+                console.log($(this).text());
+        }); 
+    
+      
+        
+        
+        
+        //console.log(ico);
+        //console.log($(".mk-icon").html());
+       // $("#mk-icon").html(ico );
+});
+
+
+
+</script>
+
+{% include 'footer.twig' %}

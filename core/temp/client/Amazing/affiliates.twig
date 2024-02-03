@@ -1,0 +1,131 @@
+{% include 'header.twig' %}
+<div class="app-content">
+			<div class="container-fluid">
+
+
+				<section class="app-affiliates">
+				
+						<div class="row">
+							<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card mb-3">
+									<div class="d-card-body">
+										<div class="ref-items ri-sm">
+										   <div class="ref-item">
+											  <div class="row">
+												 <div class="col-md-3 col-12 hlight-first align-self-center">
+													{{ lang['affiliates.url'] }}
+												 </div>
+												 <div class="col-md-8 col-12 hlight-second align-self-center">
+													{{ site['url'] }}/ref/{{ user["referral_code"] }}
+												 </div>
+											  </div>
+										   </div>
+										   <!-- item end -->
+										   <div class="ref-item">
+											  <div class="row">
+												 <div class="col-md-3 col-12 hlight-first align-self-center">
+													{{ lang['affiliates.bonus'] }}
+												 </div>
+												 <div class="col-md-8 col-12 hlight-second align-self-center">
+													{{ settings["ref_bonus"] }}%
+												 </div>
+											  </div>
+										   </div>
+										   <!-- item end -->
+										   <div class="ref-item">
+											  <div class="row">
+												 <div class="col-md-3 col-12 hlight-first align-self-center">
+													{{ lang['affiliates.type'] }}
+												 </div>
+												 <div class="col-md-8 col-12 hlight-second align-self-center">
+													{% if settings["ref_type"] == 1 %}{{ lang['affiliates.type.first'] }}{% else %}{{ lang['affiliates.type.all'] }}{% endif %}
+												 </div>
+											  </div>
+										   </div>
+										   <div class="ref-item">
+											  <div class="row">
+												 <div class="col-md-3 col-12 hlight-first align-self-center">
+													{{ lang['affiliates.min'] }}
+												 </div>
+												 <div class="col-md-8 col-12 hlight-second align-self-center">
+													{{ settings['ref_min'] }}{{ site['currency'] }}
+												 </div>
+											  </div>
+										   </div>
+										   <!-- item end -->
+										</div>
+									</div>
+								</div>
+								</div>
+			
+								<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card">
+									<div class="d-card-body">
+										<div class="ref-items ri-sm">
+										   <div class="ref-item d-blue mb-2">
+											  <div class="row">
+												 <div class="col-md-1 col-1 align-self-center icon">
+													<i class="fal fa-mouse-pointer"></i>
+												 </div>
+												 <div class="col-md-9 col-8 align-self-center">
+													{{ lang['affiliates.click'] }}
+												 </div>
+												 <div class="col-md-2 col-2 hlight-second align-self-center text-right">
+													{{ user['total_click'] }}
+												 </div>
+											  </div>
+										   </div>
+										   <div class="ref-item d-blue mb-2">
+											  <div class="row">
+												 <div class="col-md-1 col-1 align-self-center icon">
+													<i class="fal fa-hand-holding-usd"></i>
+												 </div>
+												 <div class="col-md-9 col-8 align-self-center">
+													{{ lang['affiliates.total.user'] }}
+												 </div>
+												 <div class="col-md-2 col-2 hlight-second align-self-center text-right">
+													{{ refCount }}
+												 </div>
+											  </div>
+										   </div>
+										   <div class="ref-item d-blue mb-2">
+											  <div class="row">
+												 <div class="col-md-1 col-1 align-self-center icon">
+													<i class="fal fa-redo-alt"></i>
+												 </div>
+												 <div class="col-md-9 col-8 align-self-center">
+													{{ lang['affiliates.total.payment'] }}
+												 </div>
+												 <div class="col-md-2 col-2 hlight-second align-self-center text-right">
+													{{ user['reforder'] }}{{ site['currency'] }}
+												 </div>
+											  </div>
+										   </div>
+										   <div class="ref-item d-blue mb-2">
+											  <div class="row">
+												 <div class="col-md-1 col-1 align-self-center icon">
+													<i class="fal fa-coins"></i>
+												 </div>
+												 <div class="col-md-9 col-8 align-self-center">
+													{{ lang['affiliates.total.win'] }}
+												 </div>
+												 <div class="col-md-2 col-2 hlight-second align-self-center text-right">
+													{{ user['refchar'] }}{{ site['currency'] }}
+												 </div>
+											  </div>
+										   </div>
+				
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>						
+							
+			
+				</section>
+
+			</div>
+		</div>
+    </div>
+    </div>
+{% include 'footer.twig' %}

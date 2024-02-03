@@ -1,0 +1,53 @@
+{% if user['auth'] %}
+
+{% else %}
+	<style>
+		@media (max-width: 991.98px) {
+			.main-top {padding: 70px 0 40px 0!important}
+		}
+        .lgn-btn {display: none!important}
+      
+      	@media (min-width: 1199.98px) {
+      		.main-top { padding: 400px 0 40px 0}
+      		.app-content { margin-top: -300px }
+      	}
+	</style>
+	
+    <div class="main-top">
+        <div class="main-top-bg"></div>
+	</div>
+{% endif %}
+
+
+	<div class="app-content">
+      {% if user['auth'] %}
+          <div class="container-fluid">
+      {% else %}
+          <div class="container">
+      {% endif %}
+               <section class="app-childs">
+                     <div class="col-lg-12 col-12 mb-lg-0">
+						<div class="row">
+						   {% for post in blogList %}
+							 <div class="col-lg-4 mb-3 col-12">
+								 <div class="d-card h-100">
+									<div class="d-card-body">	
+                                      <div class="d-card-head" style="margin: 0 0 25px 0!important">
+                                          {{ post['blog_title'] }}
+                                      </div>
+										{% if post['blog_image'] %}
+											<p><img src="{{ post['blog_image'] }}" alt="{{ post['blog_title'] }}" class="img-fluid"></p> 					
+										{% endif %}
+										<a href="{{ site['url'] }}/blog/{{ post['url'] }}" class="btn btn-primary mt-4">{{ lang['blog.read'] }}</a>
+									</div>
+								 </div>
+							 </div>
+							 {% endfor %}
+						</div>
+					</div>
+			
+               </section>
+            </div>
+         </div>
+      </div>
+  

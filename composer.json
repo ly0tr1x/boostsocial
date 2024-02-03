@@ -1,0 +1,17 @@
+{
+    "name": "Glaycon",
+    "description": "Glycon.org",
+    "type": "project",
+    "require": {
+        "2checkout/2checkout-php": "^0.3.1",
+        "coinpaymentsnet/coinpayments-php": "^1.4",
+        "phpmailer/phpmailer": "^6.1",
+        "twig/twig": "2.5"
+               },
+    "authors": [
+        {
+            "name": "Berk Demir",
+            "email": "info@glycon.org"
+        }
+    ]
+}

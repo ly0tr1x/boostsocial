@@ -1,0 +1,113 @@
+{% include 'header.twig' %}
+<div class="app-content">
+			<div class="container-fluid">
+
+
+				<section class="app-affiliates">
+				
+						<div class="row">
+							<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card mb-3">
+									<div class="d-card-body">
+								  {% if error %}
+									<div class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+									  <button type="button" class="close" data-dismiss="alert">×</button>
+									  {{ errorText }}
+									</div>
+								  {% elseif success %}
+									<div class="alert alert-dismissible alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+									  <button type="button" class="close" data-dismiss="alert">×</button>
+									  {{ successText }}
+									</div>
+								  {% endif %}
+
+								  <form method="post" action="tickets">
+									<div class="form-group">
+									  <label for="subject" class="control-label">{{ lang['tickets.subject'] }}</label>
+										<select class="form-control" id="subject" name="subject">
+										  {% for subjects in orders %}
+										   <option value"{{ subjects['subject'] }}">{{ subjects['subject'] }}</option>
+										  {% endfor %}
+										</select>  
+									</div>
+									<div class="form-group">
+									  <label for="message" class="control-label">{{ lang['tickets.message'] }}</label>
+									  <textarea class="form-control" rows="7" id="message" name="message">{{ data['message'] }}</textarea>
+									</div>
+									<button type="submit" class="btn btn-primary">{{ lang['tickets.button'] }}</button>
+								  </form>	
+	
+	
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+                        <div class="d-card pt-3">
+                           <div class="d-card-head">
+                              <div class="dch-icon">
+                                 <i class="fal fa-ticket-alt"></i>
+                              </div>
+                             {{ lang['tickets_history'] }}
+                           </div>
+                           <div class="d-card-body" style="max-height: 450px; overflow: scroll;">
+						   {% if ticketList %}
+                              <div class="pnd-tlist">
+								{% for ticket in ticketList %}
+                                 <a href="tickets/{{ ticket['ticket_id'] }}" class="pnd-titem pnd-titem-link">
+                                    <div class="pnd-tinfo">
+                                       <p class="pnd-tname">                  
+									   {% if ticket["support_new"] == 2 %}
+										<strong>{{ ticket['subject'] }}</strong>
+									  {% else %}
+										<td>{{ ticket['subject'] }}
+									  {% endif %}</p>
+                                       <small>{{ ticket['lastupdate_time'] }}</small>
+                                       <span class="pnd-tstatus completed text-right">
+										{% if ticket['status'] == lang['tickets.status.answered'] %}
+                                       <span class="pnd-tstatus completed text-right">
+                                       {{ ticket['status'] }}
+                                       </span>
+										{% endif %} 
+										
+										{% if ticket['status'] == lang['tickets.status.pending'] %}
+                                       <span class="pnd-tstatus pending text-right">
+                                       {{ ticket['status'] }}
+                                       </span>
+										{% endif %} 
+                                      
+										{% if ticket['status'] == lang['tickets.status.closed'] %}
+                                       <span class="pnd-tstatus closed text-right">
+                                       {{ ticket['status'] }}
+                                       </span>
+										{% endif %}	
+                                       </span>
+
+                                    </div>
+                                 </a>
+								 {% endfor %}
+
+                              </div>
+                            {% else %}
+                           <div class="p-4 p-lg-5 text-center">
+                             <div style="font-size: 64px;">
+									<i class="ri-mail-send-fill"></i>
+							</div>
+                             <p>                               {{ lang['tickets_not'] }}
+  </p>
+							{% endif %}  
+                             	</div>
+                           </div>
+                        </div>
+							</div>
+		
+						</div>				
+
+				</section>
+
+			</div>
+		</div>
+    </div>
+    </div>
+
+{% include 'footer.twig' %}

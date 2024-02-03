@@ -1,0 +1,184 @@
+@charset "UTF-8";
+:root{
+  --background-body:  #050914;
+  --bg-card:#0a1023;
+  --input-bg: #070f23;
+  --bg-box: #040914;
+  --primary: #f36b15;
+  --primary-deep: #df5c0c;
+  --light-primary: #f48845;
+  --secondary: #f36b15;
+  --secondary-light: #f36b15;
+  --yellow: #fef955;
+  --yellow-light: rgba(254, 249, 85, 0.25);
+}
+
+/* @media (min-width: 992px) and (max-width: 1500px) {
+  html {
+    zoom: .8;
+  }
+} */
+
+
+
+
+.rp-icon {
+  background: var(--light-primary);
+  color: #fff;
+  font-size: 24px;
+  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rp-sign-up-title {
+  font-weight: 600;
+  font-size: 24.226px;
+  line-height: 28px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+
+/** actulus */
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+.select-container.open .select-options-wrapper {
+  display: flex;
+}
+
+.select-container.open .select-arrow {
+  transform: rotate(180deg);
+}
+
+.select-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.14s ease;
+  outline: none;
+  line-height: 20px;
+  background: #F2F5F8;
+  border: 0.01px solid #f2f5f8; 
+  box-sizing: border-box;
+  border-radius: 15px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #393939;
+  padding: 20px 25px;
+}
+
+.select-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.selected-text {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 0px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.14s ease;
+}
+
+.select-options-wrapper {
+  border-radius: 20px;
+  position: absolute;
+  z-index: 6;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.14s ease;
+  background: #F2F5F8;
+ /* border: 1px solid red; */
+  top: 70px;
+  width: 100%;
+}
+
+.select-options {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 10px 8px;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+
+.select-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.select-options::-webkit-scrollbar-track {
+  background: var(--input-bg);
+  border-radius: 3px;
+}
+
+/* Handle */
+.select-options::-webkit-scrollbar-thumb {
+  background: #e95420;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+.select-options::-webkit-scrollbar-thumb:hover {
+  background: #434e64;
+}
+
+.select-option {
+  display: block;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: left;
+  color: #8598ac;
+}
+
+.select-option:hover,
+.select-option:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.select-option.active {
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+

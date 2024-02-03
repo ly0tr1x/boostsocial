@@ -1,0 +1,141 @@
+{% include 'header.twig' %}
+        <div class="app-content">
+			<div class="container-fluid">
+
+
+				<section class="app-affiliates">
+				
+						<div class="row">
+							<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card mb-3">
+                  <div class="d-card-head">
+                     <div class="dch-icon">
+                        <i class="fal fa-store"></i>
+                     </div>
+                     {% if user['lang'] == "ar" %}لوحة الطفل{% else %}Child Panel{% endif %}
+                  </div>
+									<div class="d-card-body">
+									<form action="/child-panels" method="post">
+									  {% if errorText %}
+										<div class="alert alert-dismissible alert-danger">
+										  <button type="button" class="close" data-dismiss="alert">×</button>
+										  {{ errorText }}
+										</div>
+									  {% endif %}
+									  {% if successText %}
+										<div class="alert alert-dismissible alert-success">
+										  <button type="button" class="close" data-dismiss="alert">×</button>
+										  {{ successText }}
+										</div>
+									  {% endif %}
+                                       <div class="form-group mb-4">
+                                          <label>{{ lang["childpanels.panel.domain"] }}</label>
+                                          <div class="input-group">
+                                            <input type="text" class="form-control" id="domain" name="domain" value="">
+                                          </div>
+                                       </div>
+                                       <!-- form-group end -->
+                                       <div class="form-group mb-4">
+                                          <label>{{ lang["childpanels.panel.currency"] }}</label>
+                                          <div class="input-group">
+											<select class="form-control" name="panel_currency" aria-required="true">
+                                                {% for curr in site['currencies'] %}
+                                                <option value="{{ curr['name'] }}">{{curr['name']}}</option>
+                                                {% endfor %}
+                                            </select>
+                                          </div>
+                                       </div>
+                                       <!-- form-group end -->
+                                       <div class="form-group mb-4">
+                                          <label>{{ lang["childpanels.admin.username"] }}</label>
+                                          <div class="input-group">
+                                             <input type="text" class="form-control" value="admin" disabled>
+                                          </div>
+                                       </div>
+                                       <!-- form-group end -->
+                                       <div class="form-group mb-4">
+                                          <label>{{ lang["childpanels.admin.password"] }}</label>
+                                          <div class="input-group">
+                                             <input class="form-control" value="admin@123" disabled>
+                                          </div>
+                                       </div>
+                                       <!-- form-group end -->
+                                       <div class="form-group mb-4">
+                                          <label>{{ lang["childpanels.panel.amount"] }}</label>
+                                          <div class="input-group">
+                                             <input type="text" class="form-control" value="{{ settings['panel_price'] * currency['value']}}{{ currency['symbol'] }}" disabled>
+                                          </div>
+                                       </div>
+									   <!-- form-group end -->
+                                       <button type="submit" class="btn btn-primary btn-block mb-4 mt-4">{{ lang["neworder.button"] }}</button>
+                                    </form>
+									</div>
+								</div>
+								</div>
+			
+								<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card">
+                                  
+                  <div class="d-card-head">
+                     <div class="dch-icon">
+                        <i class="fal fa-info-square"></i>
+                     </div>
+                     {% if user['lang'] == "ar" %}معلومة{% else %}Information{% endif %}
+                  </div>
+									<div class="d-card-body">
+										 <h3>{{lang["smmspot.child.text"]}}</h3>
+                                       <div class="row my-4 py-3">
+                                          <div class="col-auto mt-4 mt-md-0 align-self-center">
+                                             <img src="https://rexmedya.com/images/dns.png" style="max-width:75px" alt="">
+                                          </div>
+                                          <div class="col panel-body align-self-center">
+                                             <div style="font-size:15px">{{lang["smmspot.child.ns.title"]}}:</div>
+                                             <div style="font-size: 19px" class="mt-2">
+                                                <p class="mb-0"><strong>ns1.dnsco.in</strong></p>
+                                                <p class="mb-0"><strong>ns2.dnsco.in</strong></p>
+                                             </div>
+                                          </div>
+                                       </div>
+									</div>
+								</div>
+								</div>
+							</div>				
+{% if ticketList %}							
+						<div class="row">
+								<div class="col-lg-6 col-12 mb-3 mb-lg-0">
+								<div class="d-card">
+									<div class="d-card-body">
+															<table class="table">
+																<thead>
+																<tr>
+																	<th>{{ lang["childpanels.domain"] }}</th>
+																	<th>{{ lang["childpanels.currency"] }}</th>
+																	<th>{{ lang["childpanels.price"] }}</th>
+																	<th>{{ lang["childpanels.created"] }}</th>
+																</tr>
+																</thead>
+																<tbody>
+													  {% for panel in ticketList %}
+														<tr>
+														  <td>{{ panel['panel_domain'] }}</td>
+														  <td>{{ panel['panel_currency'] }}</td>
+														  <td>{{ panel['panel_price'] }}</td>
+														  <td><span class="nowrap">{{ panel['panel_created'] }}</span></td>
+														</tr>
+													  {% endfor %}
+																</tbody>
+															</table>
+									</div>
+								</div>
+								</div>
+						</div>
+			{% endif %}
+				</section>
+
+			</div>
+		</div>
+    </div>
+    </div>
+
+
+{% include 'footer.twig' %}

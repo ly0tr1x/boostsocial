@@ -1,0 +1,523 @@
+{% include 'header.twig' %}
+
+
+
+      <div class="app-content">
+      
+   
+        <div class="container-fluid">
+          <div class="dashcards-row">
+            <div class="dr-item">
+              <div class="dash-card">
+                <div class="dash-card-body">
+                  <div class="row">
+                    <div class="col align-self-center">
+                      <div class="dcb-title"> {{lang["smmspot.neworder.total.order.title"]}} </div>
+                      <div class="dcb-count"> {{ordersCount}} </div>
+                    </div>
+                    <div class="col-auto align-self-center">
+                      <div class="dcb-icon" style="background:#7156ae;color:white;" >
+                        <i class="fal fa-ballot-check"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dr-item">
+              <div class="dash-card">
+                <div class="dash-card-body">
+                  <div class="row">
+                    <div class="col align-self-center">
+                      <div class="dcb-title"> {{lang["smmspot.orders.no.order.text3"]}} </div>
+                      <div class="dcb-count"> {{ currency["symbol"]  }} {{ (user["balance"]*currency["value"]) |round(2, 'floor') }}</div>
+                    </div>
+                    <div class="col-auto align-self-center">
+                      <div class="dcb-icon" style="background:#7156ae;color:white;" >
+                        <i class="fal fa-wallet"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dr-item">
+              <div class="dash-card dcb-purple">
+                <div class="dash-card-body">
+                  <div class="row">
+                    <div class="col align-self-center">
+                      <div class="dcb-title"> {{lang["smmspot.neworder.balance.spent.title"]}} </div>
+                      <div class="dcb-count"> {{ currency["symbol"]  }} {{ (user["spent"]*currency["value"]) |round(2, 'floor') }} </div>
+                    </div>
+                    <div class="col-auto align-self-center">
+                      <div class="dcb-icon" style="background:#7156ae;color:white;" >
+                        <i class="fal fa-coins"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dr-item">
+              <div class="dash-card dcb-turq">
+                <div class="dash-card-body">
+                  <div class="row">
+                    <div class="col align-self-center">
+                      <div class="dcb-title"> {{lang['smmspot.neworder.status.title']}} </div>
+                      <div class="dcb-count"> 
+                            <span id="accStats"></span>
+									  
+                           <p id="spentBalance" style="display:none">{{ currency["symbol"]  }} {{ (user["spent"]*currency["value"]) |round(2, 'floor') }}</p>
+                           <script>
+                              const cBalance = document.getElementById("spentBalance").innerText;
+                              var text;
+                              if (100 < cBalance && cBalance < 500) { text = "{{ lang['smmspot.neworder.status.3'] }}"; }    
+                              if (1000 < cBalance && cBalance < 4999) { text = "{{ lang['smmspot.neworder.status.2'] }}"; }    
+                              else if (1500 < cBalance && cBalance < 2000) { text = "{{ lang['smmspot.neworder.status.1'] }}"; }    
+                              else {
+                                text = "{{ lang['smmspot.neworder.status.4'] }}";
+                              }
+                              document.getElementById("accStats").innerText = text;
+                               
+                           </script> 									  
+                      </div>
+                    </div>
+                    <div class="col-auto align-self-center">
+                      <div class="dcb-icon" style="background:#7156ae;color:white;" >
+                        <i class="fal fa-medal"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+	<section class="neworder">
+            <div class="row">
+             <div class="col-lg-12 mb-3">
+<section>
+    <div id="new-order-cats" class="swiper nwo-categories">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn active" data-change-cat="">
+            <span class="icon">
+              <i class="far fa-ellipsis-h"></i>
+            </span>
+            <span class="text">{% if user['lang'] %}     
+            
+            Todos
+            
+            {% else %}  
+            اظهار الكل    {% endif %}</span>
+          </button>
+        </div> 
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Instagram">
+            <span class="icon">
+              <i class="fab fa-instagram"></i>
+            </span>
+            <span class="text">Instagram</span>
+          </button>
+        </div>
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Twitter">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+            <span class="text">Twitter</span>
+          </button>
+        </div>
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="TikTok">
+            <span class="icon">
+              <i class="fab fa-tiktok"></i>
+            </span>
+            <span class="text">TikTok</span>
+          </button>
+        </div>
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Youtube">
+            <span class="icon">
+              <i class="fab fa-youtube"></i>
+            </span>
+            <span class="text">Youtube</span>
+          </button>
+        </div>
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Facebook">
+            <span class="icon">
+              <i class="fab fa-facebook-f"></i>
+            </span>
+            <span class="text">Facebook</span>
+          </button>
+        </div>
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Telegram">
+            <span class="icon">
+              <i class="fab fa-telegram-plane"></i>
+            </span>
+            <span class="text">Telegram</span>
+          </button>
+        </div>         
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Twitch">
+            <span class="icon">
+              <i class="fab fa-twitch"></i>
+            </span>
+            <span class="text">Twitch</span>
+          </button>
+        </div> 
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Snapchat">
+            <span class="icon">
+              <i class="fab fa-snapchat-ghost"></i>
+            </span>
+            <span class="text">Snapchat</span>
+          </button>
+        </div> 
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Spotify">
+            <span class="icon">
+              <i class="fab fa-spotify"></i>
+            </span>
+            <span class="text">Spotify</span>
+          </button>
+        </div> 
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Linkedin">
+            <span class="icon">
+              <i class="fab fa-linkedin"></i>
+            </span>
+            <span class="text">Linkedin</span>
+          </button>
+        </div> 
+        <div class="swiper-slide">
+          <button class="nwo-cat-btn" data-change-cat="Pinterest">
+            <span class="icon">
+              <i class="fab fa-pinterest-p"></i>
+            </span>
+            <span class="text">Pinterest</span>
+          </button>
+        </div> 
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+</section>   
+              </div>
+              <div class="col-lg-7 col-12 mb-5 mb-lg-0">
+                <div class="d-card pt-3">
+                  <div class="d-card-head" style="background:#7156ae;" >
+                    <div class="dch-icon">
+                      <i class="fal fa-shopping-basket text-white"></i>
+                    </div> {% if user['lang'] %} {{lang['order_now']}}     {% else %}
+                      اطلب الآن   
+                    {% endif %}
+                  </div>
+                  <div class="d-card-body" id="dc-body">
+					<form method="post" action="/">
+                    
+                    {% if error %}
+                            <div class="alert alert-dismissible alert-danger">
+                                {{ errorText }}
+                            </div>
+                            {% endif %}
+
+                            {% if data["order"]["success"] == 1 %}
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <h4>{{lang['neworder.message.success']}}</h4>
+                                {{lang['neworder.success.id']}}: {{ data['order']['id'] }}<br>
+                                {{lang['neworder.success.service']}}: {{ data['order']['service'] }}
+                                <br>
+                                {{lang['neworder.success.link']}}: {{ data['order']['link'] }}<br>
+                                {{lang['neworder.success.quantity']}}: {{ data['order']['quantity'] }}<br>
+                                
+                                
+                                
+                                
+                                Spent : {{ currency["symbol"]  }} {{ (data['order']['price']*currency["value"]) |round(2, 'floor') }}<br>
+                                 {{ lang["neworder.success.balance"] }}: {{ currency["symbol"]  }} {{ (user["balance"]*currency["value"]) |round(2, 'floor') }} <br>
+                            </div>
+                            {%endif%}
+
+                            {% if data["order"]["success"] == 2 %}
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <h4>{{lang['neworder.message.success']}}</h4>
+                                {{lang['neworder.success.id']}}: {{ data['order']['id'] }}<br>
+                                {{lang['neworder.success.service']}}: {{ data['order']['service'] }}
+                                <br>
+                                {{lang['neworder.success.username']}}: {{ data['order']['link'] }}<br>
+                                {{lang['neworder.success.quantity']}}:
+                                {% if data['order']['min'] == data['order']['max'] %}
+                                {{ data['order']['max'] }}
+                                {% else %}
+                                {{ data['order']['min'] }} - {{ data['order']['max'] }}
+                                {% endif %}
+                                <br>
+                                {{lang['neworder.success.posts']}}:
+                                {% if 0 == data['order']['posts'] %}
+                                âˆž
+                                {% else %}
+                                {{ data['order']['posts'] }}
+                                {% endif %}
+                                <br>
+                                {{lang['neworder.success.delay']}}:
+                                {{ data['order']['delay'] }}
+                                <br>
+                            </div>
+                            {% endif %}			
+									  
+									  
+			 {% if categories %}
+            <div class="form-group">
+                <label for="orderform-category" class="control-label">{{ lang["neworder.category"] }}</label>
+
+                <select class="form-control" id="neworder_category" name="categories" style="display: none">
+                  {% for category in categories %}
+                  <option {% if category['category_id'] == data["categories"] %} selected {% endif %} value="{{ category['category_id'] }}" ><i class="{{ category["icon"] }}"></i>{{ category["category_name"] }}</option>
+                  {% endfor %}
+                </select>
+
+                <div class="dropdown">
+                  <button class="form-control text-left" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                    <span id="categoryTitle"></span>
+                    <i class="fas fa-chevron-down float-right" aria-hidden="true"></i>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="category-drop">
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+          
+          <!-- end -->
+                   
+                   
+                   
+           <!-- form-group end -->
+                                       <div class="form-group mb-4">
+                                          <label id="orderform-service" for="orderform-service" class="control-label" data-label="{{ lang["neworder.service"] }}">{{ lang["neworder.service"] }}</label>
+                                          <select class="form-control" id="neworder_services" name="services" style="display: none;"> </select>
+
+											<div class="dropdown">
+												<button class="form-control text-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+													<span id="serviceTitle"></span>
+													<i class="fa fa-caret-down float-right" aria-hidden="true"></i>
+												</button>
+												<div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="orders-drop">
+
+												</div>
+											</div>
+                                       </div>
+                                       
+
+                                       <!-- form-group end -->
+                     
+                     <div id="neworder_fields"></div>
+					  
+                      <div class="form-group mb-4">
+                        <label> {{ lang["neworder.charge"] }} </label>
+                        <div class="input-group">
+                          <div class="input-group-prepend" >
+                            <div class="input-group-text text-center" style="background:#7156ae!important;"  >
+                              <i class="far fa-coin"></i>
+                            </div>
+                          </div>
+                          <input type="text" class="form-control" id="charge" value="" placeholder="0.00₺" readonly="" />
+                        </div>
+                      </div>
+
+                        {% if neworderTerms %}
+                        <div class="checkbox">
+                           <label>
+                           <input type="checkbox" name="neworder_check">{{ lang['neworder.recheck'] }}
+                           </label>
+                        </div>
+                        {% endif %}
+					
+                      <button type="submit" class="btn btn-primary btn-block" style="background:#7156ae;" >{{lang["neworder.button"]}}</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 col-12 mb-lg-0">
+                <div class="d-card pt-3">
+                  <div class="p-3">
+                        <ul class="nav nav-tabs cstm-nav" role="tablist" >
+                           <li class="nav-item" >
+                              <button class="nav-link-btn active" data-toggle="pill" href="#timeline" role="tab" aria-controls="pills-timeline" aria-selected="true" style="background:#7156ae;border:0px;" >
+                              <i class="icon ri-chat-new-line mr-3"></i>
+                              <span class="text">{{ lang['Announcement'] }}</span>
+                              </button>
+                           </li>
+                           
+                          <!-- <li class="nav-item">
+                              <button class="nav-link-btn" data-toggle="pill" href="#updates" role="tab" aria-controls="pills-updates" aria-selected="false">
+                              <i class="icon ri-flag-line mr-3"></i>
+                              <span class="text">{{lang["win_balance"]}}</span>
+                              </button>
+                           </li> -->
+                           
+                        </ul>
+                  </div>
+                  <div class="d-card-body" style="max-height: 500px; overflow:scroll">
+                     <div class="tab-content mt-4" id="nav-pageTab">
+                        <div class="tab-pane fade active show" id="timeline" role="tabpanel" aria-labelledby="timeline">
+                           {% for new in newsList %}
+				<div class="dh-noti">
+                      <div class="dh-item dh-ma">
+                        <div class="row">
+                          <div class="col-md-auto col-12 mb-4 mb-md-0 align-self-center">
+                            <div class="">
+                              <img width="25" class="mr-1" src="/img/icons/{{ new['news_icon'] }}.png">
+                            </div>
+                          </div>
+                          <div class="col-md col-12 align-self-center">
+                            <div class="dh-item--title">{{ new['news_title'] }}</div>
+                            <div class="dh-item--text">{{ new['news_content'] }}
+								<small>{{ new['news_date'] }}</small>
+							</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                           {% endfor %}
+                        </div>
+                        <div class="tab-pane fade show" id="updates" role="tabpanel" aria-labelledby="updates">
+                           <span style="color: #fff">{{lang["win_balance_desc"]}}.</span>								
+                           <div class="tablepen mt-2">
+                              <div class="sira headers bx-none">
+                                 <div class="hucre">
+                                    {{lang["platform"]}}
+                                 </div>
+                                 <div class="hucre">
+                                    {{lang["method"]}}
+                                 </div>
+                                 <div class="hucre">
+                                       {{lang["price"]}}
+                                 </div>
+                                 <div class="hucre">
+                                       {{lang["duration"]}}
+                                 </div>
+                              </div>
+                              <div class="sira">
+                                 <div class="hucre" data-title="Platform">
+                                    Forums
+                                 </div>
+                                 <div class="hucre" data-title="İşlem">
+                                   {{lang["pos_comment"]}}
+                                 </div>
+                                 <div class="hucre" data-title="Ücret">
+                                    1$
+                                 </div>
+                                 <div class="hucre" data-title="Süre">
+                                    1 {{lang["day"]}}
+                                 </div>
+                              </div>
+                              <div class="sira">
+                                 <div class="hucre" data-title="Platform">
+                                    Forums
+                                 </div>
+                                 <div class="hucre" data-title="İşlem">
+                                   Trade Points
+                                 </div>
+                                 <div class="hucre" data-title="Ücret">
+                                    1$
+                                 </div>
+                                 <div class="hucre" data-title="Süre">
+                                    1 {{lang["day"]}}
+                                 </div>
+                              </div>
+                              <div class="sira">
+                                 <div class="hucre" data-title="Platform">
+                                    Youtube
+                                 </div>
+                                 <div class="hucre" data-title="İşlem">
+                                    Video
+                                 </div>
+                                 <div class="hucre" data-title="Ücret">
+                                    25$ (.dk)
+                                 </div>
+                                 <div class="hucre" data-title="Süre">
+                                    15 {{lang["day"]}}
+                                 </div>
+                              </div>
+                              <div class="sira">
+                                 <div class="hucre" data-title="Platform">
+                                    Blog website
+                                 </div>
+                                 <div class="hucre" data-title="İşlem">
+                                    Post
+                                 </div>
+                                 <div class="hucre" data-title="Ücret">
+                                    5$
+                                 </div>
+                                 <div class="hucre" data-title="Süre">
+                                    15 {{lang["day"]}}
+                                 </div>
+                              </div>
+                              <div class="sira">
+                                 <div class="hucre" data-title="Platform">
+                                News website
+                                 </div>
+                                 <div class="hucre" data-title="İşlem">
+                                    Post
+                                 </div>
+                                 <div class="hucre" data-title="Ücret">
+                                    7.5$
+                                 </div>
+                                 <div class="hucre" data-title="Süre">
+                                    15 {{lang["day"]}}
+                                 </div>
+                              </div>
+                           </div>
+                           <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#exon"><i class="ri-file-text-line"></i>{{lang["terms_conditions"]}}</button>
+
+                        </div>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+                            <div class="modal fade" id="exon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" style="display: none;" aria-hidden="true">
+                              <div class="modal-dialog modal-xl" role="document">
+                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                       <h5 class="modal-title" id="exampleModalLongTitle">{{lang["terms_conditions"]}}</h5>
+                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                       <span aria-hidden="true">×</span>
+                                       </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <b>{{lang["rule"]}} 1</b>
+                                       <p>{{lang["rule_1"]}}</p>
+                                       <b>{{lang["rule"]}} 2</b>
+                                       <p>{{lang["rule_2"]}}</p>
+                                       <b>{{lang["rule"]}} 3</b>
+                                       <p>{{lang["rule_3"]}}</p>
+                                       <b>{{lang["rule"]}} 4</b>
+                                       <p>{{lang["rule_4"]}}</p>
+                                       <b>{{lang["rule"]}} 5</b>
+                                       <p>{{lang["rule_5"]}}</p>
+                                       <b>{{lang["rule"]}} 6</b>
+                                       <p>{{lang["rule_6"]}}</p>
+                                       <b>{{lang["rule_desc"]}}</b>
+                                    </div>
+                                    <div class="modal-footer">
+                                       <a href="/tickets" class="btn btn-sm btn-primary">{{lang['tickets.button']}}</a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+						   
+{% include 'footer.twig' %}
+
+
+
+
+
