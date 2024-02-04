@@ -75,19 +75,19 @@
                         <ul class="fb-menu">
                            <li>
                              <a href="/terms">
-                              {% if site['language'] == "ar" %}سياسة الاسترجاع{% else %}Return Policy{% endif %}
+                              {{lang["terms.title"]}}
 							 </a>
                            </li>
                            <li>
                              <a href="/faq">
-                           {% if site['language'] == "ar" %}الاسئلة الشائعة{% else %}FAQ{% endif %}
+                           FAQ
 							 </a>
                            </li>
                         </ul>
                      </div>
                      <div class="col-md-auto mt-4 mt-md-0 text-center align-self-center">
                         <div class="foot-copy">
-                           © 2023&nbsp{{ site["site_name"] }}&nbsp|&nbsp{% if site['language'] == "ar" %}جمي.{% else %}All Right Reserved<a href="http://smmpanels.store/" style="text-decoration:none;">.</a>{% endif %}
+                           © 2023&nbsp{{ site["site_name"] }}&nbsp|&nbsp{% if site['language'] == "ar" %}جمي.{% else %}All Right Reserved
                         </div>
                      </div>
                   </div>
