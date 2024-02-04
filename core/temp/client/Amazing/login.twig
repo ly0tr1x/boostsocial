@@ -577,11 +577,7 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                         
 						</form>
 						
-					 {% if google == 2 %}
-                                                    <a href="/google"  class="btn btn-primary btn-xl btn-block mt-4">Sign in With Google</a>
-
-                    						  {% endif %}
-                    						  
+				
                      </div>
                   </div>
                </div>
@@ -656,7 +652,8 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 							   </div>
 						    </div>	
                            <div class="sbtext">
-                              {% if site['language'] == 'ar' %}انضم إلى نظامنا مجانًا من خلال النقر على زر التسجيل.{% else %}Join our system for free by clicking on the register button.{% endif %}
+                            								  {{ lang['Create_a_Free_Account'] }}
+
                            </div>
                         </div>
                      </div>
@@ -671,11 +668,11 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 								  <i class="fal fa-wallet"></i>
 							   </div>
 							   <div class="col-10 sbtitle">
-								  {% if site['language'] == 'ar' %}اشحن حسابك{% else %}Top Up Your Account{% endif %}
+                            								  {{ lang['Top_Up_Account'] }}
 							   </div>
 						    </div>	
                            <div class="sbtext">
-                              {% if site['language'] == 'ar' %}قم بالدفع بخيار الدفع الذي يناسبك.{% else %}Make your payment with the payment option that suits you.{% endif %}
+                            								  {{ lang['Top_Up_Account_Text'] }}
                            </div>
                         </div>
                      </div>
@@ -690,11 +687,11 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 								  <i class="fal fa-shopping-bag"></i>
 							   </div>
 							   <div class="col-10 sbtitle">
-								  {% if site['language'] == 'ar' %}اطلب الخدمة التي تختارها{% else %}Order the Service {% endif %}
+                            								  {{ lang['Order_Service'] }}
 							   </div>
 						    </div>						   
                            <div class="sbtext">
-                              {% if site['language'] == 'ar' %}حدد الخدمة التي تهتم بها وقم بتقديم طلبك بسهولة.{% else %}You are interested in and place your order easily.{% endif %}
+                            		   						  {{ lang['Order_Service_Text'] }}
                            </div>
                         </div>
                      </div>
@@ -709,11 +706,11 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 								  <i class="fal fa-badge-check"></i>
 							   </div>
 							   <div class="col-10 sbtitle">
-								  {% if site['language'] == 'ar' %}استمتع بالصعود{% else %}Enjoy the Ascension{% endif %}
+                            								  {{ lang['Enjoy'] }}
 							   </div>
 						    </div>
                             <div class="sbtext">
-								{% if site['language'] == 'ar' %}استمتع بترويجك على وسائل التواصل الاجتماعي معنا!{% else %}Enjoy your social media promotion with us!{% endif %}
+                            								  {{ lang['Enjoy_Text'] }}
                             </div>
                         </div>
                      </div>
@@ -728,7 +725,7 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 		<div class="container">
 			<div class="socials">
 				 <div class="home-title text-center mb-5">
-					<h2>{% if site['language'] == 'ar' %}منصاتنا{% else %}Our platforms{% endif %}</h2>
+					<h2> {{ lang['Our_Platforms'] }} </h2>
 					<div class="divider d-flex justify-content-center"></div>
 				 </div>
 				<div class="row text-center">
@@ -778,11 +775,10 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 			<div class="row align-items-center">
 				<div class="col-lg-6">
 					<div class="ds-title">
-						<h2>{% if site['language'] == 'ar' %}لوحة سهلة الاستخدام وسريعة وديناميكية{% else %}User Friendly, Fast and Dynamic Panel{% endif %}</h2>
-						<p>{% if site['language'] == 'ar' %}سيرفر بيع وزيادة المتابعين نحن وبكل فخر ارخص سيرفر زيادة متابعين لجميع منصات التواصل التواصل الاجتماعي مثل انستقرام وتويتر ويوتيوب وتيك توك وفيس بوك وغيرها الكثير
-{% else %}SMM Panel meaning is Cheapest SMM and SEO Services Reseller Panel Script or website, where People Buy-Sell Social Media Marketing Service Such as Facebook Fans, Twitter devotees, Instagram Followers, YouTube watch time Views, Website Traffic, tiktok likes, and more significant associations.{% endif %}</p>
+						<h2> {{ lang['login_text_info1'] }} </h2>
+						<p> {{ lang['login_text_info2'] }} </p>
                              <a href="/signup" class="btn d-block d-md-inline-block btn-secondary mt-3">
-							{% if site['language'] == 'ar' %}سجل الان{% else %}Register Now{% endif %}
+							{{ lang['signup.button'] }}
 						</a>
 					</div>
 				</div>
@@ -796,7 +792,7 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 <section class="home-section">
    <div class="container">
       <div class="home-title text-center">
-         <h2>{% if site['language'] == 'ar' %}خدمات Marketnets SMM Panel{% else %}Markenets SMM Panel Services{% endif %}</h2>
+         <h2> {{lang["social_ava"]}} </h2>
          <div class="divider d-flex justify-content-center"></div>
       </div>
       <div class="stepbox mt-4">
@@ -812,10 +808,10 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-facebook-f"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              	{% if site['language'] == 'ar' %}سيرفر متابعين فيسبوك{% else %}Facebook SMM Panel services{% endif %}						   
+                              	Facebook				   
                            </h2>
                            <p class="sbtext p-3">
-                                   {% if site['language'] == 'ar' %}شراء معجبين لصفحة الفيسبوك، شراء معجبين لمنشور الفيسبوك، شراء مشاهدات لفيديو الفيسبوك، شراء تعليقات للبوست على فيسبوك، شراء متابعين فيسبوك للحساب الشخصي والكثير من الخدمات الحصرية!{% else %}Buy Facebook Fans, Buy Facebook Post Fans, Buy Facebook Video Views, Buy Facebook Post Comments, Buy Facebook Personal Account Followers and many more exclusive services<a href="http://smmpanels.store/" style="text-decoration:none;">.</a>{% endif %}                      
+                           {{lang["social_fb"]}}
                            </p>
                         </div>
                      </div>
@@ -833,10 +829,11 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-youtube"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              	{% if site['language'] == 'ar' %}سيرفر مشتركين يوتيوب{% else %}YouTube SMM Panel Services{% endif %}						   
+                           Youtube
                            </h2>
                            <p class="sbtext p-3">
-                                  {% if site['language'] == 'ar' %}شراء مشاهدات يوتيوب، شراء لايكات لفيديو اليوتيوب شراء مشتركين يوتيوب، شراء تعليقات يوتيوب، شراء ساعات مشاهدة لليوتيوب، والعديد من الخدمات بضمان!{% else %}Buy YouTube views, buy YouTube video likes, buy YouTube subscribers, buy YouTube comments, buy YouTube watch hours, and many more services with a guarantee!{% endif %}                       
+                                                      {{lang["social_yt"]}}
+
                            </p>
                         </div>
                      </div>
@@ -854,10 +851,10 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-instagram"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              		{% if site['language'] == 'ar' %}سيرفر متابعين انستقرام{% else %}Instagram SMM Panel services{% endif %}					   
+                           Instagram
                            </h2>
                            <p class="sbtext p-3">
-                                {% if site['language'] == 'ar' %}شراء متابعين انستقرام، شراء لايكات انستقرام، شراء مشاهدات فيديو انستيجرام، شراء انستقرام دايركت مسج، شراء مشاهدات IGTV ، شراء منشن انستقرام، شراء تعليقات انستيجرام، شراء مشاهدات ريلز للانستيجرام، والمزيد أيضاً!{% else %}Buy Instagram Followers, Buy Instagram Likes, Buy Instagram Video Views, Buy Instagram Direct Messages, Buy IGTV Views, Buy Instagram Mention, Buy Instagram Comments, Buy Instagram Reels Views, and much more!{% endif %}                         
+                                                                                 {{lang["social_ig"]}}
                            </p>
                         </div>
                      </div>
@@ -875,10 +872,10 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-twitter"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              		{% if site['language'] == 'ar' %}سيرفر متابعين تويتر{% else %}Twitter SMM Panel services{% endif %}					   
+                              Twitter
                            </h2>
                            <p class="sbtext p-3">
-                                 {% if site['language'] == 'ar' %}شراء متابعين تويتر، شراء متابعين تويتر خليجيين، شراء ريتويت تويتر، شراء لايكات تويتر عرب، شراء تصويت تويتر، شراء متابعين تويتر عرب، شراء اشتراكات رتويت، وغيرها المزيد من الخدمات الرائعة!{% else %}Buy Twitter followers, buy Gulf Twitter followers, buy Twitter retweets, buy Arab Twitter likes, buy Twitter votes, buy Arab Twitter followers, buy retweet subscriptions, and many more great services!<a href="http://smmpanel-script.com/" style="text-decoration:none;">.</a>{% endif %}                        
+                                                      {{lang["social_tw"]}}
                            </p>
                         </div>
                      </div>
@@ -896,10 +893,10 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-tiktok"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              		{% if site['language'] == 'ar' %}سيرفر متابعين تيك توك{% else %}Tiktok SMM Panel services{% endif %}					   
+                                 Tiktok
                            </h2>
                            <p class="sbtext p-3">
-                                  {% if site['language'] == 'ar' %}شراء متابعين تيك توك، شراء لايكات تيك توك، شراء مشاهدات تيك توك، شراء تعليقات تيك توك، والكثير من الخدمات المميزة!{% else %}Buy Tik Tok Followers, Buy Tik Tok Likes, Buy Tik Tok Views, Buy Tik Tok Comments, and many more special services!{% endif %}                       
+                                                      {{lang["social_tk"]}}
                            </p>
                         </div>
                      </div>
@@ -917,10 +914,10 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-telegram"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              	{% if site['language'] == 'ar' %}سيرفر مشتركين تيليجرام{% else %}Telegram SMM Panel services{% endif %}						   
+                              Telegram
                            </h2>
                            <p class="sbtext p-3">
-                                {% if site['language'] == 'ar' %}شراء مشتركين لقناة التليجرام، شراء مشتركين لمجموعات التيليجرام، شراء مشاهدات لمنشور التيليجرام، شراء تصويت للتيليجرام، والعديد من الخدمات التنافسية!{% else %}Buy Telegram Subscribers, Buy Telegram Group Subscribers, Buy Telegram Post Views, Buy Telegram Votes, and many more competitive services!{% endif %}                         
+                                                      {{lang["social_tg"]}}
                            </p>
                         </div>
                      </div>
@@ -938,7 +935,7 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
                               <i class="fab fa-snapchat-ghost"></i>
                            </div>
                            <h2 class="col-10 sbtitle">
-                              {% if site['language'] == 'ar' %}سيرفر متابعين سناب شات{% else %}Snapchat SMM Panel Services{% endif %}							   
+                                 Snapchat
                            </h2>
                            <p class="sbtext p-3">
                               {% if site['language'] == 'ar' %}شراء متابعين سناب شات، شراء لايكات سناب شات، شراء مشاهدات سناب شات، شراء تعليقات سناب شات، والكثير من الخدمات الاخري!{% else %}Buy snapchat followers, buy snapchat likes, buy snapchat views, buy snapchat comments, and a lot more!{% endif %}                           
