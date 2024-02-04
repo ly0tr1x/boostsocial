@@ -523,6 +523,7 @@ Promotion Service Our goal is to improve your presence on social networks. Altho
  "all_services"  => "All Services",
  "addfunds.bank.payment_bank_image" => "Payment screen",
  "title_login"  => "Looking for the best services ?",
+ "title_login2"  => " is the ultimate online platform where you can boost your likes and followers on Instagram, TikTok, Facebook, and various other networks. Using our platform is incredibly simple. What are you waiting for? Elevate your social media presence now!",
  "how_works"  => "How it works our platform",
 "Create_a_Free_Account"  => "Create a Free Account",
 "Create_a_Free_Account_Text"  => "Create a Free Account",
