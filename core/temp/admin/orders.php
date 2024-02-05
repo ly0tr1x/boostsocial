@@ -123,12 +123,12 @@
                    <?php if( $order["service_api"] != 0 ): echo '<div class="service-block__provider-value">'.$order["order_profit"].'</div>'; endif; ?>
 
                  </td>
-                 <td><?php echo $order["order_url"]; 
+                 <td> <a href="<?php echo $order["order_url"];?>">  <?php echo $order["order_url"]; 
             if(empty($order["order_extras"]) || $order["order_extras"] == "[]"){ }else{
                         echo' <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalDiv" data-action="order_comment" data-id="'.$order["order_id"].'">Comments</a>'; 
                         
                     }
-                    ?>
+                    ?> </a>
                  </td>
                  <td><?php echo $order["order_start"]; ?></td>
                  <td><?php echo $order["order_quantity"]; ?></td>
