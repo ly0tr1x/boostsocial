@@ -56,9 +56,9 @@ elseif ($service_page_url === "https://joysmm.net/services") {
 
         try {
             $servername = "localhost";
-            $username = "u862754500_sboost";
+            $username = "u877644141_sboost";
             $password = "6iJOZOO#";
-            $dbname = "u862754500_royal";
+            $dbname = "u877644141_royal";
 
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
