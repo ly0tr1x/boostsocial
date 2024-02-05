@@ -65,9 +65,9 @@
                                        <p>
                                            
                                             {% for payment in paymentsList %}
-													  {% if payment['id'] == 21  %} 
-													    {{ payment['content'] }}
-													  {% endif %}
+													  <div class="mt-2 payment-description" data-id="{{ payment['id'] }}" {% if not loop.first %} style="display: none;" {% endif %}>
+            <p>{{ payment['content'] }}</p>
+        </div>
 													{% endfor %}
                                            
                                        </p>
@@ -270,7 +270,19 @@
             }
         }, 1000);
   
- 
+     document.getElementById('payment_method').addEventListener('change', function() {
+        var selectedId = this.value;
+        var descriptions = document.querySelectorAll('.payment-description');
+        
+        descriptions.forEach(function(desc) {
+            if (desc.getAttribute('data-id') === selectedId) {
+                desc.style.display = 'block';
+            } else {
+                desc.style.display = 'none';
+            }
+        });
+    });
+
 </script>
 
 {{ kashier_code  }}
