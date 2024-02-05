@@ -85,10 +85,30 @@ body {
 <body class="dashboard-body {% if user['lang'] == 'ar' %} rtl-enable rtl{% endif %}">
   
 
+<style>
+   .social-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1010;
+}.ws {
+    width: 50px;
+    height: 50px;
+}
+</style>
 
-
-
-
+<div class="social-icons">
+      <a href="https://t.me/soporteredesociales" target="_blank">
+    <img class="tg" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+  </a>
+  <a href="https://wa.me/+593988056151" target="_blank">
+    <img class="ws" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp">
+  </a>
+  
+</div>
 
 
 
