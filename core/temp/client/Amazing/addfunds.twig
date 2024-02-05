@@ -59,15 +59,15 @@
                                        </p>
                                         </div>
                                         
-                                          <div class="fga mb-4 custom-payment-content-bkash"  style="display:none">
+                                          <div class="fga mb-4 custom-payment-content-bkash"  >
                                        <label class="fla" for="amount">Instructions:</label>
                                        <br>
                                        <p>
                                            
                                             {% for payment in paymentsList %}
-													  <div class="mt-2 payment-description" data-id="{{ payment['id'] }}" {% if not loop.first %} style="display: none;" {% endif %}>
-            <p>{{ payment['content'] }}</p>
-        </div>
+													  {% if payment['id'] == 21  %} 
+													    {{ payment['content'] }}
+													  {% endif %}
 													{% endfor %}
                                            
                                        </p>
@@ -270,19 +270,7 @@
             }
         }, 1000);
   
-     document.getElementById('payment_method').addEventListener('change', function() {
-        var selectedId = this.value;
-        var descriptions = document.querySelectorAll('.payment-description');
-        
-        descriptions.forEach(function(desc) {
-            if (desc.getAttribute('data-id') === selectedId) {
-                desc.style.display = 'block';
-            } else {
-                desc.style.display = 'none';
-            }
-        });
-    });
-
+ 
 </script>
 
 {{ kashier_code  }}
