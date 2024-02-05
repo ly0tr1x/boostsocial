@@ -45,15 +45,14 @@
                 </div>
 
                 
-                    <div class="fga mb-4 custom-payment-content"  style="display:none">
-                                       <label class="fla" for="amount">Instructions:</label>
+                    <div class="fga mb-4 custom-payment-content"  >
                                        <br>
                                        <p>
                                            
                                             {% for payment in paymentsList %}
 
 
-                <div class="mt-2 payment-description" data-id="{{ payment['id'] }}" {% if not loop.first %} style="display: none;" {% endif %}>
+                <div class="mt-1 payment-description" data-id="{{ payment['id'] }}" {% if not loop.first %} style="display: none;" {% endif %}>
             <p>{{ payment['content'] }}</p>
                   </div>
 													 
