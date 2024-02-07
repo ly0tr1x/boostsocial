@@ -830,10 +830,10 @@ function referralCommission($current_client, $amount, $payment_method_id = 0){
 
  
 function send_email($email, $otp) {
-    $smtp_host = 'premium232.web-hosting.com'; // Your SMTP host
-    $smtp_port = 587; // Your SMTP port
-    $smtp_username = 'rahul@hostclouda.top'; // Your SMTP username
-    $smtp_password = 'phc}RKDDxUS2'; // Your SMTP password
+    $smtp_host = 'smtp.hostinger.com'; // Your SMTP host
+    $smtp_port = 465; // Your SMTP port
+    $smtp_username = 'soporte@boostsocialsmm.com    '; // Your SMTP username
+    $smtp_password = '13042022@Jj'; // Your SMTP password
 
     $mail = new PHPMailer(true); 
     try {
