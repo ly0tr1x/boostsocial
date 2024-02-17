@@ -198,15 +198,16 @@
 
     } else {
         echo "Activo";
+        echo '<span class="round-span green" style="    margin-left: 4px;
+        " title="Servicio Activo"></span>';
     }
     
     if ($services[$i]["api_servicetype"] == 1) {
         // Agregar un span rojo en caso de servicio caído
-        echo '<span class="round-span red" title="Service is down"></span>';
+       
     } else {
         // Agregar un span verde en caso de servicio activo
-        echo '<span class="round-span green" style="    margin-left: 4px;
-" title="Service is active"></span>';
+       
     }
     ?>
 </td>
