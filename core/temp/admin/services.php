@@ -41,9 +41,9 @@
           <div class="alert alert-danger "><?php echo $errorText; ?></div>
         <?php endif; ?>
    <ul class="nav nav-tabs nav-tabs__service">
-      <li class="p-b"><button class="btn btn-default" data-toggle="modal" data-target="#modalDiv" data-action="new_service">Add Service</button></li>
-      <li class="p-b"><button class="btn btn-default m-l" data-toggle="modal" data-target="#modalDiv" data-action="new_subscriptions">Add Subscription</button></li>
-      <li class="p-b"><button class="btn btn-default m-l" data-toggle="modal" data-target="#modalDiv" data-action="new_category">Create Category</button></li>
+      <li class="p-b"><button class="btn btn-default" data-toggle="modal" data-target="#modalDiv" data-action="new_service">Añadir Servicio</button></li>
+      <li class="p-b"><button class="btn btn-default m-l" data-toggle="modal" data-target="#modalDiv" data-action="new_subscriptions">Añadir suscripcion</button></li>
+      <li class="p-b"><button class="btn btn-default m-l" data-toggle="modal" data-target="#modalDiv" data-action="new_category">Crear Categoria</button></li>
 
 	  
       <li class="pull-right">
@@ -52,10 +52,10 @@
          </div>
       </li>
       <li class="pull-right">
-        <a data-toggle="modal" data-target="#modalDiv" data-action="import_services"><i class="fas fa-plus-circle"></i> Import Services Without Categories </a>
+        <a data-toggle="modal" data-target="#modalDiv" data-action="import_services"><i class="fas fa-plus-circle"></i> Importar Servicios Sin Categorias </a>
       </li>
 <li class="pull-right">
-        <a data-toggle="modal" data-target="#modalDiv" data-action="import_service"><i class="fas fa-plus-circle"></i> Import Services With Categories </a>
+        <a data-toggle="modal" data-target="#modalDiv" data-action="import_service"><i class="fas fa-plus-circle"></i> Importar Servicios Con Categorias </a>
       </li>
    </ul>
 
@@ -69,16 +69,16 @@
                   </div>
                   <div class="action-block">
                     <ul class="action-list">
-                       <li><span class="countOrders"></span> service selected</li>
+                       <li><span class="countOrders"></span> Seleccionados</li>
                        <li>
                          <div class="dropdown">
                            <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown"> batch operations <span class="caret"></span></button>
                            <ul class="dropdown-menu">
                              <li>
-                                <a class="bulkorder" data-type="active">Activate All</a>
-                                <a class="bulkorder" data-type="deactive">Disable All</a>
-                                <a class="bulkorder" data-type="del_price">Reset All Discounts</a>
-                                <a class="bulkorder" data-type="del_service">Delete All</a>
+                                <a class="bulkorder" data-type="active">Activar </a>
+                                <a class="bulkorder" data-type="deactive">Desactivar </a>
+                                <a class="bulkorder" data-type="del_price">Resetear  </a>
+                                <a class="bulkorder" data-type="del_service">Borrar </a>
                                 </li>
                            </ul>
                          </div>
@@ -87,15 +87,15 @@
                   </div>
                </th>
                <th class="service-block__id">ID</th>
-               <th class="service-block__service">Service Name</th>
+               <th class="service-block__service">Nombre de Servicio</th>
                <th class="service-block__type">
                Service Type
                </th>
-               <th class="service-block__provider">Provider</th>
-               <th class="service-block__rate">Price</th>
+               <th class="service-block__provider">Proveedor</th>
+               <th class="service-block__rate">Precio</th>
                <th class="service-block__minorder">Min</th>
                <th class="service-block__minorder">Max</th>
-               <th class="service-block__visibility">Status</th>
+               <th class="service-block__visibility">Estado</th>
                <th class="service-block__action text-right"><span id="allServices" class="service-block__hide-all fa fa-compress"></span></th>
             </tr>
          </thead>
@@ -120,13 +120,13 @@
                         <?php if( $services[0]["category_secret"] == 1 ): echo '<small data-toggle="tooltip" data-placement="top" title="" data-original-title="gizli kategori"><i class="fa fa-lock"></i></small> '; endif; echo $category; ?>
                         <div class="dropdown-inline">
                           <div class="dropdown">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Options <span class="caret"></span></button>
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Opciones <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                              <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_category" data-id="<?=$services[0]["category_id"]?>">Edit Category </a></li>
+                              <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_category" data-id="<?=$services[0]["category_id"]?>">Editar Categoria</a></li>
                                 <?php if( $services[0]["category_type"] == 1 ): $type = "category-active"; else: $type = "category-deactive"; endif; ?>
-                              <li><a href="<?php echo site_url("admin/services/".$type."/".$services[0]["category_id"]) ?>"><?php if( $services[0]["category_type"] == 1 ): echo "Activate Category"; else: echo "Disable Category"; endif; ?></a></li>
+                              <li><a href="<?php echo site_url("admin/services/".$type."/".$services[0]["category_id"]) ?>"><?php if( $services[0]["category_type"] == 1 ): echo "Activar Categoria"; else: echo "Desactivar Categoria"; endif; ?></a></li>
                              
-                              <li><a href="<?php echo site_url("admin/services/del_cate/".$services[0]["category_id"]) ?>">Delete Category</a></li>
+                              <li><a href="<?php echo site_url("admin/services/del_cate/".$services[0]["category_id"]) ?>">Eliminar Categoria</a></li>
                              
                             </ul>
                           </div>
@@ -213,12 +213,12 @@
                                               <div class="dropdown pull-right">
                                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Options <span class="caret"></span></button>
                                                 <ul class="dropdown-menu">
-                                                  <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_service" data-id="<?=$services[$i]["service_id"]?>">Edit Service</a></li>
-                                                  <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_description" data-id="<?=$services[$i]["service_id"]?>">Edit Description</a></li>
+                                                  <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_service" data-id="<?=$services[$i]["service_id"]?>">Editar Servicio</a></li>
+                                                  <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_description" data-id="<?=$services[$i]["service_id"]?>">Editar Description</a></li>
                                                     <?php if( $services[$i]["service_type"] == 1 ): $type = "service-active"; else: $type = "service-deactive"; endif; ?>
                                                   <li><a href="<?php echo site_url("admin/services/".$type."/".$services[$i]["service_id"]) ?>"><?php if( $services[$i]["service_type"] == 1 ): echo "Activate Service"; else: echo "Disable Service"; endif; ?></a></li>
-                                                  <li><a href="<?php echo site_url("admin/services/del_price/".$services[$i]["service_id"]) ?>">Reset Discounts</a></li>
-                                                  <li><a href="#"data-toggle="modal" data-target="#confirmChange" data-href="<?php echo site_url("admin/services/delete/".$services[$i]["service_id"]) ?>">delete service</a></li>
+                                                  <li><a href="<?php echo site_url("admin/services/del_price/".$services[$i]["service_id"]) ?>">Resetear Descuentos</a></li>
+                                                  <li><a href="#"data-toggle="modal" data-target="#confirmChange" data-href="<?php echo site_url("admin/services/delete/".$services[$i]["service_id"]) ?>">Eliminar Servicio</a></li>
                                                      
                                                 </ul>
                                               </div>
@@ -250,7 +250,7 @@
  <div class="modal-dialog modal-dialog-center" role="document">
    <div class="modal-content">
      <div class="modal-body text-center">
-       <h4>Do you approve the transaction??</h4>
+       <h4>Estas seguro de continuar ?</h4>
        <div align="center">
          <a class="btn btn-primary" href="" id="confirmYes">Yes</a>
          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
