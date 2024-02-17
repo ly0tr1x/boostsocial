@@ -9,7 +9,7 @@
    <ul class="nav nav-tabs">
         <li class="p-b">
          <button class="btn btn-default" data-toggle="modal" data-target="#modalDiv" data-action="payment_new">
-         <span class="export-title">Add/Remove Balance</span>
+         <span class="export-title">Añadir/Quitar Saldo</span>
          </button>
       </li>
       
@@ -19,7 +19,7 @@
                <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Search..">
                <span class="input-group-btn search-select-wrap">
                   <select class="form-control search-select" name="search_type">
-                     <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Username</option>
+                     <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Usuario</option>
                   </select>
                   <button type="submit" class="btn btn-default"><span class="fa fa-search" aria-hidden="true"></span></button>
                </span>
@@ -36,14 +36,14 @@
       <thead>
          <tr>
             <th class="p-l">ID</th>
-            <th>User</th>
-            <th>Old Balance</th>
-            <th>Amount</th>
-            <th>Payment method</th>
-            <th>Status</th>
-            <th>Mode</th>
-            <th>Note</th>
-            <th>Creation Date</th>
+            <th>Usuario</th>
+            <th>Saldo Anterior</th>
+            <th>Monto</th>
+            <th>Metodo Pago</th>
+            <th>Estado</th>
+            <th>Modo</th>
+            <th>Notas</th>
+            <th>Fecha</th>
             <th>Date of arrangement</th>
             <th></th>
          </tr>
@@ -64,12 +64,12 @@
                  <td nowrap=""><?php echo $payment["payment_update_date"] ?></td>
                  <td class="service-block__action">
                    <div class="dropdown pull-right">
-                     <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Transactions<span class="caret"></span></button>
+                     <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Transacciones<span class="caret"></span></button>
                      <ul class="dropdown-menu">
                      <?php if( $payment["payment_mode"] == "Otomatik" ): ?>
-                       <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="payment_detail" data-id="<?php echo $payment["payment_id"] ?>">Payment details</a></li>
+                       <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="payment_detail" data-id="<?php echo $payment["payment_id"] ?>">Detalles</a></li>
                      <?php endif; ?>
-                       <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="payment_edit" data-id="<?php echo $payment["payment_id"] ?>">Edit</a></li>
+                       <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="payment_edit" data-id="<?php echo $payment["payment_id"] ?>">Editar</a></li>
                      </ul>
                    </div>
                  </td>
