@@ -838,15 +838,30 @@ obtenerDatos();
 // setInterval(obtenerDatos, 000); // Intervalo en milisegundos (5000ms = 5 segundos)
 </script>
 <script>
-	
-
-
-
-       
-
-
-
+  function obtenerValor(boton) {
+    // Obtener la fila actual
+    var fila = boton.parentNode.parentNode;
+    
+    // Obtener el checkbox en la misma fila
+    var checkbox = fila.querySelector('input[type="checkbox"]');
+    
+    // Obtener el valor del checkbox
+    var valor = checkbox.value;
+    
+    // Mostrar el valor (solo para propósitos de demostración)
+    alert("El valor del checkbox es: " + valor);
+  }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var botones = document.querySelectorAll('.btnEditar');
+    botones.forEach(function(boton) {
+      boton.addEventListener('click', function() {
+        obtenerValor(this);
+      });
+    });
+  });
 </script>
+
 <script>
 $(document).ready(function() {
     $('#eliminarFilas').on('click', function() {
@@ -1010,21 +1025,7 @@ btnAgregarVenta.addEventListener('click', function(event) {
 
 
 
-$(document).ready(function() {
-    $('.btnEditar edit').click(function() {
-      // Obtener la fila actual
-      var fila = $(this).closest('tr');
-      
-      // Obtener el checkbox en la misma fila
-      var checkbox = fila.find('input[type="checkbox"]');
-      
-      // Obtener el valor del checkbox
-      var valor = checkbox.val();
-      
-      // Mostrar el valor (solo para propósitos de demostración)
-      alert("El valor del checkbox es: " + valor);
-    });
-  });
+
 
 </script>
 
