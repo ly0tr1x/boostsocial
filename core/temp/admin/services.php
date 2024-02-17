@@ -194,6 +194,7 @@
     <?php 
     if ($services[$i]["service_type"] == 1) {
         echo "Caido ";
+        echo '<span class="round-span red" title="Servicio caido"></span>';
 
     } else {
         echo "Activo";
