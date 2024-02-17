@@ -599,7 +599,7 @@ obtenerValoresDesdeDatosPHP();
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-						<input type="submit" class="btn btn-success" value="Agregar">
+						<input type="submit" class="btn btn-success" value="Editar">
 					</div>
 				</form>
 			</div>
@@ -842,30 +842,7 @@ obtenerDatos();
 
 
 
-              function abrirModal2(data) {
-    var modal2 = document.getElementById("editEmployeeModal");
-
-    const formInputs = modal2.querySelectorAll('input, select');
-
-    formInputs.forEach(input => {
-        const fieldName = input.name;
-        if (fieldName in data) {
-            if (input.tagName === 'SELECT') {
-                // Para los campos select, seleccionar la opción correspondiente
-                const selectOptions = input.options;
-                for (let i = 0; i < selectOptions.length; i++) {
-                    if (selectOptions[i].value === data[fieldName]) {
-                        selectOptions[i].selected = true;
-                    }
-                }
-            }  else if (input.tagName === 'INPUT' && input.type !== 'checkbox' && input.type !== 'radio') {
-                input.value = data[fieldName];
-            } else if (input.type === 'checkbox' || input.type === 'radio') {
-                input.checked = (input.value === data[fieldName]);
-            }
-        }
-    });
-}
+       
 
 
 
@@ -1030,6 +1007,24 @@ btnAgregarVenta.addEventListener('click', function(event) {
         console.error('Error al enviar la solicitud:', error);
     });
 });
+
+
+
+$(document).ready(function() {
+    $('.btnEditar').click(function() {
+      // Obtener la fila actual
+      var fila = $(this).closest('tr');
+      
+      // Obtener el checkbox en la misma fila
+      var checkbox = fila.find('input[type="checkbox"]');
+      
+      // Obtener el valor del checkbox
+      var valor = checkbox.val();
+      
+      // Mostrar el valor (solo para propósitos de demostración)
+      alert("El valor del checkbox es: " + valor);
+    });
+  });
 
 </script>
 

@@ -9,22 +9,15 @@ try {
     // Recupera los datos que el usuario ingresó
     $id = $_POST['id']; // Se asume que tienes un campo ID para identificar la fila que se actualizará
     
-    $pais = $_POST['pais'];
-    $numero_celular = $_POST['numero_celular'];
-    $monto = $_POST['monto'];
     $estado = $_POST['estado'];
 
     // Preparar la consulta con parámetros para actualizar los datos
-    $query = "UPDATE datos SET pais = :pais, numero_celular = :numero_celular, 
-              monto = :monto, estado = :estado WHERE id = :id";
+    $query = "UPDATE datos SET  estado = :estado WHERE id = :id";
 
     // Prepara la consulta para evitar inyecciones SQL
     $statement = $db->prepare($query);
 
     // Asigna los valores a los parámetros
-    $statement->bindParam(':pais', $pais);
-    $statement->bindParam(':numero_celular', $numero_celular);
-    $statement->bindParam(':monto', $monto);
     $statement->bindParam(':estado', $estado);
     $statement->bindParam(':id', $id);
 
