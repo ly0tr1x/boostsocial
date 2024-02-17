@@ -861,7 +861,7 @@ obtenerDatos();
               function abrirModal2(data) {
     var modal2 = document.getElementById("editEmployeeModal");
 
-    const formInputs = modal2.querySelectorAll('input, select, textarea');
+    const formInputs = modal2.querySelectorAll('input, select');
 
     formInputs.forEach(input => {
         const fieldName = input.name;
@@ -874,9 +874,7 @@ obtenerDatos();
                         selectOptions[i].selected = true;
                     }
                 }
-            } else if (input.tagName === 'TEXTAREA') {
-                input.value = data[fieldName];
-            } else if (input.tagName === 'INPUT' && input.type !== 'checkbox' && input.type !== 'radio') {
+            }  else if (input.tagName === 'INPUT' && input.type !== 'checkbox' && input.type !== 'radio') {
                 input.value = data[fieldName];
             } else if (input.type === 'checkbox' || input.type === 'radio') {
                 input.checked = (input.value === data[fieldName]);
