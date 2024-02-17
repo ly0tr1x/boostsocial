@@ -70,9 +70,9 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                                   <?php if( $ticketMessage[0]["canmessage"] == 2 ): ?>
-                                    <li> <a href="<?php echo site_url("admin/tickets/lock/".$ticketMessage[0]["ticket_id"]) ?>"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock ticket">Lock And Close Request</a>
+                                    <li> <a href="<?php echo site_url("admin/tickets/lock/".$ticketMessage[0]["ticket_id"]) ?>"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock ticket">Bloquear y cerrar ticket</a>
                                  </li>  <?php else: ?>
-                                     <li><a href="<?php echo site_url("admin/tickets/unlock/".$ticketMessage[0]["ticket_id"]) ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Unlock support ticket">Unlock Claim</a>
+                                     <li><a href="<?php echo site_url("admin/tickets/unlock/".$ticketMessage[0]["ticket_id"]) ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Unlock support ticket">Desbloquear ticket</a>
                                 </li>   <?php endif; ?>
                                                                             </ul>
                                                             </div>
