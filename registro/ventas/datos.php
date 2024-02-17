@@ -439,6 +439,7 @@ obtenerValoresDesdeDatosPHP();
 							
 							<a href="#deleteEmployeeModal" class="btn btn-danger"  data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Borrar</span></a>	
 							<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Ventas</span></a>
+                            
 						</div>
 					</div>
 				</div>
@@ -782,14 +783,14 @@ tr.appendChild(checkboxTd);
                 
 
                // Crea el td para los botones
-//const botonesTd = document.createElement('td');
+const botonesTd = document.createElement('td');
 
 // Crea los botones
-//const editAnchor = document.createElement('a');
-//editAnchor.href = "#editEmployeeModal";
-//editAnchor.classList.add('btnEditar', 'edit');
-//editAnchor.setAttribute('data-toggle', 'modal');
-//editAnchor.innerHTML = '<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>';
+const editAnchor = document.createElement('a');
+editAnchor.href = "#editEmployeeModal";
+editAnchor.classList.add('btnEditar', 'edit');
+editAnchor.setAttribute('data-toggle', 'modal');
+editAnchor.innerHTML = '<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>';
 
 
     //       const deleteAnchor = document.createElement('a');
@@ -807,12 +808,12 @@ tr.appendChild(checkboxTd);
 
 
 // Añade los botones al td
-//botonesTd.appendChild(editAnchor);
+botonesTd.appendChild(editAnchor);
 //botonesTd.appendChild(deleteAnchor);
 //botonesTd.appendChild(viewNotes);
 
 // Añade el td a la fila
-//tr.appendChild(botonesTd);
+tr.appendChild(botonesTd);
       // Añade el tr al tbody
       tbody.appendChild(tr);
       
