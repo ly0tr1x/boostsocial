@@ -1011,7 +1011,7 @@ btnAgregarVenta.addEventListener('click', function(event) {
 
 
 $(document).ready(function() {
-    $('.btnEditar').click(function() {
+    $('.btnEditar edit').click(function() {
       // Obtener la fila actual
       var fila = $(this).closest('tr');
       
