@@ -50,10 +50,10 @@
 <ul id='navResponsive' class='nav navbar-nav navbar-left-block'>
 <?php if( $user['access']['admin_access']  && $_SESSION['neira_adminlogin']  ): ?>
 <?php if( $user['access']['users'] ): ?>
-<li class='<?php if( route(1) == 'clients' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/clients') ?>'>Users</a></li>
+<li class='<?php if( route(1) == 'clients' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/clients') ?>'>Usuarios</a></li>
 <?php endif; ?>  
 <?php if( $user['access']['orders'] ): ?>    
-<li class='<?php if( route(1) == 'orders' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/orders') ?>'>Orders</a></li>
+<li class='<?php if( route(1) == 'orders' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/orders') ?>'>Ordenes</a></li>
 <?php endif; ?>
 <?php if( $user['access']['subscriptions'] ): 
 
@@ -77,7 +77,7 @@ $a5 = countRow(['table'=>'services','where'=>['service_package'=>15]]);?>
  
  
       <li class="" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tasks <span class='badge' style='background-color: #6d47bb'><?=countRow(['table'=>'tasks','where'=>['task_status'=>'pending']]);?></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Tareas <span class='badge' style='background-color: #6d47bb'><?=countRow(['table'=>'tasks','where'=>['task_status'=>'pending']]);?></span></a>
               <ul class="dropdown-menu dropdown-max-height">
 			 
    <li class='<?php if( route(1) == 'refill_status' ): echo 'active'; endif; ?>'>
@@ -88,7 +88,7 @@ $a5 = countRow(['table'=>'services','where'=>['service_package'=>15]]);?>
              </a>
             </li>
             
-             <li><a href="<?php echo site_url('admin/tasks') ?>">Cancel                     <span class='badge' style='background-color: #6d47bb'>
+             <li><a href="<?php echo site_url('admin/tasks') ?>">Cancelar                   <span class='badge' style='background-color: #6d47bb'>
                         <?=countRow(['table'=>'tasks','where'=>['task_status'=>'pending']]);?>
                     </span></a></li>
            
@@ -100,13 +100,13 @@ $a5 = countRow(['table'=>'services','where'=>['service_package'=>15]]);?>
 
 
 <?php if( $user['access']['services'] ): ?>    
-<li class='<?php if( route(1) == 'services' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/services') ?>'>Services</a></li>
+<li class='<?php if( route(1) == 'services' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/services') ?>'>Servicios</a></li>
 <?php endif; ?>  
 <?php if( $user['access']['payments'] ): ?>
-<li class='<?php if( route(1) == 'payments' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/payments') ?>'> Payments <?php if(countRow(['table'=>'payments','where'=>['payment_method'=>7,'payment_status'=>1]])): ?><span class='badge' style='background-color: #6d47bb'><?=countRow(['table'=>'payments','where'=>['payment_method'=>7,'payment_status'=>1]]);?></span> <?php endif; ?></a></li>
+<li class='<?php if( route(1) == 'payments' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/payments') ?>'> Pagos <?php if(countRow(['table'=>'payments','where'=>['payment_method'=>7,'payment_status'=>1]])): ?><span class='badge' style='background-color: #6d47bb'><?=countRow(['table'=>'payments','where'=>['payment_method'=>7,'payment_status'=>1]]);?></span> <?php endif; ?></a></li>
 <?php endif; ?>     
 <?php if( $user['access']['tickets'] ): ?>       
-<li class='<?php if( route(1) == 'tickets' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/tickets') ?>'>Support <?php if( countRow(['table'=>'tickets','where'=>['client_new'=>2]]) ): ?> <span class='badge' style='background-color: #6d47bb'><?=countRow(['table'=>'tickets','where'=>['client_new'=>2]]);?></span><?php endif; ?> </a></li>
+<li class='<?php if( route(1) == 'tickets' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/tickets') ?>'>Soporte <?php if( countRow(['table'=>'tickets','where'=>['client_new'=>2]]) ): ?> <span class='badge' style='background-color: #6d47bb'><?=countRow(['table'=>'tickets','where'=>['client_new'=>2]]);?></span><?php endif; ?> </a></li>
 <?php endif; ?>
 
 <?php if( $settings['panel_selling'] == 2 || countRow(['table'=>'child_panels','where'=>['panel_status'=>'active']])): ?>
@@ -121,33 +121,33 @@ $a5 = countRow(['table'=>'services','where'=>['service_package'=>15]]);?>
 <?php endif; ?>
 
 
-<li class='<?php if( route(1) == 'appearance' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/appearance') ?>'>Appearance</a></li> 
+<li class='<?php if( route(1) == 'appearance' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/appearance') ?>'>Apariencia</a></li> 
 
 
 
 <li class="" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Additionals <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Adicional <span class="caret"></span></a>
               <ul class="dropdown-menu dropdown-max-height">
 				 
 				 
 				 
 				 <li class="<?php if (route(1) == "broadcasts") : echo 'active';
-                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/broadcasts") ?>"><span> Broadcasts</span></a>
+                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/broadcasts") ?>"><span> Anuncios</span></a>
                 </li>
                 
                  <li class="<?php if (route(1) == "update-prices") : echo 'active';
-                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/update-prices") ?>"><span>Update Prices</span></a>
+                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/update-prices") ?>"><span>Actualizar precios</span></a>
                 </li>
                 
 				 <li class="<?php if (route(1) == "kuponlar") : echo 'active';
-                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/kuponlar") ?>"><span> Coupon Code</span></a>
+                        endif; ?>"><a class="ajax-link" href="<?php echo site_url("admin/kuponlar") ?>"><span> Cupones</span></a>
                 </li>
                 
                
 				 
 
 <?php if( $user['access']['reports'] ): ?>
-<li class='<?php if( route(1) == 'reports' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/reports') ?>'>Reports</a></li> 
+<li class='<?php if( route(1) == 'reports' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/reports') ?>'>Reportes</a></li> 
 
 
 
@@ -164,7 +164,7 @@ $a5 = countRow(['table'=>'services','where'=>['service_package'=>15]]);?>
 
 
 
-<li class='<?php if( route(1) == 'settings' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/settings') ?>'>Settings</a></li>
+<li class='<?php if( route(1) == 'settings' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/settings') ?>'>Ajustes</a></li>
 
 
 
@@ -228,9 +228,9 @@ endif;
               <ul class="dropdown-menu dropdown-max-height">
 				
                
-				   <li class='<?php if( route(1) == 'account' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/account') ?>'>Admin Account</a></li>
+				   <li class='<?php if( route(1) == 'account' ): echo 'active'; endif; ?>'><a href='<?php echo site_url('admin/account') ?>'>Admin Cuenta</a></li>
 				   
-            <li><a href='<?php echo site_url('logout') ?>'>Log Out </a></li></ul>
+            <li><a href='<?php echo site_url('logout') ?>'>Cerrar sesion </a></li></ul>
 
 
 
