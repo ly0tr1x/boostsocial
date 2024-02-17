@@ -7,25 +7,25 @@
           <div class="alert alert-danger "><?php echo $errorText; ?></div>
         <?php endif; ?>
    <ul class="nav nav-tabs p-b">
-     <li class="<?php if( $status == "all"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders")?>">All Orders<span class="badge" style="background-color: #808080"><?php echo countRow(["table"=>"orders"]) ?></span></a></li>
-     <li class="<?php if( $status == "cronpending"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/cronpending")?>">Waiting <span class="badge" style="background-color: #808080"><?php if($cronpendingcount): echo $cronpendingcount; endif; ?></span></a></li>
-     <li class="<?php if( $status == "pending"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/pending")?>">Pending<span class="badge" style="background-color: #808080"><?php if($pendingcount): echo $pendingcount; endif; ?></span></a></li>
-               <li class="<?php if( $status == "processing"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/processing")?>">Processing<span class="badge" style="background-color: #808080"><?php if($processingcount): echo $processingcount; endif; ?></span></a></li>
-     <li class="<?php if( $status == "inprogress"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/inprogress")?>">Inprogress<span class="badge" style="background-color: #808080"><?php if($inprogresscount): echo $inprogresscount; endif; ?></span></a></li>
-     <li class="<?php if( $status == "completed"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/completed")?>">Completed<span class="badge" style="background-color: #808080"><?php if($completedcount): echo $completedcount; endif; ?></span></a></li>
-     <li class="<?php if( $status == "partial"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/partial")?>">Partial<span class="badge" style="background-color: #808080"><?php if($partialcount): echo $partialcount; endif; ?></span></a></li>
-     <li class="<?php if( $status == "canceled"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/canceled")?>">Cancelled<span class="badge" style="background-color: #808080"><?php if($canceledcount): echo $canceledcount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "all"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders")?>">Todas<span class="badge" style="background-color: #808080"><?php echo countRow(["table"=>"orders"]) ?></span></a></li>
+     <li class="<?php if( $status == "cronpending"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/cronpending")?>">En Espera <span class="badge" style="background-color: #808080"><?php if($cronpendingcount): echo $cronpendingcount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "pending"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/pending")?>">Pendiente<span class="badge" style="background-color: #808080"><?php if($pendingcount): echo $pendingcount; endif; ?></span></a></li>
+               <li class="<?php if( $status == "processing"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/processing")?>">Procesando<span class="badge" style="background-color: #808080"><?php if($processingcount): echo $processingcount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "inprogress"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/inprogress")?>">En Progreso<span class="badge" style="background-color: #808080"><?php if($inprogresscount): echo $inprogresscount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "completed"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/completed")?>">Completada<span class="badge" style="background-color: #808080"><?php if($completedcount): echo $completedcount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "partial"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/partial")?>">Parcial<span class="badge" style="background-color: #808080"><?php if($partialcount): echo $partialcount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "canceled"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/canceled")?>">Cancelada<span class="badge" style="background-color: #808080"><?php if($canceledcount): echo $canceledcount; endif; ?></span></a></li>
 
-     <li class="<?php if( $status == "fail"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/fail")?>">Failed <span class="badge" style="background-color: #8b3a3a"><?php if($failCount): echo $failCount; endif; ?></span></a></li>
+     <li class="<?php if( $status == "fail"): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/fail")?>">Fallida <span class="badge" style="background-color: #8b3a3a"><?php if($failCount): echo $failCount; endif; ?></span></a></li>
       <li class="pull-right custom-search">
          <form class="form-inline" action="<?=site_url("admin/orders")?>" method="get">
             <div class="input-group">
-               <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Search orders...">
+               <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Buscar ordenes...">
                <span class="input-group-btn search-select-wrap">
                   <select class="form-control search-select" name="search_type">
                      <option value="order_id" <?php if( $search_where == "order_id" ): echo 'selected'; endif; ?> >ID</option>
                      <option value="order_url" <?php if( $search_where == "order_url" ): echo 'selected'; endif; ?> >Link</option>
-                     <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Username</option>
+                     <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Usuario</option>
                   </select>
                   <button type="submit" class="btn btn-default"><span class="fa fa-search" aria-hidden="true"></span></button>
                </span>
@@ -43,26 +43,26 @@
                </div>
                <div class="action-block">
                   <ul class="action-list">
-                     <li><span class="countOrders"></span> order selected</li>
+                     <li><span class="countOrders"></span> Ordenes Seleccionadas</li>
                      <li>
                         <div class="dropdown">
                            <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown"> batch operations <span class="caret"></span></button>
                            <ul class="dropdown-menu">
                               <li>
                                  <?php if( $status  ==  "inprogress"  || $status  ==  "processing"  ): ?>
-                                 <a class="bulkorder" data-type="pending">Pending</a>
+                                 <a class="bulkorder" data-type="pending">Pendiente</a>
                                  <?php endif; ?>
                                  <?php if( $status  ==  "pending"  || $status  ==  "processing"  ): ?>
-                                 <a class="bulkorder" data-type="inprogress">Inprogress</a>
+                                 <a class="bulkorder" data-type="inprogress">En Progreso</a>
                                  <?php endif; ?>
                                  <?php if( $status  ==  "pending" || $status  ==  "inprogress"  || $status  ==  "processing" ||  $status  ==  "fail" ): ?>
-                                 <a class="bulkorder" data-type="completed">Completed</a>
+                                 <a class="bulkorder" data-type="completed">Completada</a>
                                  <?php endif; ?>
                                  <?php if( $status  ==  "all" ||status  ==  "pending" || $status  ==  "inprogress"  || $status  ==  "completed"  || $status  ==  "processing" || $status  ==  "partial" || $status  ==  "fail" ): ?>
-                                 <a class="bulkorder" data-type="canceled">Cancel and Refund</a>
+                                 <a class="bulkorder" data-type="canceled">Cancelar</a>
                                  <?php endif; ?>
                                  <?php if( $status  ==  "fail" ): ?>
-                                 <a class="bulkorder" data-type="resend">Resend</a>
+                                 <a class="bulkorder" data-type="resend">Reenviar</a>
                                 <?php endif; ?>
                               </li>
                            </ul>
@@ -72,34 +72,34 @@
                </div>
             </th>
             <th>ID</th>
-            <th>Username</th>
-            <th>Fee</th>
+            <th>Usuario</th>
+            <th>Costo</th>
             <th>Link</th>
-            <th>Start count</th>
-            <th>Quantity</th>
+            <th> Al Iniciar</th>
+            <th>Cantidad</th>
             <th class="dropdown-th">
               <div class="dropdown">
                 <button class="btn btn-th btn-default dropdown-toggle" data-active="<?=$_GET["service_id"]?>" type="button" id="serviceList" data-href="admin/orders/counter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Service
+                Servicio
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="serviceListContent" style="max-height: 275px; overflow:hidden; overflow-y: scroll">
                 </ul>
               </div>
             </th>
-            <th>Order status</th>
-            <th>Remains</th>
-            <th>Order date</th>
+            <th> Estado</th>
+            <th>Faltan</th>
+            <th>Fecha</th>
             <th width="10%" class="dropdown-th">
               <div class="dropdown">
                 <button class="btn btn-th btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                mode
+                Modo
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li class="<?php if( !$_GET["mode"] ): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/".$status)?>">all</a></li>
                     <li class="<?php if( $_GET["mode"] == "manuel" ): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/".$status)?>?mode=manuel">Manual</a></li>
-                    <li class="<?php if( $_GET["mode"] == "auto" ): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/".$status)?>?mode=auto">Automatic</a></li>
+                    <li class="<?php if( $_GET["mode"] == "auto" ): echo "active"; endif; ?>"><a href="<?=site_url("admin/orders/1/".$status)?>?mode=auto">Automatico</a></li>
                 </ul>
               </div>
             </th>
@@ -139,35 +139,35 @@
                  <td><?php if( $order["api_service"] == 0 ): echo "Manuel"; else: echo "Automatic"; endif; ?></td>
                  <td class="service-block__action">
                    <div class="dropdown pull-right">
-                     <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Options<span class="caret"></span></button>
+                     <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Opciones<span class="caret"></span></button>
                      <ul class="dropdown-menu">
                        <?php if( $order["order_error"] != "-" && $order["service_api"] != 0 ): ?>
-                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_errors" data-id="<?php echo $order["order_id"] ?>">Perpetrator Detail</a></li>
+                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_errors" data-id="<?php echo $order["order_id"] ?>">Detalles Proveedor</a></li>
                          <li><a href="<?=site_url("admin/orders/order_resend/".$order["order_id"])?>">Send again</a></li>
                        <?php endif; ?>
                        <?php if( $order["order_error"] == "-" && $order["service_api"] != 0 ): ?>
-                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_details" data-id="<?php echo $order["order_id"] ?>">Order detail</a></li>
+                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_details" data-id="<?php echo $order["order_id"] ?>">Orden Detail</a></li>
                        <?php endif; ?>
                        <?php if( $order["service_api"] == 0 || $order["order_error"] != "-"  ): ?>
-                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_orderurl" data-id="<?php echo $order["order_id"] ?>">Edit Order Link</a></li>
+                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_orderurl" data-id="<?php echo $order["order_id"] ?>">Editar Link</a></li>
                        <?php endif; ?>
                        <?php if( $order["service_api"] == 0): ?>
-                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_startcount" data-id="<?php echo $order["order_id"] ?>">Edit Start Count</a></li>
+                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_startcount" data-id="<?php echo $order["order_id"] ?>">Editar conteo inicil</a></li>
                        <?php endif; ?>
                        <?php if( $order["order_status"] != "partial"): ?>
-                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_partial" data-id="<?php echo $order["order_id"] ?>">Edit Remaining Amount</a></li>
+                         <li><a href="#"  data-toggle="modal" data-target="#modalDiv" data-action="order_partial" data-id="<?php echo $order["order_id"] ?>">Editar cantidad faltante</a></li>
                        <?php endif; ?>
                        <li class="dropdown dropdown-submenu">
-                          <a  class="dropdown_menu">Change Order Status</a>
+                          <a  class="dropdown_menu">Cambiar Estado</a>
                           <ul class="dropdown-menu submenu_drop">
                             <?php if( $order["order_status"]  ==  "pending" || $order["order_status"]  ==  "inprogress" || $order["order_status"]  ==  "completed"  || $order["order_status"]  ==  "processing" || $order["order_status"]  ==  "partial" || $order["order_status"]  ==  "fail" ): ?>
-                              <li><a href="#" data-toggle="modal" data-target="#confirmChange" data-href="<?=site_url("admin/orders/order_cancel/".$order["order_id"])?>">Cancel</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#confirmChange" data-href="<?=site_url("admin/orders/order_cancel/".$order["order_id"])?>">Cancelar</a></li>
                             <?php endif; ?>
                             <?php if( $order["order_status"]  ==  "pending" || $order["order_status"]  ==  "inprogress"  || $order["order_status"]  ==  "processing" || $order["order_status"]  ==  "fail" ): ?>
-                              <li><a href="#" data-toggle="modal" data-target="#confirmChange" data-href="<?=site_url("admin/orders/order_complete/".$order["order_id"])?>">Completed</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#confirmChange" data-href="<?=site_url("admin/orders/order_complete/".$order["order_id"])?>">Completar</a></li>
                             <?php endif; ?>
                             <?php if( $order["order_status"]  ==  "pending"  || $order["order_status"]  ==  "processing"  ): ?>
-                              <li><a href="#" data-toggle="modal" data-target="#confirmChange" data-href="<?=site_url("admin/orders/order_inprogress/".$order["order_id"])?>">Inprogress</a></li>
+                              <li><a href="#" data-toggle="modal" data-target="#confirmChange" data-href="<?=site_url("admin/orders/order_inprogress/".$order["order_id"])?>">En Progreso</a></li>
                             <?php endif; ?>
                           </ul>
                         </li>
@@ -213,9 +213,9 @@
    <div class="modal-dialog modal-dialog-center" role="document">
       <div class="modal-content">
          <div class="modal-body text-center">
-            <h4>Do you confirm the transaction?</h4>
+            <h4>Estas seguro de proceder ?</h4>
             <div align="center">
-               <a class="btn btn-primary" href="" id="confirmYes">Yes</a>
+               <a class="btn btn-primary" href="" id="confirmYes">Si</a>
                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
             </div>
          </div>
