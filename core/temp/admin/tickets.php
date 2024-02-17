@@ -7,15 +7,15 @@
           <div class="alert alert-danger "><?php echo $errorText; ?></div>
         <?php endif; ?>
    <ul class="nav nav-tabs">
-      <li class="p-b"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalDiv" data-action="new_ticket">Create New Support Request</button></li>
+      <li class="p-b"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalDiv" data-action="new_ticket">Crear nuevo ticket</button></li>
       <li class="pull-right custom-search">
          <form class="form-inline" action="" method="get">
             <div class="input-group">
                <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Search Request...">
                <span class="input-group-btn search-select-wrap">
                   <select class="form-control search-select" name="search_type">
-                     <option value="subject" <?php if( $search_where == "subject" ): echo 'selected'; endif; ?> >Subject</option>
-                     <option value="client" <?php if( $search_where == "client" ): echo 'selected'; endif; ?> >Username</option>
+                     <option value="subject" <?php if( $search_where == "subject" ): echo 'selected'; endif; ?> >Asunto</option>
+                     <option value="client" <?php if( $search_where == "client" ): echo 'selected'; endif; ?> >Usuario</option>
                   </select>
                   <button type="submit" class="btn btn-default"><span class="fa fa-search" aria-hidden="true"></span></button>
                </span>
@@ -25,11 +25,11 @@
       <li class="pull-right export-li">
           <?php if($_GET["search"] == 'unread'){ ?>
          <a href="<?=site_url("admin/tickets")?>" class="export">
-         <span class="export-title">Show all of them</span>
+         <span class="export-title">Mostrar todos</span>
          </a>
          <?php }else{ ?>
                       <a href="<?=site_url("admin/tickets")?>?search=unread" class="export">
-         <span class="export-title">Show Unread</span>
+         <span class="export-title">Mostrar no leidos</span>
          </a>
              
         <?php } ?>
@@ -51,13 +51,13 @@
                            <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown"> batch operations<span class="caret"></span></button>
                            <ul class="dropdown-menu">
                               <li>
-                                 <a class="bulkorder" data-type="unread">Make All Unread</a>
-                                 <a class="bulkorder" data-type="readed">Make All Read</a>
-                                 <a class="bulkorder" data-type="lock">Lock All</a>
-                                 <a class="bulkorder" data-type="unlock">Unlock All</a>
-                                 <a class="bulkorder" data-type="close">Close All</a>
-                                 <a class="bulkorder" data-type="pending">Put All On Hold</a>
-                                 <a class="bulkorder" data-type="answered">Make All Answered</a>
+                                 <a class="bulkorder" data-type="unread">Marcar todos no leidos</a>
+                                 <a class="bulkorder" data-type="readed">Marcar todos leidos</a>
+                                 <a class="bulkorder" data-type="lock">Bloquear todos</a>
+                                 <a class="bulkorder" data-type="unlock">Desbloquear todos</a>
+                                 <a class="bulkorder" data-type="close">Cerrar Todos</a>
+                                 <a class="bulkorder" data-type="pending">Colocar todos en espera</a>
+                                 <a class="bulkorder" data-type="answered">Marcar todos como resueltos</a>
                               </li>
                            </ul>
                         </div>
@@ -66,23 +66,23 @@
                </div>
             </th>
             <th width="5%" class="p-l">ID</th>
-            <th width="15%">Username</th>
-            <th width="50%">Subject</th>
+            <th width="15%">Usuario</th>
+            <th width="50%">Asunto</th>
             <th width="10%" class="dropdown-th">
                <div class="dropdown">
                   <button class="btn btn-th btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                   Status <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                     <li class="active"><a href="<?=site_url("admin/tickets")?>">All (<?=countRow(["table"=>"tickets"]);?>)</a></li>
-                     <li><a href="<?=site_url("admin/tickets")?>?status=pending">pending (<?=countRow(["table"=>"tickets","where"=>["status"=>"pending"]]);?>)</a></li>
-                     <li><a href="<?=site_url("admin/tickets")?>?status=answered">Answered (<?=countRow(["table"=>"tickets","where"=>["status"=>"answered"]]);?>)</a></li>
-                     <li><a href="<?=site_url("admin/tickets")?>?status=closed">It is closed (<?=countRow(["table"=>"tickets","where"=>["status"=>"closed"]]);?>)</a></li>
+                     <li class="active"><a href="<?=site_url("admin/tickets")?>">Todos (<?=countRow(["table"=>"tickets"]);?>)</a></li>
+                     <li><a href="<?=site_url("admin/tickets")?>?status=pending">Pendiente (<?=countRow(["table"=>"tickets","where"=>["status"=>"pending"]]);?>)</a></li>
+                     <li><a href="<?=site_url("admin/tickets")?>?status=answered">Resuelto (<?=countRow(["table"=>"tickets","where"=>["status"=>"answered"]]);?>)</a></li>
+                     <li><a href="<?=site_url("admin/tickets")?>?status=closed">Cerrado (<?=countRow(["table"=>"tickets","where"=>["status"=>"closed"]]);?>)</a></li>
                   </ul>
                </div>
             </th>
-            <th width="10%">Creation Date</th>
-            <th width="10%" nowrap="">Last Updated</th>
+            <th width="10%">Fecha</th>
+            <th width="10%" nowrap="">Ultima Actualizacion</th>
             <th></th>
          </tr>
       </thead>
@@ -99,18 +99,18 @@
                  <td nowrap=""><?php echo $ticket["lastupdate_time"] ?></td>
                  <td class="service-block__action">
                    <div class="dropdown pull-right">
-                     <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Transactions <span class="caret"></span></button>
+                     <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Transacciones <span class="caret"></span></button>
                      <ul class="dropdown-menu">
                        <?php if( $ticket["client_new"] == 1 ): ?>
-                         <li><a href="<?php echo site_url("admin/tickets/unread/".$ticket["ticket_id"]) ?>">Make Unread</a></li>
+                         <li><a href="<?php echo site_url("admin/tickets/unread/".$ticket["ticket_id"]) ?>">Marcar no leido</a></li>
                        <?php elseif($ticket["client_new"] == 2): ?>
-                         <li><a href="<?php echo site_url("admin/tickets/readed/".$ticket["ticket_id"]) ?>">Make Read</a></li>
+                         <li><a href="<?php echo site_url("admin/tickets/readed/".$ticket["ticket_id"]) ?>">Marcar Leido </a></li>
                        <?php endif; if( $ticket["canmessage"] == 2 ): ?>
-                         <li><a href="<?php echo site_url("admin/tickets/lock/".$ticket["ticket_id"]) ?>">Lock</a></li>
+                         <li><a href="<?php echo site_url("admin/tickets/lock/".$ticket["ticket_id"]) ?>">Bloquear</a></li>
                        <?php else: ?>
-                         <li><a href="<?php echo site_url("admin/tickets/unlock/".$ticket["ticket_id"]) ?>">Unlock</a></li>
+                         <li><a href="<?php echo site_url("admin/tickets/unlock/".$ticket["ticket_id"]) ?>">Desbloquear</a></li>
                        <?php endif; if( $ticket["status"] != "closed" ): ?>
-                         <li><a href="<?php echo site_url("admin/tickets/close/".$ticket["ticket_id"]) ?>">Close Request</a></li>
+                         <li><a href="<?php echo site_url("admin/tickets/close/".$ticket["ticket_id"]) ?>">Cerrar</a></li>
                        <?php endif; ?>
                      </ul>
                    </div>
@@ -151,7 +151,7 @@
    <div class="modal-dialog modal-dialog-center" role="document">
       <div class="modal-content">
          <div class="modal-body text-center">
-            <h4>Do you approve the transaction??</h4>
+            <h4>Estas seguro de continuar ?</h4>
             <div align="center">
                <a class="btn btn-primary" href="" id="confirmYes">Yes</a>
                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>

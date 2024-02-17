@@ -34,7 +34,7 @@
                                            echo'  <i class="fa fa-eye"></i> seen';
                                            } ?></span>
                <?php if( $ticketMessage[0]["canmessage"] == 1 ): ?>
-               <span class="badge"><i class="fa fa-lock"></i> Support request locked, User can't reply.</span>
+               <span class="badge"><i class="fa fa-lock"></i> Solicitud bloqueada, El usuario no podra responder.</span>
                <?php endif; ?>
                     <div class="ticket-header-id">ID: <?=$ticketMessage[0]["ticket_id"]?></div>
                 </div>
@@ -57,16 +57,16 @@
                            <input name="username" value="<?=$user["username"]?>" hidden>
                                  <div class="col-sm-6">
                                                     <button class="btn btn-primary" type="submit">
-                                                    Submit answer                            </button>
+                                                    Enviar  respuesta                            </button>
                                                                             <div class="btn-group">
                                                                               <?php  if( $ticketMessage[0]["status"] != "closed" ): ?>
                                 <a href="<?php echo site_url("admin/tickets/close/".$ticketMessage[0]["ticket_id"]) ?>" class="btn btn-default" data-toggle="modal">
-                                Close Request                                </a>
+                                Cerrar Ticket                                </a>
                                     <?php endif; ?>
                                                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                         <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
+                                        <span class="sr-only">Opciones</span>
                                     </button>
                                     <ul class="dropdown-menu">
                                                   <?php if( $ticketMessage[0]["canmessage"] == 2 ): ?>
@@ -80,7 +80,7 @@
                                 </form>                                    <div class="col-sm-6 ticket-header__unread">
                         <a href="<?php echo site_url("admin/tickets/unread/".$ticketMessage[0]["ticket_id"]) ?>"
                            class="btn btn-link ticket-btn__unread">
-                           Mark as Unread                        </a>
+                           Marcar no leido                        </a>
                     </div>
                             </div></div>
                            
@@ -107,7 +107,7 @@
                                     <div class="ticket-message__text"><?=$message["message"]?></div>
                                  </div>                                          
 
-<a data-toggle="modal" data-target="#modalDiv" data-action="edit_ticket" data-id="<?=$message['id']?>">Edit</a> • <a href="#"data-toggle="modal" data-target="#confirmChange" data-href="/admin/tickets/delete/<?=$message['id']?>/<?=$message['ticket_id']?>">delete</a>
+<a data-toggle="modal" data-target="#modalDiv" data-action="edit_ticket" data-id="<?=$message['id']?>">Editar</a> • <a href="#"data-toggle="modal" data-target="#confirmChange" data-href="/admin/tickets/delete/<?=$message['id']?>/<?=$message['ticket_id']?>">delete</a>
 
                               </div>
                               <?php else: ?>
@@ -144,9 +144,9 @@
  <div class="modal-dialog modal-dialog-center" role="document">
    <div class="modal-content">
      <div class="modal-body text-center">
-       <h4>Do you approve the transaction??</h4>
+       <h4>DConfirmar ?</h4>
        <div align="center">
-         <a class="btn btn-primary" href="" id="confirmYes">Yes</a>
+         <a class="btn btn-primary" href="" id="confirmYes">Si</a>
          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
        </div>
      </div>
