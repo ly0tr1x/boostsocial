@@ -551,7 +551,7 @@ obtenerValoresDesdeDatosPHP();
 	
 	
 	<!-- Edit Modal HTML -->
-	<!--<div id="editEmployeeModal" class="modal fade">
+	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="php/edit.php" method="post">
@@ -566,19 +566,8 @@ obtenerValoresDesdeDatosPHP();
 							<input type="number" class="form-control" id="id" name="id" required>
 						</div>
 					    					
-						<div class="form-group">
-							<label>Fecha</label>
-							<input type="date" class="form-control" id="fecha" name="fecha" required>
-						</div>
-						<div class="form-group">
-							<label>Tienda Online</label>
-							 <select class="form-control modal-select" id="tienda_online" name="tienda_online" >
-        <option value="Social Boost">Social Boost</option>
-        <option value="Elite Followers">Elite Followers</option>
-     
-
-      </select>
-						</div>
+						
+						
 						<div class="form-group">
 							<label>Pais</label>
 							<select class="form-control modal-select" id="pais" name="pais" >
@@ -596,61 +585,14 @@ obtenerValoresDesdeDatosPHP();
 							<input type="text" class="form-control" id="numero_celular" name="numero_celular" required>
 						</div>
 						
-						<div class="form-group">
-							<label>Red Social</label>
-									<select class="form-control modal-select" id="red_social" name="red_social" >
-        <option value="Facebook">Facebook</option>
-        <option value="Instagram">Instagram</option>
-             <option value="TikTok">TikTok</option>
-        <option value="Youtube">Youtube</option>
-        <option value="Twitter">Twitter</option>
-                <option value="Publicidad">Publicidad</option>
-                                                <option value="Panel">Panel</option>
-        <option value="Varios">Chile</option>
-
-
-      </select>
-						</div>	
 						
-						<div class="form-group">
-							<label>Servicios</label>
-									<select class="form-control modal-select" id="servicios" name="servicios" >
-        <option value="Seguidores">Seguidores</option>
-        <option value="Likes">Likes</option>
-             <option value="Vistas">Vistas</option>
-        <option value="Suscriptores">Suscriptores</option>
-        <option value="Promocion">Promocion</option>
-                <option value="Publicidad">Publicidad</option>
-                                <option value="Panel">Panel</option>
-        <option value="Varios">Chile</option>
-
-
-      </select>
-						</div>
 						
-						<div class="form-group">
-							<label>Cantidad</label>
-							<input type="number" class="form-control" id="cantidad" name="cantidad"  required>
-						</div>
 						
-							<div class="form-group">
-							<label>Enlace</label>
-							<input type="text" class="form-control" id="enlace" name="enlace"  required>
-						</div>
 						
-							<div class="form-group">
-							<label>Metodo de Pago</label>
-									<select class="form-control modal-select" id="metodo_pago" name="metodo_pago" >
-        <option value="Pichincha">Pichincha</option>
-        <option value="Yape/Plin">Yape/Plin</option>
-             <option value="Paypal">Paypal</option>
-        <option value="Binance">Binance</option>
-        <option value="Pago Movil">Pago Movil</option>
-                <option value="Banco Estado">Banco Estado</option>
-
-
-      </select>
-						</div>
+						
+							
+						
+						
 						
 						<div class="form-group">
 							<label>Monto</label>
@@ -667,10 +609,7 @@ obtenerValoresDesdeDatosPHP();
       </select>
 						</div>
 
-						<div class="form-group">
-							<label>Notas</label>
-							<textarea class="form-control" id="notas" name="notas" ></textarea>
-						</div>
+						
 						
 					</div>
 					<div class="modal-footer">
@@ -680,7 +619,7 @@ obtenerValoresDesdeDatosPHP();
 				</form>
 			</div>
 		</div>
-	</div>-->
+	</div>
 	
 	
 	<!-- Delete Modal HTML -->
