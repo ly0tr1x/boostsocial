@@ -569,22 +569,9 @@ obtenerValoresDesdeDatosPHP();
 					    					
 						
 						
-						<div class="form-group">
-							<label>Pais</label>
-							<select class="form-control modal-select" id="pais" name="pais" >
-        <option value="Venezuela">Venezuela</option>
-        <option value="Peru">Peru</option>
-             <option value="Ecuador">Ecuador</option>
-        <option value="Chile">Chile</option>
-
-
-      </select>
-						</div>
+					
 						
-							<div class="form-group">
-							<label>Numero Celular</label>
-							<input type="text" class="form-control" id="numero_celular" name="numero_celular" required>
-						</div>
+						
 						
 						
 						
@@ -595,10 +582,7 @@ obtenerValoresDesdeDatosPHP();
 						
 						
 						
-						<div class="form-group">
-							<label>Monto</label>
-							<input type="text" class="form-control" id="monto" name="monto" required>
-						</div>
+					
 						
 						
 							<div class="form-group">
