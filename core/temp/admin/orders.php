@@ -24,7 +24,7 @@
                <span class="input-group-btn search-select-wrap">
                   <select class="form-control search-select" name="search_type">
                      <option value="order_id" <?php if( $search_where == "order_id" ): echo 'selected'; endif; ?> >ID</option>
-                     <option value="order_url" <?php if( $search_where == "order_url" ): echo 'selected'; endif; ?> >Link</option>
+                     <option value="order_url" <?php if( $search_where == "order_url" ): echo 'selected'; endif; ?> >Enlace</option>
                      <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Usuario</option>
                   </select>
                   <button type="submit" class="btn btn-default"><span class="fa fa-search" aria-hidden="true"></span></button>
@@ -74,7 +74,7 @@
             <th>ID</th>
             <th>Usuario</th>
             <th>Costo</th>
-            <th>Link</th>
+            <th>Enlace</th>
             <th> Al Iniciar</th>
             <th>Cantidad</th>
             <th class="dropdown-th">
