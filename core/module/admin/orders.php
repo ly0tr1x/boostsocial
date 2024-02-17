@@ -199,22 +199,22 @@
       elseif( $error == "-" ):
         switch ($statu) {
           case 'pending':
-            $statu  = "Your order has been taken";
+            $statu  = "Pendiente";
           break;
           case 'inprogress':
-            $statu  = "Loading";
+            $statu  = "En Progreso";
           break;
           case 'completed':
-            $statu  = "Completed";
+            $statu  = "Completa";
           break;
           case 'partial':
-            $statu  = "Partially Completed, Incomplete Returned";
+            $statu  = "Parcial, Reembolsada";
           break;
           case 'canceled':
-            $statu  = "It is cancelled";
+            $statu  = "Cancelada";
           break;
           case 'processing':
-            $statu  = "During Shipping";
+            $statu  = "Procesando";
           break;
         }
       else:
