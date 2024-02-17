@@ -193,10 +193,10 @@
                                           <td class="service-block__visibility">
     <?php 
     if ($services[$i]["service_type"] == 1) {
-        echo "Passive ";
+        echo "Caido ";
 
     } else {
-        echo "Active";
+        echo "Activo";
     }
     
     if ($services[$i]["api_servicetype"] == 1) {
