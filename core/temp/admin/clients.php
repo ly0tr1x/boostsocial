@@ -8,20 +8,20 @@
           <div class="alert alert-danger "><?php echo $errorText; ?></div>
         <?php endif; ?>
   <ul class="nav nav-tabs nav-tabs__service">
-   <li class="p-b"><button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalDiv" data-action="new_user">Add user</button></li>
-   <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="alert_user">Send notification</button></li>
-     <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="all_numbers">Contact information</button></li>
-
+   <li class="p-b"><button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalDiv" data-action="new_user">Añadir usuario</button></li>
+   <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="alert_user">Enviar notifiacion</button></li>
+     <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="all_numbers">Contacto</button></li>
+     <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="all_numbers">Contacto 2</button></li>
    <li class="pull-right p-b">
           <form class="form-inline" action="" method="get" enctype="multipart/form-data">
        <div class="input-group">
          <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Search user...">
          <span class="input-group-btn search-select-wrap">
              <select class="form-control search-select" name="search_type">
-               <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Username</option>
-               <option value="name" <?php if( $search_where == "name" ): echo 'selected'; endif; ?> >Name</option>
+               <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Usuario</option>
+               <option value="name" <?php if( $search_where == "name" ): echo 'selected'; endif; ?> >Nombre</option>
                <option value="email" <?php if( $search_where == "email" ): echo 'selected'; endif; ?> >Email</option>
-               <option value="telephone" <?php if( $search_where == "telephone" ): echo 'selected'; endif; ?> >Phone number</option>
+               <option value="telephone" <?php if( $search_where == "telephone" ): echo 'selected'; endif; ?> >Telefono</option>
              </select>
              <button type="submit" class="btn btn-default"><span class="fa fa-search" aria-hidden="true"></span></button>
            </span>
@@ -34,17 +34,17 @@
       <thead>
       <tr>
         <th class="column-id">ID</th>
-         <th>Username</th> 
+         <th>Uusario</th> 
          <th>Email</th>
     <?php if( $settings["skype_area"] == 2 ): echo " <th>Phone number</th>"; endif; ?>
         <th>Balance</th>
-        <th>spent</th>
-        <th>Status</th>
-        <th>Date of registration</th>
-        <th nowrap="">Last Login</th>
-        <th>Special Price</th>
+        <th>Gastado</th>
+        <th>Estado</th>
+        <th>Fecha Registro</th>
+        <th nowrap="">Ultimo inicio</th>
+        <th>Precio Especial</th>
         <th>Bulk Discount</th>
-        <th>Action</th>
+        <th>Accion</th>
       </tr>
       </thead>
         <tbody>
@@ -79,7 +79,7 @@
                  <div class="dropdown pull-right">
                    <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Options <span class="caret"></span></button>
                    <ul class="dropdown-menu">
-                     <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_user" data-id="<?=$client["client_id"]?>">Edit User</a></li>
+                     <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_user" data-id="<?=$client["client_id"]?>">Editar Usuario</a></li>
                    <?php if( $client["client_type"] == 2 ): ?>  <li><a href="<?php echo site_url("admin/clients/login/".$client["client_id"]) ?>">Open Account</a></li> <?php endif; ?>
 
                      <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="pass_user" data-id="<?=$client["client_id"]?>">Change Password</a></li>
