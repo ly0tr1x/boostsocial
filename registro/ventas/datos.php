@@ -530,7 +530,7 @@ obtenerValoresDesdeDatosPHP();
 						<div class="form-group">
 							<label>Estado</label>
 							<select class="form-control modal-select" id="estado" name="estado" >
-        <option value="Completada">Completada</option>
+        <option value="Completado">Completado</option>
         <option value="Pendiente">Pendiente</option>
              <option value="Por confirmar">Por confirmar</option>
 
