@@ -11,11 +11,11 @@
    <li class="p-b"><button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalDiv" data-action="new_user">Añadir usuario</button></li>
    <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="alert_user">Enviar notifiacion</button></li>
      <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="all_numbers">Contacto</button></li>
-     <li class="p-b"><button class="btn btn-default  m-l" type="button" data-toggle="modal" data-target="#modalDiv" data-action="all_numbers">Contacto 2</button></li>
+     
    <li class="pull-right p-b">
           <form class="form-inline" action="" method="get" enctype="multipart/form-data">
        <div class="input-group">
-         <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Search user...">
+         <input type="text" name="search" class="form-control" value="<?=$search_word?>" placeholder="Buscar usuario...">
          <span class="input-group-btn search-select-wrap">
              <select class="form-control search-select" name="search_type">
                <option value="username" <?php if( $search_where == "username" ): echo 'selected'; endif; ?> >Usuario</option>
@@ -28,7 +28,7 @@
        </div>
      </form>
     </li>
-       <li class="pull-right p-b"><a data-toggle="modal" data-target="#modalDiv" data-action="export_user">Export</a></li>
+       <li class="pull-right p-b"><a data-toggle="modal" data-target="#modalDiv" data-action="export_user">Exportar</a></li>
  </ul>
     <table class="table">
       <thead>
@@ -36,7 +36,7 @@
         <th class="column-id">ID</th>
          <th>Uusario</th> 
          <th>Email</th>
-    <?php if( $settings["skype_area"] == 2 ): echo " <th>Phone number</th>"; endif; ?>
+    <?php if( $settings["skype_area"] == 2 ): echo " <th>Telefono</th>"; endif; ?>
         <th>Balance</th>
         <th>Gastado</th>
         <th>Estado</th>
@@ -80,14 +80,14 @@
                    <button type="button" class="btn btn-default btn-xs dropdown-toggle btn-xs-caret" data-toggle="dropdown">Options <span class="caret"></span></button>
                    <ul class="dropdown-menu">
                      <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="edit_user" data-id="<?=$client["client_id"]?>">Editar Usuario</a></li>
-                   <?php if( $client["client_type"] == 2 ): ?>  <li><a href="<?php echo site_url("admin/clients/login/".$client["client_id"]) ?>">Open Account</a></li> <?php endif; ?>
+                   <?php if( $client["client_type"] == 2 ): ?>  <li><a href="<?php echo site_url("admin/clients/login/".$client["client_id"]) ?>">Abrir como</a></li> <?php endif; ?>
 
-                     <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="pass_user" data-id="<?=$client["client_id"]?>">Change Password</a></li>
+                     <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="pass_user" data-id="<?=$client["client_id"]?>">Cambiar Contraseña</a></li>
                      <li><a style="cursor:pointer;"  data-toggle="modal" data-target="#modalDiv" data-action="secret_user" data-id="<?=$client["client_id"]?>">Special Categories</a></li>
                  
                      <?php if( $client["client_type"] == 1 ): $type = "active"; else: $type = "deactive"; endif; ?>
                      <li><a href="<?php echo site_url("admin/clients/".$type."/".$client["client_id"]) ?>"><?php if( $client["client_type"] == 1 ): echo "Activate account"; else: echo "Suspend account"; endif; ?> </a></li>
-                     <li><a href="<?php echo site_url("admin/clients/del_price/".$client["client_id"]) ?>">Delete Discounts</a></li>
+                     <li><a href="<?php echo site_url("admin/clients/del_price/".$client["client_id"]) ?>">Eliminar Descuentos</a></li>
                    </ul>
                  </div>
                </td>
