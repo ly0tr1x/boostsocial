@@ -465,6 +465,8 @@ obtenerValoresDesdeDatosPHP();
 							<th>País</th>
 							<th>Contacto</th>
 							<th>Monto</th>
+                            <th>Estado</th>
+
 
 						</tr>
 					</thead>

@@ -6,7 +6,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1; // Página actual, obtenida de
 $start_from = ($page - 1) * $records_per_page; // Cálculo del inicio del conjunto de resultados
 
 // Consulta SQL para obtener los datos
-$sql = "SELECT id, fecha, pais, numero_celular, monto FROM datos ORDER BY id DESC LIMIT 100 ";
+$sql = "SELECT id, fecha, pais, numero_celular, monto, estado FROM datos ORDER BY id DESC LIMIT 100 ";
 
 $result = mysqli_query($conn, $sql);
 
