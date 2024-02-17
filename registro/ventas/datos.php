@@ -849,7 +849,7 @@ obtenerDatos();
     var valor = checkbox.value;
     
     // Mostrar el valor (solo para propósitos de demostración)
-    alert("El valor del checkbox es: " + valor);
+    console.log("El valor del checkbox es: " + valor);
   }
   
   document.addEventListener("DOMContentLoaded", function() {
