@@ -837,32 +837,22 @@ obtenerDatos();
 // Llamar a obtenerDatos cada cierto intervalo de tiempo (por ejemplo, cada 5 segundos)
 // setInterval(obtenerDatos, 000); // Intervalo en milisegundos (5000ms = 5 segundos)
 </script>
-<script>
-  function obtenerValor(boton) {
-    // Obtener la fila actual
-    var fila = boton.parentNode.parentNode;
-    
-    // Obtener el checkbox en la misma fila
-    var checkbox = fila.querySelector('input[type="checkbox"]');
-    
-    // Obtener el valor del checkbox
-    var valor = checkbox.value;
-    
-    // Mostrar el valor (solo para propósitos de demostración)
-    console.log("El valor del checkbox es: " + valor);
-  }
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    var botones = document.querySelectorAll('.btnEditar');
-    botones.forEach(function(boton) {
-      boton.addEventListener('click', function() {
-        obtenerValor(this);
-      });
-    });
-  });
-</script>
+
 
 <script>
+
+$(document).ready(function() {
+    $('.btnEditar').on('click', function() {
+        // Obtener el valor del checkbox de la misma fila que el botón
+        var id = $(this).closest('tr').find('input[type="checkbox"]').val().replace('[', '').replace(']', '');
+        
+        // Almacenar el valor del ID en una variable o hacer cualquier otra cosa que necesites
+        console.log('ID:', id);
+        // O si deseas almacenar el ID en algún otro lugar, puedes hacerlo aquí
+        // Ejemplo: variable global, campo oculto en el formulario, etc.
+    });
+});
+    
 $(document).ready(function() {
     $('#eliminarFilas').on('click', function() {
         var filasAEliminar = [];
