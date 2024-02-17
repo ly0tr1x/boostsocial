@@ -55,7 +55,7 @@ $titleAdmin = "Servisler";
         if( $package == 2 ): $max = $min; endif;
         if( empty($name) ):
           $error    = 1;
-          $errorText= "Ürün adı boş olamaz";
+          $errorText= "El nombre del servicio no puede estar vacio";
           $icon     = "error";
         elseif( empty($package) ):
           $error    = 1;
@@ -63,39 +63,39 @@ $titleAdmin = "Servisler";
           $icon     = "error";
         elseif( empty($category) ):
           $error    = 1;
-          $errorText= "Ürün kategori boş olamaz";
+          $errorText= "La categoria no puede estar vacia";
           $icon     = "error";
         elseif( !is_numeric($min) ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad minima no puede estar vacia";
           $icon     = "error";
         elseif( $package != 2 && !is_numeric($max) ):
           $error    = 1;
-          $errorText= "Maksimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad maxima no puede estar vacia";
           $icon     = "error";
         elseif( $min > $max ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı maksimum sipariş miktarından fazla olamaz";
+          $errorText= "La cantidad mínima de pedido no puede ser mayor que la cantidad máxima de pedido";
           $icon     = "error";
         elseif( $mode != 1 && empty($provider) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı boş olamaz";
+          $errorText= "El proveedor de servicios no puede estar vacío";
           $icon     = "error";
         elseif( $mode != 1 && empty($service) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı servis bilgisi boş olamaz";
+          $errorText= "La información del servicio del proveedor no puede estar vacía";
           $icon     = "error";
         elseif( empty($secret) ):
           $error    = 1;
-          $errorText= "Servis gizliliği boş olamaz";
+          $errorText= "La privacidad del servicio no puede estar vacía";
           $icon     = "error";
         elseif( empty($want_username) ):
           $error    = 1;
-          $errorText= "Sipariş bağlantısı boş olamaz";
+          $errorText= "El enlace del pedido no puede estar vacío";
           $icon     = "error";
         elseif( !is_numeric($price) ):
           $error    = 1;
-          $errorText= "Ürün fiyatı rakamlardan oluşmalı";
+          $errorText= "El precio del producto debe consistir en números.";
           $icon     = "error";
         else:
               $api=$conn->prepare("SELECT * FROM service_api WHERE id=:id "); $api->execute(array("id"=>$provider)); $api=$api->fetch(PDO::FETCH_ASSOC);
@@ -122,12 +122,12 @@ $titleAdmin = "Servisler";
               $conn->commit();
               $referrer = site_url("admin/services");
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $icon     = "success";
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         endif;
@@ -155,39 +155,39 @@ $titleAdmin = "Servisler";
           $serviceInfo  = $serviceInfo->fetch(PDO::FETCH_ASSOC);
         if( empty($name) ):
           $error    = 1;
-          $errorText= "Ürün adı boş olamaz";
+          $errorText= "El nombre del servicio no puede estar vacío";
           $icon     = "error";
         elseif( empty($package) ):
           $error    = 1;
-          $errorText= "Ürün paketi boş olamaz";
+          $errorText= "El paquete del producto no puede estar vacío.";
           $icon     = "error";
         elseif( empty($category) ):
           $error    = 1;
-          $errorText= "Ürün kategori boş olamaz";
+          $errorText= "La categoría de producto no puede estar vacía";
           $icon     = "error";
         elseif( !is_numeric($min) ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad mínima de pedido no puede estar vacía";
           $icon     = "error";
         elseif( $package != 2 && !is_numeric($max) ):
           $error    = 1;
-          $errorText= "Maksimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad maxima de pedido no puede estar vacía";
           $icon     = "error";
         elseif( $min > $max ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı maksimum sipariş miktarından fazla olamaz";
+          $errorText= "La cantidad mínima de pedido no puede ser mayor que la cantidad máxima de pedido";
           $icon     = "error";
         elseif( $mode != 1 && empty($provider) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı boş olamaz";
+          $errorText= "El proveedor de servicios no puede estar vacío";
           $icon     = "error";
         elseif( $mode != 1 && empty($service) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı servis bilgisi boş olamaz";
+          $errorText= "La información del servicio del proveedor de servicios no puede estar vacía";
           $icon     = "error";
         elseif( !is_numeric($price) ):
           $error    = 1;
-          $errorText= "Ürün fiyatı rakamlardan oluşmalı";
+          $errorText= "El precio del producto debe consistir en números.";
           $icon     = "error";
         else:
             $api=$conn->prepare("SELECT * FROM service_api WHERE id=:id "); $api->execute(array("id"=>$provider)); $api=$api->fetch(PDO::FETCH_ASSOC);
@@ -234,13 +234,13 @@ $titleAdmin = "Servisler";
                   $update->execute(array("line"=>$row["service_line"]-1,"id"=>$row["service_id"] ));
                 endforeach;
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $icon     = "success";
               $referrer = site_url("admin/services");
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         endif;
@@ -266,12 +266,12 @@ $titleAdmin = "Servisler";
             if( $update ):
               $conn->commit();
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $icon     = "success";
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         echo json_encode(["t"=>"error","m"=>$errorText,"s"=>$icon]);
@@ -284,7 +284,7 @@ $titleAdmin = "Servisler";
 
         if( empty($name) ):
           $error    = 1;
-          $errorText= "Kategori adı boş olamaz";
+          $errorText= "El nombre de la categoría no puede estar vacío";
           $icon     = "error";
         else:
           $row = $conn->query("SELECT * FROM categories ORDER BY category_line DESC LIMIT 1 ")->fetch(PDO::FETCH_ASSOC);
@@ -295,13 +295,13 @@ $titleAdmin = "Servisler";
               $conn->commit();
               unset($_SESSION["data"]);
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $icon     = "success";
               $referrer = site_url("admin/services");
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         endif;
@@ -318,7 +318,7 @@ $titleAdmin = "Servisler";
 
         if( empty($name) ):
           $error    = 1;
-          $errorText= "Kategori adı boş olamaz";
+          $errorText= "El nombre de la categoría no puede estar vacío";
           $icon     = "error";
         else:
             $conn->beginTransaction();
@@ -328,12 +328,12 @@ $titleAdmin = "Servisler";
               $conn->commit();
               $referrer = site_url("admin/services");
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $icon     = "success";
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         endif;
@@ -354,35 +354,35 @@ $titleAdmin = "Servisler";
 
         if( empty($name) ):
           $error    = 1;
-          $errorText= "Ürün adı boş olamaz";
+          $errorText= "El nombre del producto no puede estar vacío";
           $icon     = "error";
         elseif( empty($package) ):
           $error    = 1;
-          $errorText= "Ürün paketi boş olamaz";
+          $errorText= "El proveedor de servicios no puede estar vacío";
           $icon     = "error";
         elseif( empty($category) ):
           $error    = 1;
-          $errorText= "Ürün kategori boş olamaz";
+          $errorText= "La categoría de producto no puede estar vacía";
           $icon     = "error";
         elseif( empty($provider) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı boş olamaz";
+          $errorText= "El proveedor de servicios no puede estar vacío";
           $icon     = "error";
         elseif( empty($service) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı servis bilgisi boş olamaz";
+          $errorText= "El proveedor de servicios no puede estar vacío";
           $icon     = "error";
         elseif( empty($secret) ):
           $error    = 1;
-          $errorText= "Servis gizliliği boş olamaz";
+          $errorText= "La privacidad del servicio no puede estar vacía";
           $icon     = "error";
         elseif(  ( $package == 11 || $package == 12 ) && !is_numeric($price) ):
           $error    = 1;
-          $errorText= "Ürün fiyatı rakamlardan oluşmalı";
+          $errorText= "El precio del producto debe consistir en números.";
           $icon     = "error";
         elseif( ( $package == 11 || $package == 12 ) && !is_numeric($min) ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad minimo de pedido no puede estar vacía";
           $icon     = "error";
         elseif( ( $package == 11 || $package == 12 ) && !is_numeric($max) ):
           $error    = 1;
@@ -429,13 +429,13 @@ $titleAdmin = "Servisler";
             if( $insert ):
               $conn->commit();
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $referrer = site_url("admin/services");
               $icon     = "success";
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         endif;
@@ -458,50 +458,50 @@ $titleAdmin = "Servisler";
         $serviceInfo  = $serviceInfo->fetch(PDO::FETCH_ASSOC);
         if( empty($name) ):
           $error    = 1;
-          $errorText= "Ürün adı boş olamaz";
+          $errorText= "El nombre del producto no puede estar vacío";
           $icon     = "error";
         elseif( empty($category) ):
           $error    = 1;
-          $errorText= "Ürün kategori boş olamaz";
+          $errorText= "La categoría de producto no puede estar vacía";
           $icon     = "error";
         elseif( empty($provider) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı boş olamaz";
+          $errorText= "El proveedor de servicios no puede estar vacío";
           $icon     = "error";
         elseif( empty($service) ):
           $error    = 1;
-          $errorText= "Servis sağlayıcı servis bilgisi boş olamaz";
+          $errorText= "La información del servicio del proveedor  no puede estar vacía";
           $icon     = "error";
         elseif( empty($secret) ):
           $error    = 1;
-          $errorText= "Servis gizliliği boş olamaz";
+          $errorText= "La privacidad del servicio no puede estar vacía";
         elseif(  ( $serviceInfo["service_package"] == 11 || $serviceInfo["service_package"] == 12 ) && !is_numeric($price) ):
           $error    = 1;
-          $errorText= "Ürün fiyatı rakamlardan oluşmalı";
+          $errorText= "El precio del producto debe consistir en números.";
           $icon     = "error";
         elseif( ( $serviceInfo["service_package"] == 11 || $serviceInfo["service_package"] == 12 ) && !is_numeric($min) ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad minima de pedido no puede estar vacía";
           $icon     = "error";
         elseif( ( $serviceInfo["service_package"] == 11 || $serviceInfo["service_package"] == 12 ) && !is_numeric($max) ):
           $error    = 1;
-          $errorText= "Maksimum sipariş miktarı boş olamaz";
+          $errorText= "La cantidad máxima de pedido no puede estar vacía";
           $icon     = "error";
         elseif( ( $serviceInfo["service_package"] == 11 || $serviceInfo["service_package"] == 12 ) && $min > $max ):
           $error    = 1;
-          $errorText= "Minimum sipariş miktarı maksimum sipariş miktarından fazla olamaz";
+          $errorText= "La cantidad mínima de pedido no puede ser mayor que la cantidad máxima de pedido";
           $icon     = "error";
         elseif(  ( $serviceInfo["service_package"] == 14 || $serviceInfo["service_package"] == 15 ) && !is_numeric($autopost) ):
           $error    = 1;
-          $errorText= "Gönderi miktarı boş olamaz";
+          $errorText= "La cantidad de publicaciones no puede estar vacía";
           $icon     = "error";
         elseif(  ( $serviceInfo["service_package"] == 14 || $serviceInfo["service_package"] == 15 ) && !is_numeric($limited_min) ):
           $error    = 1;
-          $errorText= "Sipariş miktarı boş olamaz";
+          $errorText= "La cantidad del pedido no puede estar vacía";
           $icon     = "error";
         elseif(  ( $serviceInfo["service_package"] == 14 || $serviceInfo["service_package"] == 15 ) && !is_numeric($autotime) ):
           $error    = 1;
-          $errorText= "Paket Süresi boş olamaz";
+          $errorText= "La duración del paquete no puede estar vacía";
           $icon     = "error";
         else:
             $api=$conn->prepare("SELECT * FROM service_api WHERE id=:id "); $api->execute(array("id"=>$provider)); $api=$api->fetch(PDO::FETCH_ASSOC);
@@ -551,13 +551,13 @@ $titleAdmin = "Servisler";
                   $update->execute(array("line"=>$row["service_line"]-1,"id"=>$row["service_id"] ));
                 endforeach;
               $error    = 1;
-              $errorText= "İşlem başarılı";
+              $errorText= "Transacción exitosa";
               $referrer = site_url("admin/services");
               $icon     = "success";
             else:
               $conn->rollBack();
               $error    = 1;
-              $errorText= "İşlem başarısız";
+              $errorText= "Operación fallida";
               $icon     = "error";
             endif;
         endif;
@@ -896,7 +896,7 @@ $apiService->cancel= ($apiService->cancel) ? "2" : "1";
         endforeach;
         echo json_encode(["t"=>"error","m"=>"Success","s"=>"success","r"=>site_url("admin/services"),"time"=>0]);
       else:
-        echo json_encode(["t"=>"error","m"=>"Lütfen eklemek istediğiniz en az 1 servisi seçin","s"=>"error"]);
+        echo json_encode(["t"=>"error","m"=>"Por favor seleccione al menos 1 servicio que le gustaría agregar","s"=>"error"]);
       endif;
       
   elseif( $action == "get_services_add" ):
@@ -1062,9 +1062,9 @@ $apiService->cancel= ($apiService->cancel) ? "2" : "1";
             endif;
           endforeach;
         endforeach;
-        echo json_encode(["t"=>"error","m"=>"İşlem başarılı","s"=>"success","r"=>site_url("admin/services"),"time"=>0]);
+        echo json_encode(["t"=>"error","m"=>"Transacción exitosa","s"=>"success","r"=>site_url("admin/services"),"time"=>0]);
       else:
-        echo json_encode(["t"=>"error","m"=>"Lütfen eklemek istediğiniz en az 1 servisi seçin","s"=>"error"]);
+        echo json_encode(["t"=>"error","m"=>"Por favor seleccione al menos 1 servicio que le gustaría agregar","s"=>"error"]);
       endif;
   endif;
   
