@@ -1,5 +1,11 @@
 <?php
 
+require 'core/lib/phpmailer/phpmailer/src/PHPMailer.php'; // Ajusta la ruta según la ubicación real de tu archivo PHPMailer.php
+require 'core/lib/phpmailer/phpmailer/src/Exception.php'; // Ajusta la ruta según la ubicación real de tu archivo PHPMailer.php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 $title .= $languageArray["signup.title"];
 
 if( $_SESSION["neira_userlogin"]){
