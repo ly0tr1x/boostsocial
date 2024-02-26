@@ -116,13 +116,7 @@ die();
         $success    = 1;
         $successText= $languageArray["error.signup.success"];
 
-         // Envía el correo electrónico
-    $destinatario = $email; // Dirección de correo del usuario registrado
-    $asunto = "Registro exitoso";
-    $contenido = "¡Hola $first_name!\n\nGracias por registrarte en nuestro sitio web.";
-
-    // Llama a la función enviarCorreo()
-    enviarCorreo($destinatario, $asunto, $contenido);
+      
 
           
 
