@@ -1,5 +1,8 @@
 <?php
 
+// Importar las clases de PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $title .= $languageArray["signup.title"];
 
@@ -119,10 +122,6 @@ die();
 
 
         //envio de correo
-
-        use PHPMailer\PHPMailer\PHPMailer;
-
-        use PHPMailer\PHPMailer\Exception;
 
         require 'phpmailer\phpmailer\src\Exception.php';
         require 'phpmailer\phpmailer\src\PHPMailer.php';
