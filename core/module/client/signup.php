@@ -1,6 +1,5 @@
 <?php
 
-require_once 'config_email.php';
 
 
 $title .= $languageArray["signup.title"];
