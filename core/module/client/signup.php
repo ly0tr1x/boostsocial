@@ -1,6 +1,6 @@
 <?php
 
-
+require 'config_email.php';
 
 $title .= $languageArray["signup.title"];
 
@@ -115,6 +115,11 @@ die();
         unset($_SESSION["data"]);
         $success    = 1;
         $successText= $languageArray["error.signup.success"];
+
+
+        $asunto = 'Gracias por registrarte';
+        $contenido = 'Este es un correo de prueba enviado.';
+        enviarCorreo($email, $asunto, $contenido);
 
       
 
