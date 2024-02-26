@@ -1,8 +1,8 @@
 <?php
 // Incluye los archivos necesarios de PHPMailer
-require '../../../lib/phpmailer/phpmailer/src/PHPMailer.php';
-require '../../../lib/phpmailer/phpmailer/src/SMTP.php';
-require '../../../lib/phpmailer/phpmailer/src/Exception.php';
+require 'lib/phpmailer/src/PHPMailer.php';
+require 'lib/phpmailer/src/SMTP.php';
+require 'lib/phpmailer/src/Exception.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
