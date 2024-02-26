@@ -1,6 +1,5 @@
 <?php
 
-require 'config_email.php'; // Reemplaza 'correo.php' con la ruta correcta si es necesario
 
 
 
