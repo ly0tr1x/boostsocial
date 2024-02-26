@@ -1,6 +1,22 @@
 <?php
 
-// Incluye los archivos necesarios de PHPMailer
+$title .= $languageArray["signup.title"];
+
+if( $_SESSION["neira_userlogin"]){
+  Header("Location:".site_url(''));
+}
+elseif( $settings["register_page"] == 1 ){
+  include 'themes/404.php';
+die();
+}
+  $referral       = $_SESSION['referral'];
+
+  if( $_POST ){
+    foreach ($_POST as $key => $value) {
+      $_SESSION["data"][$key]  = $value;
+    }
+
+    // Incluye los archivos necesarios de PHPMailer
 require 'lib/phpmailer/src/PHPMailer.php';
 require 'lib/phpmailer/src/SMTP.php';
 require 'lib/phpmailer/src/Exception.php';
@@ -38,23 +54,6 @@ function enviar_correo($destinatario, $asunto, $contenido) {
         return false;
     }
 }
-
-
-$title .= $languageArray["signup.title"];
-
-if( $_SESSION["neira_userlogin"]){
-  Header("Location:".site_url(''));
-}
-elseif( $settings["register_page"] == 1 ){
-  include 'themes/404.php';
-die();
-}
-  $referral       = $_SESSION['referral'];
-
-  if( $_POST ){
-    foreach ($_POST as $key => $value) {
-      $_SESSION["data"][$key]  = $value;
-    }
 
   $first_name     = htmlentities($_POST["first_name"]);
   $last_name      = htmlentities($_POST["last_name"]);
