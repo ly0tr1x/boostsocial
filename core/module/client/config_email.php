@@ -1,36 +1,34 @@
 <?php
-// Incluye los archivos necesarios de PHPMailer
-require 'lib/phpmailer/src/PHPMailer.php';
-require 'lib/phpmailer/src/SMTP.php';
-require 'lib/phpmailer/src/Exception.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\SMTP;
 
-function enviar_correo($destinatario, $asunto, $contenido) {
+require 'phpmailer\phpmailer\src\Exception.php';
+require 'phpmailer\phpmailer\src\PHPMailer.php';
+require 'phpmailer\phpmailer\src\SMTP.php';
+
+function enviarCorreo($destinatario, $asunto, $contenido) {
     $mail = new PHPMailer(true);
 
     try {
-        // Configuración del servidor SMTP
+        // Configura el servidor SMTP
         $mail->isSMTP();
-        $mail->Host = 'smtp.hostinger.com'; // Cambia esto al host SMTP correspondiente
+        $mail->Host = 'smtp.hostinger.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'soporte@boostsocialsmm.com'; // Cambia esto al nombre de usuario de tu cuenta de correo electrónico
-        $mail->Password = '13042022@Jj'; // Cambia esto a tu contraseña de correo electrónico
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 465;
+        $mail->Username = 'soporte@boostsocialsmm.com';
+        $mail->Password = '13042022@Jj';
+        $mail->SMTPSecure = 'tls'; // Puedes usar 'tls' o 'ssl'
+        $mail->Port = 465; // El puerto SMTP
 
-        // Destinatario y remitente
+        // Configura el remitente y el destinatario
         $mail->setFrom('soporte@boostsocialsmm.com', 'Social Boost');
         $mail->addAddress($destinatario);
 
-        // Contenido del correo electrónico
-        $mail->isHTML(true);
+        // Agrega el asunto y el cuerpo del mensaje
         $mail->Subject = $asunto;
-        $mail->Body = $contenido;
+        $mail->Body    = $contenido;
 
-        // Enviar correo electrónico
+        // Envía el correo
         $mail->send();
         return true;
     } catch (Exception $e) {
