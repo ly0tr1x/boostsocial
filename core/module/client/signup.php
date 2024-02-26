@@ -113,39 +113,12 @@ die();
     
       if( $insert && $insert2 ):
 
- // Definir los parámetros para enviar el correo electrónico
- $asunto = "¡Gracias por registrarte!";
- $contenido = "¡Bienvenido a nuestro sitio web!
-
- Estamos encantados de darte la bienvenida a nuestro panel SMM. Gracias por registrarte y unirte a nosotros. Esperamos que encuentres nuestra plataforma útil.
- 
- En nuestro sitio, tendrás acceso a una amplia gama de características y servicios para redes sociales.
- 
- Si tienes alguna pregunta, comentario o sugerencia, no dudes en ponerte en contacto con nuestro equipo de soporte. Estamos aquí para ayudarte y asegurarnos de que tengas la mejor experiencia posible en nuestro sitio.
- 
- Gracias de nuevo por unirte a nosotros. ¡Esperamos verte pronto en línea!
- 
- Atentamente,
- 
- Social Boost 
- ";
-
- // Llama a la función para enviar el correo electrónico
- enviar_correo($email, $asunto, $contenido);
-
         $conn->commit();
         unset($_SESSION["data"]);
         $success    = 1;
         $successText= $languageArray["error.signup.success"];
 
-           
-
-        
-
-
-
-
-
+          
 
 
         echo '<script>setInterval(function(){window.location="'.site_url('').'"},2000)</script>';
