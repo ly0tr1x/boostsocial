@@ -4,6 +4,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+//envio de correo
+
+require 'phpmailer\phpmailer\src\Exception.php';
+require 'phpmailer\phpmailer\src\PHPMailer.php';
+require 'phpmailer\phpmailer\src\SMTP.php';
+
 $title .= $languageArray["signup.title"];
 
 if( $_SESSION["neira_userlogin"]){
@@ -121,11 +127,7 @@ die();
 
 
 
-        //envio de correo
-
-        require 'phpmailer\phpmailer\src\Exception.php';
-        require 'phpmailer\phpmailer\src\PHPMailer.php';
-        require 'phpmailer\phpmailer\src\SMTP.php';
+        
 
         // Crear una instancia de PHPMailer
         $mail = new PHPMailer(true);
@@ -152,7 +154,8 @@ die();
             // Enviar el correo
             $mail->send();
         } catch (Exception $e) {
-        }
+          echo "Hubo un error al enviar el correo: {$mail->ErrorInfo}";
+      }
 
       //envio de correo
 
