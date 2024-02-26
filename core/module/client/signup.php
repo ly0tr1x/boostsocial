@@ -113,16 +113,6 @@ die();
     $insert2= $insert2->execute(array("c_id"=>$client_id,"action"=>"User registration made.","ip"=>GetIP(),"date"=>date("Y-m-d H:i:s") ));
 
     
-      if( $insert && $insert2 ):
-
-        $conn->commit();
-        unset($_SESSION["data"]);
-        $success    = 1;
-        $successText= $languageArray["error.signup.success"];
-
-
-
-
         //envio de correo
 
 require 'phpmailer\phpmailer\src\Exception.php';
@@ -159,9 +149,13 @@ require 'phpmailer\phpmailer\src\SMTP.php';
 
       //envio de correo
 
-          
+    
+      if( $insert && $insert2 ):
 
-
+        $conn->commit();
+        unset($_SESSION["data"]);
+        $success    = 1;
+        $successText= $languageArray["error.signup.success"];
         echo '<script>setInterval(function(){window.location="'.site_url('').'"},2000)</script>';
       else:
         $conn->rollBack();
@@ -169,6 +163,8 @@ require 'phpmailer\phpmailer\src\SMTP.php';
         $errorText  = $languageArray["error.signup.fail"];
       endif;
   }
+
+  
 
 }
 
