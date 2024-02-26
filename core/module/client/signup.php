@@ -1,6 +1,5 @@
 <?php
 
-require 'config_email.php';
 
 $title .= $languageArray["signup.title"];
 
@@ -117,11 +116,46 @@ die();
         $successText= $languageArray["error.signup.success"];
 
 
-        $asunto = 'Gracias por registrarte';
-        $contenido = 'Este es un correo de prueba enviado.';
-        enviarCorreo($email, $asunto, $contenido);
 
-      
+
+        //envio de correo
+
+        use PHPMailer\PHPMailer\PHPMailer;
+
+        use PHPMailer\PHPMailer\Exception;
+
+        require 'phpmailer\phpmailer\src\Exception.php';
+        require 'phpmailer\phpmailer\src\PHPMailer.php';
+        require 'phpmailer\phpmailer\src\SMTP.php';
+
+        // Crear una instancia de PHPMailer
+        $mail = new PHPMailer(true);
+
+        try {
+            // Configurar el servidor SMTP
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.hostinger.com'; // Cambia esto por el servidor SMTP que estés utilizando
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'soporte@boostsocialsmm.com'; // Cambia esto por tu dirección de correo electrónico
+            $mail->Password   = '13042022@Jj'; // Cambia esto por tu contraseña de correo electrónico
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port       = 465;
+
+            // Configurar el remitente y destinatario
+            $mail->setFrom('soporte@boostsocialsmm.com', 'Social Boost');
+            $mail->addAddress($email, 'Destinatario');
+
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Gracias por registrarte';
+            $mail->Body    = 'Este es un correo de prueba enviado usando PHPMailer.';
+
+            // Enviar el correo
+            $mail->send();
+        } catch (Exception $e) {
+        }
+
+      //envio de correo
 
           
 
