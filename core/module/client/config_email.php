@@ -3,15 +3,17 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer\phpmailer\src\Exception.php';
-require 'phpmailer\phpmailer\src\PHPMailer.php';
-require 'phpmailer\phpmailer\src\SMTP.php';
+require 'phpmailer/phpmailer/src/Exception.php';
+require 'phpmailer/phpmailer/src/PHPMailer.php';
+require 'phpmailer/phpmailer/src/SMTP.php';
 
-// Crear una instancia de PHPMailer
-$mail = new PHPMailer(true);
+// Función para enviar correo electrónico
+function enviarCorreo($email, $asunto, $contenido) {
+    // Crear una instancia de PHPMailer
+    $mail = new PHPMailer(true);
 
-try {
-    // Configurar el servidor SMTP
+    try {
+        // Configurar el servidor SMTP
     $mail->isSMTP();
     $mail->Host       = 'smtp.hostinger.com'; // Cambia esto por el servidor SMTP que estés utilizando
     $mail->SMTPAuth   = true;
@@ -20,20 +22,21 @@ try {
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
 
-    // Configurar el remitente y destinatario
-    $mail->setFrom('soporte@boostsocialsmm.com', 'Social Boost');
-    $mail->addAddress('juliofigueroaisme@gmail.com', 'Destinatario');
+        // Configurar el remitente y destinatario
+        $mail->setFrom('soporte@boostsocialsmm.com', 'Social Boost');
+        $mail->addAddress($email);
 
-    // Contenido del correo
-    $mail->isHTML(true);
-    $mail->Subject = 'Correo de prueba usando PHPMailer';
-    $mail->Body    = 'Este es un correo de prueba enviado usando PHPMailer.';
+        // Contenido del correo
+        $mail->isHTML(true);
+        $mail->Subject = $asunto;
+        $mail->Body    = $contenido;
 
-    // Enviar el correo
-    $mail->send();
-    echo 'El correo ha sido enviado correctamente.';
-} catch (Exception $e) {
-    echo "Hubo un error al enviar el correo: {$mail->ErrorInfo}";
+        // Enviar el correo
+        $mail->send();
+        return true; // Indicar que el correo se envió correctamente
+    } catch (Exception $e) {
+        return false; // Indicar que hubo un error al enviar el correo
+    }
 }
 
 
