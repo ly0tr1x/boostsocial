@@ -4,11 +4,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-//envio de correo
 
-require 'phpmailer\phpmailer\src\Exception.php';
-require 'phpmailer\phpmailer\src\PHPMailer.php';
-require 'phpmailer\phpmailer\src\SMTP.php';
 
 $title .= $languageArray["signup.title"];
 
@@ -127,7 +123,11 @@ die();
 
 
 
-        
+        //envio de correo
+
+require 'phpmailer\phpmailer\src\Exception.php';
+require 'phpmailer\phpmailer\src\PHPMailer.php';
+require 'phpmailer\phpmailer\src\SMTP.php';
 
         // Crear una instancia de PHPMailer
         $mail = new PHPMailer(true);
